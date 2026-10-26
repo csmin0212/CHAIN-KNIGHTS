@@ -35,8 +35,14 @@ namespace ChainKnights.Core.Battle
         public IReadOnlyList<Arthur> Arthurs => arthurs;
         public IReadOnlyList<Enemy> Enemies => enemies;
 
-        /// <summary>이번 턴 각 아서가 고른 카드 (아서 번호 → 카드). 다른 플레이어 화면에 실시간으로 보여준다.</summary>
+        /// <summary>
+        /// 이번 턴 각 아서가 고른 카드 (아서 번호 → 카드). 서버만 본다.
+        /// 아군이 무엇을 냈는지 모르는 것이 이 게임의 핵심 재미라서, 클라이언트에는 HasSubmitted만 알려 준다.
+        /// </summary>
         public IReadOnlyDictionary<int, IReadOnlyList<CardPlay>> Submissions => submissions;
+
+        /// <summary>이 아서가 이번 턴 선택을 마쳤는지. 다른 플레이어 화면에는 이것만 보여준다.</summary>
+        public bool HasSubmitted(int arthurIndex) => submissions.ContainsKey(arthurIndex);
 
         public BattleSession(BattleSetup setup)
         {

@@ -205,6 +205,23 @@ namespace ChainKnights.Core.Tests
         }
 
         [Test]
+        public void HasSubmitted_TellsOnlyWhetherAnArthurHasChosen()
+        {
+            var battle = Battle(NoLuck, Dummy(),
+                Arthur("A", Job.Guardian, Deck(Pellinore)),
+                Arthur("B", Job.Guardian, Deck()));
+            battle.StartTurn();
+            SubmitOk(battle, 0, Play(battle, 0, Pellinore, TargetRef.Enemy(0)));
+
+            Assert.IsTrue(battle.HasSubmitted(0));
+            Assert.IsFalse(battle.HasSubmitted(1));
+
+            battle.ResolveTurn();
+            battle.StartTurn();
+            Assert.IsFalse(battle.HasSubmitted(0));
+        }
+
+        [Test]
         public void Submit_CanBeChangedBeforeResolving()
         {
             var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Guardian, Deck(Pellinore, Marose)));
