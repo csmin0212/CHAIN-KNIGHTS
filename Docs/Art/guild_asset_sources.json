@@ -1,0 +1,296 @@
+{
+  "sources": [
+    {
+      "name": "icon_element_fire",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-d8197f48-f8cf-4555-b219-27035adeb834.png"
+    },
+    {
+      "name": "icon_element_ice",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-3f0ab865-0bfd-4e64-8667-64b7539317a8.png"
+    },
+    {
+      "name": "icon_element_wind",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-fe000bfd-2761-4476-9cbd-240426da7a20.png"
+    },
+    {
+      "name": "icon_element_light",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-78a4d5df-479e-448f-8c4e-f812d7322a3d.png"
+    },
+    {
+      "name": "icon_element_dark",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-25fdc014-7fd2-4025-bc32-c06b54366b93.png"
+    },
+    {
+      "name": "icon_job_warrior",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-917c65c4-c553-47ce-8c46-8240fe22e973.png"
+    },
+    {
+      "name": "icon_job_guardian",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-2bb053be-a829-4941-97d1-c58bfa61f3e5.png"
+    },
+    {
+      "name": "icon_job_mage",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-a7fec3c4-0400-47b6-b663-74d16665d8aa.png"
+    },
+    {
+      "name": "icon_job_priest",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-e306ea52-ed5e-4d57-9f30-5e48844157f6.png"
+    },
+    {
+      "name": "icon_skill_physical",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-c2443ce6-4cc3-4e66-8a9f-457c97483afd.png"
+    },
+    {
+      "name": "icon_skill_magic",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-bca90bde-7231-45fa-abe3-84b491e7c4e7.png"
+    },
+    {
+      "name": "icon_skill_support",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-8cd442f7-a3df-4eb2-867d-cdc9158b58c4.png"
+    },
+    {
+      "name": "icon_skill_defense",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-8d8ea1d2-269c-4f6b-9ac8-6399ae14957d.png"
+    },
+    {
+      "name": "icon_skill_heal",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-177a8c64-6b81-4f02-8a24-8377dddc69b0.png"
+    },
+    {
+      "name": "icon_skill_hinder",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-3a7ab4d1-3979-46d1-a37e-2e545dca4895.png"
+    },
+    {
+      "name": "icon_signal_heal",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-6a380648-5089-4130-bb83-43709fd84d50.png"
+    },
+    {
+      "name": "icon_signal_attack",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-d862ab31-9875-447e-a2d0-81fd758f7acb.png"
+    },
+    {
+      "name": "icon_signal_defense",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-65cb1765-550c-46bf-9453-04faa1b3c6b0.png"
+    },
+    {
+      "name": "icon_signal_buff",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-9d16c29f-d936-46e5-ae2a-6167c70db2f7.png"
+    },
+    {
+      "name": "icon_signal_part",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-d9253752-4b3d-48f8-83d8-19bc9fcd805b.png"
+    },
+    {
+      "name": "icon_signal_chain",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-db88c7a3-8c3f-46f1-b8eb-587dd116ce62.png"
+    },
+    {
+      "name": "icon_status_atk_down",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-ff37d343-3795-4764-8b59-d6539b8c2f15.png"
+    },
+    {
+      "name": "icon_status_atk_up",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-67519919-daa0-42ee-bfc4-94dff1953835.png"
+    },
+    {
+      "name": "icon_status_def_up",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-6a8d5b8b-8e35-4cd4-90b0-3fd534e950b2.png"
+    },
+    {
+      "name": "icon_status_def_down",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-3e10d3fd-8040-4f32-add1-e237ed167aea.png"
+    },
+    {
+      "name": "icon_status_poison",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-28eecbd1-6ba3-4a66-8c64-3c8e5ab007f8.png"
+    },
+    {
+      "name": "icon_status_regen",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-300a4c10-48e6-4c95-b2fe-e1fcc161a0e9.png"
+    },
+    {
+      "name": "card_back",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-05af86f6-20fd-41e0-92b9-21cb5f5e9fe2.png"
+    },
+    {
+      "name": "icon_status_stun",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-556f0883-7a56-49f2-a188-d890df3f1422.png"
+    },
+    {
+      "name": "card_frame",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-b66d3c25-69cc-4be6-a05d-f1e2bbd6a4c4.png"
+    },
+    {
+      "name": "card_cost_badge",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-7f3224a7-c03a-4c08-ad69-4e3c3670f646.png"
+    },
+    {
+      "name": "arthur_portrait_warrior",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-42abe05c-42c2-4143-beb4-de8faedafbf9.png"
+    },
+    {
+      "name": "arthur_portrait_guardian",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-bb5de2d4-c9a3-4bd1-a9de-cd090aadcd6b.png"
+    },
+    {
+      "name": "arthur_portrait_mage",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-ff1d9b6e-517d-41d7-adf5-5e4cbc785732.png"
+    },
+    {
+      "name": "enemy_golem",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-ffafe3b8-ed41-4a56-ae85-cf906328c749.png"
+    },
+    {
+      "name": "arthur_portrait_priest",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-8b0bc47b-0c48-4d6e-affc-2b65876eb303.png"
+    },
+    {
+      "name": "enemy_knight_bors",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-affe7b4b-18ce-46d2-89d9-1dc8747b5dac.png"
+    },
+    {
+      "name": "enemy_knight_nadezhda",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-50e2d954-ec97-4bc0-a4b5-cf87f28b471e.png"
+    },
+    {
+      "name": "enemy_knight_lamorak",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-38f4c5ee-242e-42d3-a17d-f721603e1b35.png"
+    },
+    {
+      "name": "boss_glacies_body",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-50b518c3-4596-4a81-abaf-aada3ae5096e.png"
+    },
+    {
+      "name": "bg_field_start",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-bc10387c-d4a3-4fda-9080-ffc63559d6a2.png"
+    },
+    {
+      "name": "boss_glacies_claw",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-382e5467-bdf8-4c11-a36a-fb179983da81.png"
+    },
+    {
+      "name": "bg_raid_ice_cave",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-2722d7b6-2d42-4b7e-90b0-06abba0aca44.png"
+    },
+    {
+      "name": "boss_glacies_wing",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-f03aca67-3df1-432d-8309-f04dd7af3afd.png"
+    },
+    {
+      "name": "ui_panel",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-70007c94-6075-4b82-88c4-875e3fbf7043.png"
+    },
+    {
+      "name": "ui_panel_paper",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-53e33918-b3b2-42bb-af93-4e0aea35720d.png"
+    },
+    {
+      "name": "ui_button_normal",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-ba0631db-92bf-4136-932f-b38b4cbbf85e.png"
+    },
+    {
+      "name": "ui_button_pressed",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-b3d619dc-9419-4fff-af28-dc4560be3501.png"
+    },
+    {
+      "name": "ui_button_disabled",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-bb4424d9-dbbb-49fb-99b9-c5181db8f82f.png"
+    },
+    {
+      "name": "ui_hp_frame",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-02310396-e5cc-4c14-b0b5-5ff24587becb.png"
+    },
+    {
+      "name": "ui_hp_fill",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-fbf664bb-8b19-4960-b70d-5e36b204fe34.png"
+    },
+    {
+      "name": "ui_timer_ring",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-7869b562-2de0-43a5-aed9-23d24a203f3c.png"
+    },
+    {
+      "name": "ui_ready_check",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-47769af4-e768-4425-a899-42694cd39d0e.png"
+    },
+    {
+      "name": "fx_hit",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-60f09254-ae92-4d99-9fe6-f167d94fd330.png"
+    },
+    {
+      "name": "fx_heal",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-f8f82ab1-055a-41e2-832f-acf50a79f58d.png"
+    },
+    {
+      "name": "fx_part_warning",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-6f0f3296-721f-4215-8367-f829468f9ff7.png"
+    },
+    {
+      "name": "fx_chain",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-17a27d56-0162-4718-b07d-53906b3c12fb.png"
+    },
+    {
+      "name": "fx_critical",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-cde4edd9-15de-40ed-897a-83be30946cba.png"
+    },
+    {
+      "name": "bg_lobby",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-cdbfc414-a480-4d94-9980-a5d5b550c2e2.png"
+    },
+    {
+      "name": "lobby_quest_board",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-a4e34c5f-3e41-4f4d-a9af-2220a8a80f92.png"
+    },
+    {
+      "name": "ui_speech_bubble",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-c41ea43c-60e6-493f-9890-9d050cee114f.png"
+    },
+    {
+      "name": "arthur_walk_warrior",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-252298cb-3ec1-44f5-a087-03d9f67c9da9.png"
+    },
+    {
+      "name": "arthur_walk_guardian",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-3682127e-4630-48b3-9d2f-90ccf350144c.png"
+    },
+    {
+      "name": "arthur_walk_mage",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-8378c5ad-88b9-49e1-934b-8f3b591beb26.png"
+    },
+    {
+      "name": "arthur_walk_priest",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-75ed53ef-45c2-41dc-ae5d-4e0bcf4496a1.png"
+    },
+    {
+      "name": "enemy_chiari_fairy",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-98546cda-66d2-4919-9b2b-70704277eb8b.png"
+    },
+    {
+      "name": "enemy_gold_fairy",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-fb4c4e9a-4f1e-4d5d-b6d5-fe6cbd18c529.png"
+    },
+    {
+      "name": "gacha_chest",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-9f60018d-b9fe-415c-a9bf-73e6b0757921.png"
+    },
+    {
+      "name": "gacha_glow",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-d7609553-947f-409d-bd2e-dcbfbe6910cf.png"
+    },
+    {
+      "name": "bg_title",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-def9ac89-975d-4034-a2e9-c7e00f3a35e2.png"
+    },
+    {
+      "name": "logo_chain_knights",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-ede399fd-b507-4a67-9423-91f6fda9529e.png"
+    },
+    {
+      "name": "bg_field_forest",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-a4c69444-1302-46c8-bc52-76263a9ce0f3.png"
+    },
+    {
+      "name": "bg_field_ruins",
+      "path": "C:\\Users\\joy64\\.codex\\generated_images\\01a17601-7b40-77a0-8a58-0c76f8596746\\exec-ba6350d6-e570-433b-9af8-3bdf3f4142b0.png"
+    }
+  ]
+}

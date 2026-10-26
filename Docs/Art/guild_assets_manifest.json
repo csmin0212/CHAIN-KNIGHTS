@@ -1,0 +1,743 @@
+{
+  "style": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. ",
+  "assets": [
+    {
+      "folder": "Icons",
+      "name": "icon_element_fire",
+      "width": 64,
+      "height": 64,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. A single curling brick-red flame with warm cream core, elemental fire.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_element_ice",
+      "width": 64,
+      "height": 64,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. One six-point frost blue ice crystal, broad geometric branches, elemental ice.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_element_wind",
+      "width": 64,
+      "height": 64,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. Two flowing green wind curls with one small leaf, elemental wind.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_element_light",
+      "width": 64,
+      "height": 64,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. One honey-gold four-point radiant sunburst, cream center, elemental light.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_element_dark",
+      "width": 64,
+      "height": 64,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. A violet crescent cradling one small dark star, elemental darkness.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_job_warrior",
+      "width": 128,
+      "height": 128,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. One practical broad steel sword angled slightly right with leather wrapped grip and small aged brass crossguard.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_job_guardian",
+      "width": 128,
+      "height": 128,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. One stout kite shield with a broad steel boss, slate blue enamel face and modest brass edge.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_job_mage",
+      "width": 128,
+      "height": 128,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. One dark walnut mage staff with a violet crystal cradled by a simple brass fork and a tiny cream cloth tie.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_job_priest",
+      "width": 128,
+      "height": 128,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. One cream-bound prayer book with a small warm gold four-point holy emblem, muted green cloth bookmark.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_skill_physical",
+      "width": 64,
+      "height": 64,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. A short silver blade with two bold cream impact strokes.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_skill_magic",
+      "width": 64,
+      "height": 64,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. A violet orb with two clear concentric arcane arcs.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_skill_support",
+      "width": 64,
+      "height": 64,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. A small ochre pennant tied to a staff, one uplifting gold spark.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_skill_defense",
+      "width": 64,
+      "height": 64,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. A stout steel buckler with one broad pale blue protective arc.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_skill_heal",
+      "width": 64,
+      "height": 64,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. Two green leaves around a warm cream four-point healing spark.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_skill_hinder",
+      "width": 64,
+      "height": 64,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. A violet broken chain link and a small muted red downward arrow, obstruction.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_signal_attack",
+      "width": 96,
+      "height": 96,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. Two crossed steel swords, red leather grips.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_signal_defense",
+      "width": 96,
+      "height": 96,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. A blue kite shield held upright, broad brass rim.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_signal_heal",
+      "width": 96,
+      "height": 96,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. One small green healing flask with a cream luminous droplet.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_signal_buff",
+      "width": 96,
+      "height": 96,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. One broad honey-gold upward arrow rising over two simple gold rays.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_signal_part",
+      "width": 96,
+      "height": 96,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. A single beast claw silhouette encircled by four ochre targeting brackets, monster part targeting.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_signal_chain",
+      "width": 96,
+      "height": 96,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. Exactly two linked aged brass chain rings, clear open holes.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_status_atk_up",
+      "width": 48,
+      "height": 48,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. A small sword with one thick green upward arrow to its right.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_status_def_up",
+      "width": 48,
+      "height": 48,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. A small shield with one thick green upward arrow to its right.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_status_atk_down",
+      "width": 48,
+      "height": 48,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. A small sword with one thick brick red downward arrow to its right.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_status_def_down",
+      "width": 48,
+      "height": 48,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. A small shield with one thick brick red downward arrow to its right.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_status_poison",
+      "width": 48,
+      "height": 48,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. A violet teardrop with a simple cream skull mark inside.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_status_regen",
+      "width": 48,
+      "height": 48,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. A green leaf curling around one small cream sparkle, regeneration.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Icons",
+      "name": "icon_status_stun",
+      "width": 48,
+      "height": 48,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. One ochre four-point star and two broad curved orbit strokes, dizzy stun.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Cards",
+      "name": "card_frame",
+      "width": 300,
+      "height": 420,
+      "border": 32,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. ONLY a portrait 5:7 card BODY panel, fills canvas with 2 percent transparent outer margin. Opaque flat charcoal interior #1f2129, slightly rounded corners, thin aged brass double-rule border, tiny restrained leather-bound corner clasps. Straight undecorated horizontal and vertical edge spans suitable for 9-slice. Completely empty interior, uniform charcoal so overlaid game text is readable. No emblem, inset panels, icon, badge or glow. An adventurer guild membership card body, practical elegant modest ornament.",
+      "kind": "ui"
+    },
+    {
+      "folder": "Cards",
+      "name": "card_back",
+      "width": 300,
+      "height": 420,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. ONLY a portrait 5:7 card BACK, 2 percent transparent exterior margin. Charcoal leather surface, slender aged brass border, tiny corner clasps. Centerpiece a small simple embossed guild crest of a compass rose above two interlocked chain links, within a thin circle, cream and aged gold. Sparse symmetrical lines, generous empty space, no letters. Warm adventurer guild membership card aesthetic, no blue stained glass.",
+      "kind": "ui"
+    },
+    {
+      "folder": "Cards",
+      "name": "card_cost_badge",
+      "width": 80,
+      "height": 80,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One round cost counter badge, ivory cream enamel center with subtle texture and thin aged brass rim. Completely blank center so dark cost numerals can be drawn in code. 8 percent transparent exterior margin, square canvas, orthographic centered. Modest medieval guild craftsmanship, no chain notches.",
+      "kind": "ui"
+    },
+    {
+      "folder": "Arthurs",
+      "name": "arthur_portrait_warrior",
+      "width": 256,
+      "height": 256,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. Exactly one bust portrait, centered head and shoulders, three-quarter facing viewer slightly right, full hair and shoulder silhouette inside image, true transparent background, no portrait frame. Semi-stylized hand-painted fantasy game character, appealing clear face, 4.5-head-proportion normal human, not chibi. Young adult male adventurer with tousled chestnut hair, amber eyes, friendly determined expression, weathered red scarf, practical steel shoulder armor over brown leather, broad sword hilt behind shoulder.",
+      "kind": "character"
+    },
+    {
+      "folder": "Arthurs",
+      "name": "arthur_portrait_guardian",
+      "width": 256,
+      "height": 256,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. Exactly one bust portrait, centered head and shoulders, three-quarter facing viewer slightly right, full hair and shoulder silhouette inside image, true transparent background, no portrait frame. Semi-stylized hand-painted fantasy game character, appealing clear face, 4.5-head-proportion normal human, not chibi. Adult broad-shouldered female adventurer with short dark teal-black hair, steady kind eyes, sturdy slate-blue steel pauldrons, cream padded collar, a shield edge visible at shoulder, dependable calm.",
+      "kind": "character"
+    },
+    {
+      "folder": "Arthurs",
+      "name": "arthur_portrait_mage",
+      "width": 256,
+      "height": 256,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. Exactly one bust portrait, centered head and shoulders, three-quarter facing viewer slightly right, full hair and shoulder silhouette inside image, true transparent background, no portrait frame. Semi-stylized hand-painted fantasy game character, appealing clear face, 4.5-head-proportion normal human, not chibi. Young adult female adventurer with wavy dark plum hair, clever warm expression, modest violet travelling hood pushed back, charcoal wool cloak with simple brass clasp, small crystal staff tip at shoulder.",
+      "kind": "character"
+    },
+    {
+      "folder": "Arthurs",
+      "name": "arthur_portrait_priest",
+      "width": 256,
+      "height": 256,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. Exactly one bust portrait, centered head and shoulders, three-quarter facing viewer slightly right, full hair and shoulder silhouette inside image, true transparent background, no portrait frame. Semi-stylized hand-painted fantasy game character, appealing clear face, 4.5-head-proportion normal human, not chibi. Young adult male healer with soft sandy blond hair, gentle alert expression, cream linen hood and muted sage travelling mantle, small aged brass four-point amulet, practical leather medicine satchel strap.",
+      "kind": "character"
+    },
+    {
+      "folder": "Enemies",
+      "name": "enemy_golem",
+      "width": 400,
+      "height": 400,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One full-body squat stone golem enemy, neutral white and light gray stone ONLY, no colored accents so runtime elemental tint works. Broad chunky rock torso, short legs, heavy knuckle arms, small white glowing eyes and single simple chest rune. Front three-quarter battle stance facing left, feet level near bottom, all limbs within frame. Transparent background, no ground or shadow platform. Friendly adventure danger, not horror. Square canvas.",
+      "kind": "character"
+    },
+    {
+      "folder": "Enemies",
+      "name": "enemy_knight_bors",
+      "width": 600,
+      "height": 600,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One full-body armored wandering knight boss Bors: stocky broad silhouette, battered dark steel plate armor, muted brick red short tabard, closed visor, two-handed broad sword planted diagonally in ready stance. Modest brass trim, rough leather belts, no ornate royal crown. Three-quarter facing left, head and feet fully in frame, transparent background no ground.",
+      "kind": "character"
+    },
+    {
+      "folder": "Enemies",
+      "name": "enemy_knight_nadezhda",
+      "width": 600,
+      "height": 600,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One full-body armored wandering knight boss Nadezhda: tall athletic female silhouette, functional slate-blue armor, ash-blond braid, cream half cape, long spear and compact round shield. Modest brass trim, composed stern expression. Three-quarter facing left, full spear within square canvas without cropped extremities, transparent background no ground.",
+      "kind": "character"
+    },
+    {
+      "folder": "Enemies",
+      "name": "enemy_knight_lamorak",
+      "width": 600,
+      "height": 600,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One full-body armored wandering knight boss Lamorak: lean athletic duelist, dark steel and leather armor, muted forest green mantle, closed narrow visor, two slim swords held low in balanced battle pose. Restrained aged brass clasps. Three-quarter facing left, full silhouette inside square, transparent background no ground.",
+      "kind": "character"
+    },
+    {
+      "folder": "Enemies",
+      "name": "boss_glacies_body",
+      "width": 800,
+      "height": 600,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. Same creature design: Glacies is a stocky pale icy-blue armored ice drake, broad angular muzzle, two swept-back dark blue horns, chunky layered ice plates, turquoise crevices, no accessories or jewelry. Stylized hand-painted fantasy adventure monster with broad readable shapes. ONLY the body/head/neck/tail/short rear legs of the drake, no wings and no forelimbs: these are separately targeted detachable parts. Broad crouched 3/4 body facing left, head to upper-left, tail curves right, full silhouette inside landscape 4:3 transparent canvas, no ground or VFX, no stump gore. Ice scale shoulder sockets cleanly overlap modular parts.",
+      "kind": "character"
+    },
+    {
+      "folder": "Enemies",
+      "name": "boss_glacies_claw",
+      "width": 400,
+      "height": 300,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. Same creature design: Glacies is a stocky pale icy-blue armored ice drake, broad angular muzzle, two swept-back dark blue horns, chunky layered ice plates, turquoise crevices, no accessories or jewelry. Stylized hand-painted fantasy adventure monster with broad readable shapes. ONLY one detached modular FRONT forelimb and enormous three-toed ice claw, no body/head/other parts. Forearm enters upper-left, claw spreads toward lower-right, transparent 4:3 landscape canvas, clean rounded overlap root at upper-left, no gore, one coherent forelimb fully contained.",
+      "kind": "character"
+    },
+    {
+      "folder": "Enemies",
+      "name": "boss_glacies_wing",
+      "width": 400,
+      "height": 300,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. Same creature design: Glacies is a stocky pale icy-blue armored ice drake, broad angular muzzle, two swept-back dark blue horns, chunky layered ice plates, turquoise crevices, no accessories or jewelry. Stylized hand-painted fantasy adventure monster with broad readable shapes. ONLY one detached modular frost wing, no body/head/other parts. Broad triangular batlike wing of pale blue icy membrane and dark blue finger bones, root lower-right, fan spreads upper-left, clean overlap root, transparent 4:3 landscape canvas, no gore, fully contained.",
+      "kind": "character"
+    },
+    {
+      "folder": "Backgrounds",
+      "name": "bg_field_start",
+      "width": 1920,
+      "height": 1080,
+      "border": 0,
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. Full-bleed opaque landscape 16:9 battle backdrop. Peaceful frontier grasslands beside adventurer guild territory, distant low ruined watchtower, warm late morning, stone path through rolling hills, sparse wildflowers, weathered wooden signpost with no writing at far left edge. Fixed camera looking toward horizon, center 70 percent is open low-detail ground for enemy sprites, horizon upper third, no characters, UI, words, foreground occluders. Soft painterly environment, muted earthy greens and warm creams, subtle edge shade, no frame.",
+      "kind": "background"
+    },
+    {
+      "folder": "Backgrounds",
+      "name": "bg_raid_ice_cave",
+      "width": 1920,
+      "height": 1080,
+      "border": 0,
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. Full-bleed opaque landscape 16:9 battle backdrop. Ice cave arena, broad flat frosted stone floor occupying lower half, chunky pale blue ice walls along left/right, distant dark tunnel centered behind empty combat area, soft cyan bounced light and small warm abandoned lantern at far left. Center 70 percent open and low detail for boss sprites; no creatures, UI, words, huge crystals across center or foreground occluders. Painterly moderate detail, readable values, warm guild adventure despite cool environment.",
+      "kind": "background"
+    },
+    {
+      "folder": "UI",
+      "name": "ui_panel",
+      "width": 256,
+      "height": 256,
+      "border": 24,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One square slightly rounded charcoal leather UI panel with completely plain opaque center #1f2129, thin aged brass border, tiny corner clasps, exterior transparent. Orthographic fills 96 percent canvas, straight undecorated edge spans and uniform center suitable for 9-slice. No emblem, text, glow, icons or separate inset sections.",
+      "kind": "ui"
+    },
+    {
+      "folder": "UI",
+      "name": "ui_panel_paper",
+      "width": 256,
+      "height": 256,
+      "border": 24,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One square cream parchment UI panel with plain opaque warm ivory center #efe3c8, restrained thin ochre edge rule, tiny 4 rounded corners, exterior transparent. Very subtle clean paper grain, uniform light center suitable for dark text and 9-slice, straight undecorated edge spans. No scroll curls, large stains, writing, ink or icons.",
+      "kind": "ui"
+    },
+    {
+      "folder": "UI",
+      "name": "ui_button_normal",
+      "width": 256,
+      "height": 80,
+      "border": 16,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One wide horizontal rounded rectangular fantasy guild UI button, 16:5 aspect ratio, fills 96 percent canvas with transparent exterior. Medium charcoal leather center, thin aged brass outline, modest soft top highlight. Completely blank, no text, icon or ornament, straight edge spans for 9-slice, matching dimensions across all button states.",
+      "kind": "ui"
+    },
+    {
+      "folder": "UI",
+      "name": "ui_button_pressed",
+      "width": 256,
+      "height": 80,
+      "border": 16,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One wide horizontal rounded rectangular fantasy guild UI button, 16:5 aspect ratio, fills 96 percent canvas with transparent exterior. Darker inset charcoal leather center, thin muted brass outline, recessed bevel and faint inner shadow, no outside shadow. Completely blank, no text, icon or ornament, straight edge spans for 9-slice, matching dimensions across all button states.",
+      "kind": "ui"
+    },
+    {
+      "folder": "UI",
+      "name": "ui_button_disabled",
+      "width": 256,
+      "height": 80,
+      "border": 16,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One wide horizontal rounded rectangular fantasy guild UI button, 16:5 aspect ratio, fills 96 percent canvas with transparent exterior. Flat desaturated gray charcoal center, dull gray brown outline, low contrast, no shine. Completely blank, no text, icon or ornament, straight edge spans for 9-slice, matching dimensions across all button states.",
+      "kind": "ui"
+    },
+    {
+      "folder": "UI",
+      "name": "ui_hp_frame",
+      "width": 320,
+      "height": 32,
+      "border": 12,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One horizontal thin aged brass capsule-outline HP bar frame, 10:1 aspect, completely transparent empty interior and exterior. Slim 2 pixel frame at final size, simple rounded end caps, no ticks, no fill, no text, no ornaments. Pixel-clean broad shape, fills 96 percent canvas.",
+      "kind": "ui"
+    },
+    {
+      "folder": "UI",
+      "name": "ui_hp_fill",
+      "width": 320,
+      "height": 32,
+      "border": 12,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One horizontal white capsule-shaped bar fill, 10:1 aspect, subtle very light neutral gray bevel at lower edge, otherwise white for runtime tinting. True transparent exterior, no border or frame, no text, no glow, fills 96 percent canvas, straight sides and softly rounded ends.",
+      "kind": "ui"
+    },
+    {
+      "folder": "UI",
+      "name": "ui_timer_ring",
+      "width": 128,
+      "height": 128,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One complete circular timer ring with uniform thickness 12 percent outer diameter. White neutral-gray only for runtime tinting, very subtle broad bevel. Completely transparent circular center and exterior, no ticks, digits, decorations or glow. Geometrically regular circle, fills 90 percent square canvas, usable Unity radial fill.",
+      "kind": "ui"
+    },
+    {
+      "folder": "UI",
+      "name": "ui_ready_check",
+      "width": 64,
+      "height": 64,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One isolated centered game icon on true transparent alpha square canvas. Strong bold silhouette, no enclosing plaque or background, fills 82 percent canvas, enough breathing room. Readable at 48-128 pixels: few broad shapes, no fine filigree, softly painted broad highlights, thin subtle dark contour. One clear cream checkmark on muted leaf-green round wax seal, restrained aged gold fine outline. Compact simple shape, true transparent exterior, no lettering, no ribbons, fills 85 percent canvas, readable 64px.",
+      "kind": "icon"
+    },
+    {
+      "folder": "Effects",
+      "name": "fx_hit",
+      "width": 256,
+      "height": 256,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. Single VFX sprite on transparent square canvas, all effects taper to transparent before edges, moderate magical energy, no dark backdrop or baked checkerboard. One sharp white impact burst with 6 broad tapered rays, no central opaque disc, neutral white for runtime elemental tinting, translucent fading edges.",
+      "kind": "effect"
+    },
+    {
+      "folder": "Effects",
+      "name": "fx_heal",
+      "width": 256,
+      "height": 256,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. Single VFX sprite on transparent square canvas, all effects taper to transparent before edges, moderate magical energy, no dark backdrop or baked checkerboard. One soft green ascending healing wisp with three cream four-point sparkles, transparent holes between shapes, restrained glow.",
+      "kind": "effect"
+    },
+    {
+      "folder": "Effects",
+      "name": "fx_part_warning",
+      "width": 256,
+      "height": 256,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. Single VFX sprite on transparent square canvas, all effects taper to transparent before edges, moderate magical energy, no dark backdrop or baked checkerboard. One soft amber elliptical targeting halo, completely transparent center and exterior, faint wisps hugging the ellipse, no symbols or lettering.",
+      "kind": "effect"
+    },
+    {
+      "folder": "Effects",
+      "name": "fx_chain",
+      "width": 256,
+      "height": 256,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. Single VFX sprite on transparent square canvas, all effects taper to transparent before edges, moderate magical energy, no dark backdrop or baked checkerboard. One warm pale gold swoosh forming a partial ring, with two linked luminous ring shapes near one edge, very transparent soft center to place CHAIN text in code, no lettering.",
+      "kind": "effect"
+    },
+    {
+      "folder": "Effects",
+      "name": "fx_critical",
+      "width": 256,
+      "height": 256,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. Single VFX sprite on transparent square canvas, all effects taper to transparent before edges, moderate magical energy, no dark backdrop or baked checkerboard. One short bright neutral white four-point flash with two small sharp secondary sparks, thin rays, soft transparent fade at edge.",
+      "kind": "effect"
+    },
+    {
+      "folder": "Backgrounds",
+      "name": "bg_lobby",
+      "width": 2560,
+      "height": 1440,
+      "border": 0,
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. Full-bleed opaque landscape 16:9 top-down 3/4 orthographic fantasy adventurer guild village plaza, high oblique camera looking down, broad central walkable cobblestone square occupying central 65 percent, warm timber-and-plaster guild hall along upper edge with brass compass emblem but no writing, cozy inn upper-right, low market stalls confined left/right edges, warm late-afternoon sunlight, one tree and bench at outer edges. Central cobblestones simple and uninterrupted so 128px player sprites can walk visibly. No people, no quest board (separate sprite), no UI, no text, no perspective vanishing point. Rich but restrained painterly adventure environment.",
+      "kind": "background"
+    },
+    {
+      "folder": "Lobby",
+      "name": "lobby_quest_board",
+      "width": 256,
+      "height": 256,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One freestanding wooden adventurer quest notice board, top-down three-quarter orthographic view matching village plaza, two sturdy timber legs, modest little shingled roof cap, several cream parchment notices with blank unmarked paper and muted red wax seals, small brass compass crest at top. Whole object fully visible, no writing, true transparent background, no floor/platform, strong silhouette.",
+      "kind": "character"
+    },
+    {
+      "folder": "UI",
+      "name": "ui_speech_bubble",
+      "width": 256,
+      "height": 128,
+      "border": 40,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One wide cream parchment speech bubble panel, 2:1 aspect ratio, softly rounded rectangular body and one small triangular tail bottom-left at x=20 percent, thin restrained ochre border. Flat plain ivory center for dark chat text, exterior transparent. No writing, icons, scroll edges or decoration. Straight edges suitable for 9-slice that preserves bottom-left tail.",
+      "kind": "ui"
+    },
+    {
+      "folder": "Arthurs",
+      "name": "arthur_walk_warrior",
+      "width": 512,
+      "height": 128,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. A STRICT animation sprite strip: 4 columns by 1 row, exactly four equal SQUARE cells with no gaps, true transparent background. Every cell contains SAME full-body chibi adventurer at identical scale, same baseline, complete silhouette with generous padding, facing RIGHT in profile or 3/4-right. Walk poses in order contact right-foot-forward, passing, contact left-foot-forward, passing-opposite; alternating arm swing, equipment stable. 3-head-tall practical cute proportions, simplified broad shapes. No borders, labels, separators, backdrop, ground shadow. Each cell final 128x128, strip 512x128. Character identity match portrait description: Young adult male adventurer with tousled chestnut hair, amber eyes, friendly determined expression, weathered red scarf, practical steel shoulder armor over brown leather, broad sword hilt behind shoulder.",
+      "kind": "animation"
+    },
+    {
+      "folder": "Arthurs",
+      "name": "arthur_walk_guardian",
+      "width": 512,
+      "height": 128,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. A STRICT animation sprite strip: 4 columns by 1 row, exactly four equal SQUARE cells with no gaps, true transparent background. Every cell contains SAME full-body chibi adventurer at identical scale, same baseline, complete silhouette with generous padding, facing RIGHT in profile or 3/4-right. Walk poses in order contact right-foot-forward, passing, contact left-foot-forward, passing-opposite; alternating arm swing, equipment stable. 3-head-tall practical cute proportions, simplified broad shapes. No borders, labels, separators, backdrop, ground shadow. Each cell final 128x128, strip 512x128. Character identity match portrait description: Adult broad-shouldered female adventurer with short dark teal-black hair, steady kind eyes, sturdy slate-blue steel pauldrons, cream padded collar, a shield edge visible at shoulder, dependable calm.",
+      "kind": "animation"
+    },
+    {
+      "folder": "Arthurs",
+      "name": "arthur_walk_mage",
+      "width": 512,
+      "height": 128,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. A STRICT animation sprite strip: 4 columns by 1 row, exactly four equal SQUARE cells with no gaps, true transparent background. Every cell contains SAME full-body chibi adventurer at identical scale, same baseline, complete silhouette with generous padding, facing RIGHT in profile or 3/4-right. Walk poses in order contact right-foot-forward, passing, contact left-foot-forward, passing-opposite; alternating arm swing, equipment stable. 3-head-tall practical cute proportions, simplified broad shapes. No borders, labels, separators, backdrop, ground shadow. Each cell final 128x128, strip 512x128. Character identity match portrait description: Young adult female adventurer with wavy dark plum hair, clever warm expression, modest violet travelling hood pushed back, charcoal wool cloak with simple brass clasp, small crystal staff tip at shoulder.",
+      "kind": "animation"
+    },
+    {
+      "folder": "Arthurs",
+      "name": "arthur_walk_priest",
+      "width": 512,
+      "height": 128,
+      "border": 0,
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. A STRICT animation sprite strip: 4 columns by 1 row, exactly four equal SQUARE cells with no gaps, true transparent background. Every cell contains SAME full-body chibi adventurer at identical scale, same baseline, complete silhouette with generous padding, facing RIGHT in profile or 3/4-right. Walk poses in order contact right-foot-forward, passing, contact left-foot-forward, passing-opposite; alternating arm swing, equipment stable. 3-head-tall practical cute proportions, simplified broad shapes. No borders, labels, separators, backdrop, ground shadow. Each cell final 128x128, strip 512x128. Character identity match portrait description: Young adult male healer with soft sandy blond hair, gentle alert expression, cream linen hood and muted sage travelling mantle, small aged brass four-point amulet, practical leather medicine satchel strap.",
+      "kind": "animation"
+    },
+    {
+      "folder": "Enemies",
+      "name": "enemy_chiari_fairy",
+      "width": 256,
+      "height": 256,
+      "kind": "character",
+      "border": 0,
+      "transparent": true,
+      "optional": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One small experience-dungeon fairy creature, tiny winged forest sprite with leaf cloak, warm cream glowing seed core, short little wooden wand and two broad translucent leaf wings. Cute gender-neutral nonhuman chibi spirit, full body fully contained, not a human woman, no ground or extra objects."
+    },
+    {
+      "folder": "Enemies",
+      "name": "enemy_gold_fairy",
+      "width": 256,
+      "height": 256,
+      "kind": "character",
+      "border": 0,
+      "transparent": true,
+      "optional": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One small gold-dungeon fairy creature, round mischievous nonhuman treasure spirit with brass bell-shaped body, small cream moth wings and a soft gold coin-like face with simple eyes. Tiny leather satchel, cheerful compact silhouette, full body fully contained, no flying coins or backdrop."
+    },
+    {
+      "folder": "Gacha",
+      "name": "gacha_chest",
+      "width": 256,
+      "height": 256,
+      "kind": "character",
+      "border": 0,
+      "transparent": true,
+      "optional": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. One closed adventurer guild reward chest, modest warm walnut wood with aged brass bands and leather straps, tiny compass rose embossed on central latch, 3/4 front view, fully contained. Charming reliable adventure loot, no skulls, jewels, magical glow or ground."
+    },
+    {
+      "folder": "Gacha",
+      "name": "gacha_glow",
+      "width": 512,
+      "height": 512,
+      "kind": "effect",
+      "border": 0,
+      "transparent": true,
+      "optional": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. Single VFX sprite, a restrained warm pale gold rising light cone with six small cream four-point sparkles, transparent center and soft alpha fading outer edges, light only to overlay above a treasure chest. No chest, ground, text, object or dark backdrop."
+    },
+    {
+      "folder": "Backgrounds",
+      "name": "bg_title",
+      "width": 1920,
+      "height": 1080,
+      "kind": "background",
+      "border": 0,
+      "transparent": false,
+      "optional": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. Full-bleed opaque 16:9 title screen backdrop: interior of a cozy grand adventurer guild hall, warm timber beams, dark slate stone, notice papers confined to side walls, warm hearth at far right, wooden reception counter far back, banners with simple compass crests at far sides. Center 60 percent clear low-detail walkway and dim charcoal architectural framing with clean upper-center negative space for a title logo. Late afternoon window light, quiet hopeful adventure, no people, writing, UI or lettering."
+    },
+    {
+      "folder": "UI",
+      "name": "logo_chain_knights",
+      "width": 1280,
+      "height": 400,
+      "kind": "logo",
+      "border": 0,
+      "transparent": true,
+      "optional": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No watermarks, mockups or extra objects. One restrained fantasy adventurer guild game title logo on true transparent background. EXACT TEXT: 'CHAIN KNIGHTS' on one centered horizontal line in refined readable cream serif capitals with subtle aged brass edging, no other words or letters. A small simple compass rose above the gap between words and exactly two linked brass chain rings below as modest ornaments. Wide 16:5 composition, generous transparent margin, crisp typography, no shield, bulky crest, background panel, blue glass or excessive flourishes."
+    },
+    {
+      "folder": "Backgrounds",
+      "name": "bg_field_forest",
+      "width": 1920,
+      "height": 1080,
+      "kind": "background",
+      "border": 0,
+      "transparent": false,
+      "optional": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. Full-bleed opaque 16:9 battle backdrop: old woodland caravan road, mossy stone milestones, tall leafy oak trunks framing far left/right, dappled warm afternoon light, distant tiny rope bridge high in background. Center 70 percent a broad open low-detail dirt clearing for enemy sprites, horizon upper third, no characters, words, UI or foreground occluders. Cozy painterly fantasy guild expedition."
+    },
+    {
+      "folder": "Backgrounds",
+      "name": "bg_field_ruins",
+      "width": 1920,
+      "height": 1080,
+      "kind": "background",
+      "border": 0,
+      "transparent": false,
+      "optional": true,
+      "prompt": "Use case: stylized-concept. Production 2D fantasy adventurers guild RPG asset for Chain Knights. Cohesive original hand-painted game art, clean shapes, warm grounded adventure, restrained medieval craftsmanship, moderate detail, not photorealistic or pixel art. Palette charcoal #17181f, slate #2a2c36, thin aged brass #c9a96e, cream parchment #efe3c8; accent colors muted brick red #d9583b, frost blue #4c9bd6, leaf green #4fa36b, honey #e3b53b, violet #8a72c4. No text, lettering, numbers, logos, watermarks, mockup, extra objects or backdrop. Full-bleed opaque 16:9 battle backdrop: weathered hilltop fortress ruins, broken slate columns and modest ancient brass compass relief at far edges, distant mountains, cool overcast late afternoon with one warm sunbreak. Center 70 percent broad empty stone courtyard low-detail for enemy sprites, horizon upper third, no characters, words, UI or foreground occluders. Grounded painterly adventurer guild expedition."
+    }
+  ]
+}

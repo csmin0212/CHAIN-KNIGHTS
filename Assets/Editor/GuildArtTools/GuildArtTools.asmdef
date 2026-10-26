@@ -1,0 +1,6 @@
+{
+  "name": "ChainKnights.GuildArtTools",
+  "references": ["Unity.2D.Sprite.Editor"],
+  "includePlatforms": ["Editor"],
+  "autoReferenced": true
+}

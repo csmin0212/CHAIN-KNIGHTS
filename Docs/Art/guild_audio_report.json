@@ -1,0 +1,99 @@
+{
+  "method": "Original procedural synthesis; no external samples",
+  "sample_rate": 44100,
+  "assets": [
+    {
+      "name": "sfx_card_play.wav",
+      "seconds": 0.28,
+      "channels": 1,
+      "peak": 0.63
+    },
+    {
+      "name": "sfx_hit.wav",
+      "seconds": 0.32,
+      "channels": 1,
+      "peak": 0.63
+    },
+    {
+      "name": "sfx_magic.wav",
+      "seconds": 1.51,
+      "channels": 1,
+      "peak": 0.63
+    },
+    {
+      "name": "sfx_heal.wav",
+      "seconds": 1.67,
+      "channels": 1,
+      "peak": 0.63
+    },
+    {
+      "name": "sfx_buff.wav",
+      "seconds": 1.55,
+      "channels": 1,
+      "peak": 0.63
+    },
+    {
+      "name": "sfx_chain.wav",
+      "seconds": 1.45,
+      "channels": 1,
+      "peak": 0.63
+    },
+    {
+      "name": "sfx_victory.wav",
+      "seconds": 2.05,
+      "channels": 1,
+      "peak": 0.63
+    },
+    {
+      "name": "sfx_defeat.wav",
+      "seconds": 2.07,
+      "channels": 1,
+      "peak": 0.63
+    },
+    {
+      "name": "sfx_critical.wav",
+      "seconds": 0.38,
+      "channels": 1,
+      "peak": 0.63
+    },
+    {
+      "name": "sfx_part_break.wav",
+      "seconds": 1.1,
+      "channels": 1,
+      "peak": 0.63
+    },
+    {
+      "name": "sfx_button.wav",
+      "seconds": 0.12,
+      "channels": 1,
+      "peak": 0.63
+    },
+    {
+      "name": "bgm_battle.ogg",
+      "seconds": 34.286,
+      "channels": 2,
+      "bpm": 112,
+      "bars": 16,
+      "loop": true,
+      "peak": 0.63
+    },
+    {
+      "name": "bgm_boss.ogg",
+      "seconds": 30.0,
+      "channels": 2,
+      "bpm": 128,
+      "bars": 16,
+      "loop": true,
+      "peak": 0.63
+    },
+    {
+      "name": "bgm_lobby.ogg",
+      "seconds": 42.667,
+      "channels": 2,
+      "bpm": 90,
+      "bars": 16,
+      "loop": true,
+      "peak": 0.63
+    }
+  ]
+}

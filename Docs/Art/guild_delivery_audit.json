@@ -1,0 +1,575 @@
+{
+  "graphics": 75,
+  "audio": 14,
+  "errors": [],
+  "walk_frames": {
+    "Arthurs/arthur_walk_warrior.png": [
+      {
+        "index": 0,
+        "bounds": [
+          3,
+          4,
+          115,
+          118
+        ]
+      },
+      {
+        "index": 1,
+        "bounds": [
+          2,
+          4,
+          106,
+          118
+        ]
+      },
+      {
+        "index": 2,
+        "bounds": [
+          4,
+          4,
+          115,
+          118
+        ]
+      },
+      {
+        "index": 3,
+        "bounds": [
+          2,
+          4,
+          106,
+          118
+        ]
+      }
+    ],
+    "Arthurs/arthur_walk_guardian.png": [
+      {
+        "index": 0,
+        "bounds": [
+          14,
+          4,
+          114,
+          120
+        ]
+      },
+      {
+        "index": 1,
+        "bounds": [
+          12,
+          5,
+          102,
+          120
+        ]
+      },
+      {
+        "index": 2,
+        "bounds": [
+          14,
+          5,
+          116,
+          120
+        ]
+      },
+      {
+        "index": 3,
+        "bounds": [
+          19,
+          5,
+          112,
+          120
+        ]
+      }
+    ],
+    "Arthurs/arthur_walk_mage.png": [
+      {
+        "index": 0,
+        "bounds": [
+          9,
+          7,
+          114,
+          117
+        ]
+      },
+      {
+        "index": 1,
+        "bounds": [
+          18,
+          7,
+          105,
+          117
+        ]
+      },
+      {
+        "index": 2,
+        "bounds": [
+          9,
+          7,
+          113,
+          117
+        ]
+      },
+      {
+        "index": 3,
+        "bounds": [
+          17,
+          7,
+          111,
+          117
+        ]
+      }
+    ],
+    "Arthurs/arthur_walk_priest.png": [
+      {
+        "index": 0,
+        "bounds": [
+          13,
+          8,
+          119,
+          118
+        ]
+      },
+      {
+        "index": 1,
+        "bounds": [
+          11,
+          9,
+          109,
+          118
+        ]
+      },
+      {
+        "index": 2,
+        "bounds": [
+          7,
+          7,
+          117,
+          118
+        ]
+      },
+      {
+        "index": 3,
+        "bounds": [
+          11,
+          9,
+          113,
+          118
+        ]
+      }
+    ]
+  },
+  "audio_metrics": [
+    {
+      "name": "bgm_battle.ogg",
+      "sample_rate": 44100,
+      "channels": 2,
+      "seconds": 34.286,
+      "peak": 0.6405,
+      "rms": 0.1285
+    },
+    {
+      "name": "bgm_boss.ogg",
+      "sample_rate": 44100,
+      "channels": 2,
+      "seconds": 30.0,
+      "peak": 0.6325,
+      "rms": 0.1407
+    },
+    {
+      "name": "bgm_lobby.ogg",
+      "sample_rate": 44100,
+      "channels": 2,
+      "seconds": 42.667,
+      "peak": 0.6404,
+      "rms": 0.1322
+    },
+    {
+      "name": "sfx_buff.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "seconds": 1.55,
+      "peak": 0.63,
+      "rms": 0.1191
+    },
+    {
+      "name": "sfx_button.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "seconds": 0.12,
+      "peak": 0.63,
+      "rms": 0.145
+    },
+    {
+      "name": "sfx_card_play.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "seconds": 0.28,
+      "peak": 0.63,
+      "rms": 0.0947
+    },
+    {
+      "name": "sfx_chain.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "seconds": 1.45,
+      "peak": 0.63,
+      "rms": 0.0963
+    },
+    {
+      "name": "sfx_critical.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "seconds": 0.38,
+      "peak": 0.63,
+      "rms": 0.0552
+    },
+    {
+      "name": "sfx_defeat.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "seconds": 2.07,
+      "peak": 0.63,
+      "rms": 0.1469
+    },
+    {
+      "name": "sfx_heal.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "seconds": 1.67,
+      "peak": 0.63,
+      "rms": 0.1282
+    },
+    {
+      "name": "sfx_hit.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "seconds": 0.32,
+      "peak": 0.63,
+      "rms": 0.0783
+    },
+    {
+      "name": "sfx_magic.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "seconds": 1.51,
+      "peak": 0.63,
+      "rms": 0.1298
+    },
+    {
+      "name": "sfx_part_break.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "seconds": 1.1,
+      "peak": 0.63,
+      "rms": 0.0613
+    },
+    {
+      "name": "sfx_victory.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "seconds": 2.05,
+      "peak": 0.63,
+      "rms": 0.1389
+    }
+  ],
+  "alpha_metrics": {
+    "Icons/icon_element_fire.png": {
+      "transparent_ratio": 0.6238,
+      "max_alpha": 255
+    },
+    "Icons/icon_element_ice.png": {
+      "transparent_ratio": 0.5728,
+      "max_alpha": 255
+    },
+    "Icons/icon_element_wind.png": {
+      "transparent_ratio": 0.4275,
+      "max_alpha": 255
+    },
+    "Icons/icon_element_light.png": {
+      "transparent_ratio": 0.4504,
+      "max_alpha": 255
+    },
+    "Icons/icon_element_dark.png": {
+      "transparent_ratio": 0.5425,
+      "max_alpha": 255
+    },
+    "Icons/icon_job_warrior.png": {
+      "transparent_ratio": 0.8029,
+      "max_alpha": 255
+    },
+    "Icons/icon_job_guardian.png": {
+      "transparent_ratio": 0.5138,
+      "max_alpha": 255
+    },
+    "Icons/icon_job_mage.png": {
+      "transparent_ratio": 0.848,
+      "max_alpha": 255
+    },
+    "Icons/icon_job_priest.png": {
+      "transparent_ratio": 0.4763,
+      "max_alpha": 255
+    },
+    "Icons/icon_skill_physical.png": {
+      "transparent_ratio": 0.5884,
+      "max_alpha": 255
+    },
+    "Icons/icon_skill_magic.png": {
+      "transparent_ratio": 0.5029,
+      "max_alpha": 255
+    },
+    "Icons/icon_skill_support.png": {
+      "transparent_ratio": 0.6328,
+      "max_alpha": 255
+    },
+    "Icons/icon_skill_defense.png": {
+      "transparent_ratio": 0.3494,
+      "max_alpha": 255
+    },
+    "Icons/icon_skill_heal.png": {
+      "transparent_ratio": 0.5081,
+      "max_alpha": 255
+    },
+    "Icons/icon_skill_hinder.png": {
+      "transparent_ratio": 0.6255,
+      "max_alpha": 255
+    },
+    "Icons/icon_signal_attack.png": {
+      "transparent_ratio": 0.6615,
+      "max_alpha": 255
+    },
+    "Icons/icon_signal_defense.png": {
+      "transparent_ratio": 0.559,
+      "max_alpha": 255
+    },
+    "Icons/icon_signal_heal.png": {
+      "transparent_ratio": 0.5581,
+      "max_alpha": 255
+    },
+    "Icons/icon_signal_buff.png": {
+      "transparent_ratio": 0.6443,
+      "max_alpha": 255
+    },
+    "Icons/icon_signal_part.png": {
+      "transparent_ratio": 0.578,
+      "max_alpha": 255
+    },
+    "Icons/icon_signal_chain.png": {
+      "transparent_ratio": 0.5945,
+      "max_alpha": 255
+    },
+    "Icons/icon_status_atk_up.png": {
+      "transparent_ratio": 0.6523,
+      "max_alpha": 255
+    },
+    "Icons/icon_status_def_up.png": {
+      "transparent_ratio": 0.4553,
+      "max_alpha": 255
+    },
+    "Icons/icon_status_atk_down.png": {
+      "transparent_ratio": 0.6662,
+      "max_alpha": 255
+    },
+    "Icons/icon_status_def_down.png": {
+      "transparent_ratio": 0.4835,
+      "max_alpha": 255
+    },
+    "Icons/icon_status_poison.png": {
+      "transparent_ratio": 0.5534,
+      "max_alpha": 255
+    },
+    "Icons/icon_status_regen.png": {
+      "transparent_ratio": 0.526,
+      "max_alpha": 255
+    },
+    "Icons/icon_status_stun.png": {
+      "transparent_ratio": 0.4709,
+      "max_alpha": 255
+    },
+    "Cards/card_frame.png": {
+      "transparent_ratio": 0.4101,
+      "max_alpha": 255
+    },
+    "Cards/card_back.png": {
+      "transparent_ratio": 0.1323,
+      "max_alpha": 255
+    },
+    "Cards/card_cost_badge.png": {
+      "transparent_ratio": 0.2809,
+      "max_alpha": 255
+    },
+    "Arthurs/arthur_portrait_warrior.png": {
+      "transparent_ratio": 0.3475,
+      "max_alpha": 255
+    },
+    "Arthurs/arthur_portrait_guardian.png": {
+      "transparent_ratio": 0.3,
+      "max_alpha": 255
+    },
+    "Arthurs/arthur_portrait_mage.png": {
+      "transparent_ratio": 0.3456,
+      "max_alpha": 255
+    },
+    "Arthurs/arthur_portrait_priest.png": {
+      "transparent_ratio": 0.3382,
+      "max_alpha": 255
+    },
+    "Enemies/enemy_golem.png": {
+      "transparent_ratio": 0.3527,
+      "max_alpha": 255
+    },
+    "Enemies/enemy_knight_bors.png": {
+      "transparent_ratio": 0.5225,
+      "max_alpha": 255
+    },
+    "Enemies/enemy_knight_nadezhda.png": {
+      "transparent_ratio": 0.6717,
+      "max_alpha": 255
+    },
+    "Enemies/enemy_knight_lamorak.png": {
+      "transparent_ratio": 0.6439,
+      "max_alpha": 255
+    },
+    "Enemies/boss_glacies_body.png": {
+      "transparent_ratio": 0.599,
+      "max_alpha": 255
+    },
+    "Enemies/boss_glacies_claw.png": {
+      "transparent_ratio": 0.6892,
+      "max_alpha": 255
+    },
+    "Enemies/boss_glacies_wing.png": {
+      "transparent_ratio": 0.65,
+      "max_alpha": 255
+    },
+    "Backgrounds/bg_field_start.png": {
+      "transparent_ratio": 0.0,
+      "max_alpha": 255
+    },
+    "Backgrounds/bg_raid_ice_cave.png": {
+      "transparent_ratio": 0.0,
+      "max_alpha": 255
+    },
+    "UI/ui_panel.png": {
+      "transparent_ratio": 0.101,
+      "max_alpha": 255
+    },
+    "UI/ui_panel_paper.png": {
+      "transparent_ratio": 0.2,
+      "max_alpha": 255
+    },
+    "UI/ui_button_normal.png": {
+      "transparent_ratio": 0.4057,
+      "max_alpha": 255
+    },
+    "UI/ui_button_pressed.png": {
+      "transparent_ratio": 0.4009,
+      "max_alpha": 255
+    },
+    "UI/ui_button_disabled.png": {
+      "transparent_ratio": 0.3782,
+      "max_alpha": 255
+    },
+    "UI/ui_hp_frame.png": {
+      "transparent_ratio": 0.8752,
+      "max_alpha": 255
+    },
+    "UI/ui_hp_fill.png": {
+      "transparent_ratio": 0.6441,
+      "max_alpha": 255
+    },
+    "UI/ui_timer_ring.png": {
+      "transparent_ratio": 0.7158,
+      "max_alpha": 255
+    },
+    "UI/ui_ready_check.png": {
+      "transparent_ratio": 0.3857,
+      "max_alpha": 255
+    },
+    "Effects/fx_hit.png": {
+      "transparent_ratio": 0.6435,
+      "max_alpha": 255
+    },
+    "Effects/fx_heal.png": {
+      "transparent_ratio": 0.744,
+      "max_alpha": 255
+    },
+    "Effects/fx_part_warning.png": {
+      "transparent_ratio": 0.841,
+      "max_alpha": 255
+    },
+    "Effects/fx_chain.png": {
+      "transparent_ratio": 0.5596,
+      "max_alpha": 255
+    },
+    "Effects/fx_critical.png": {
+      "transparent_ratio": 0.8401,
+      "max_alpha": 255
+    },
+    "Backgrounds/bg_lobby.png": {
+      "transparent_ratio": 0.0,
+      "max_alpha": 255
+    },
+    "Lobby/lobby_quest_board.png": {
+      "transparent_ratio": 0.5123,
+      "max_alpha": 255
+    },
+    "UI/ui_speech_bubble.png": {
+      "transparent_ratio": 0.4754,
+      "max_alpha": 255
+    },
+    "Arthurs/arthur_walk_warrior.png": {
+      "transparent_ratio": 0.6069,
+      "max_alpha": 255
+    },
+    "Arthurs/arthur_walk_guardian.png": {
+      "transparent_ratio": 0.5733,
+      "max_alpha": 255
+    },
+    "Arthurs/arthur_walk_mage.png": {
+      "transparent_ratio": 0.6051,
+      "max_alpha": 255
+    },
+    "Arthurs/arthur_walk_priest.png": {
+      "transparent_ratio": 0.5948,
+      "max_alpha": 255
+    },
+    "Enemies/enemy_chiari_fairy.png": {
+      "transparent_ratio": 0.6379,
+      "max_alpha": 255
+    },
+    "Enemies/enemy_gold_fairy.png": {
+      "transparent_ratio": 0.5811,
+      "max_alpha": 255
+    },
+    "Gacha/gacha_chest.png": {
+      "transparent_ratio": 0.3791,
+      "max_alpha": 255
+    },
+    "Gacha/gacha_glow.png": {
+      "transparent_ratio": 0.3761,
+      "max_alpha": 254
+    },
+    "Backgrounds/bg_title.png": {
+      "transparent_ratio": 0.0,
+      "max_alpha": 255
+    },
+    "UI/logo_chain_knights.png": {
+      "transparent_ratio": 0.7488,
+      "max_alpha": 255
+    },
+    "Backgrounds/bg_field_forest.png": {
+      "transparent_ratio": 0.0,
+      "max_alpha": 255
+    },
+    "Backgrounds/bg_field_ruins.png": {
+      "transparent_ratio": 0.0,
+      "max_alpha": 255
+    },
+    "Cards/icon_star.png": {
+      "transparent_ratio": 0.5977,
+      "max_alpha": 255
+    },
+    "Cards/card_awaken_glow.png": {
+      "transparent_ratio": 0.6166,
+      "max_alpha": 255
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "tool": "built-in image_gen",
+  "purpose": "Chain Knights card asset set v1",
+  "export": "RGBA PNG, downsampled with alpha preserved using System.Drawing HighQualityBicubic",
+  "assets": [
+    {
+      "name": "card_frame.png",
+      "width": 300,
+      "height": 420,
+      "prompt": "Use case: stylized-concept. Production 2D UI sprite for CHAIN KNIGHTS. Reference image is STYLE REFERENCE ONLY, do not reproduce the board. Match silver metal, sparse chain corners, restrained Arthurian stained-glass geometry. Single isolated asset, face-on orthographic, centered perfectly symmetrical, no perspective, no backdrop, true transparent alpha outside the asset, no text/numbers/logos/watermarks, no cast shadow outside. Crisp bold forms legible at game size. Create ONLY a card FRONT FRAME, portrait 5:7 canvas intended final 300x420. Entire outer card silhouette fills canvas nearly edge to edge, 3 percent margin. Slim white/silver rounded rectangular border with short linked chain ornaments confined strictly to four corners, straight undecorated edge spans suitable for 9-slicing. ALL interior is transparent EMPTY opening: no fill, no emblem, no text boxes, no badge, no gems, no colored glass. Neutral grayscale only so Unity tint works. Four identical balanced corners. Border approximately 14px at final size."
+    },
+    {
+      "name": "card_back.png",
+      "width": 300,
+      "height": 420,
+      "prompt": "Use case: stylized-concept. Production 2D UI sprite for CHAIN KNIGHTS. Reference image is STYLE REFERENCE ONLY, do not reproduce the board. Match silver metal, sparse chain corners, restrained Arthurian stained-glass geometry. Single isolated asset, face-on orthographic, centered perfectly symmetrical, no perspective, no backdrop, true transparent alpha outside the asset, no text/numbers/logos/watermarks, no cast shadow outside. Crisp bold forms legible at game size. Create ONLY a complete CARD BACK, portrait 5:7 canvas intended final 300x420, entire rounded card fills canvas nearly edge to edge with 3 percent margin. Opaque midnight navy stained glass interior, thin silver frame matching reference but simpler, centerpiece silver circular round-table emblem with six separated wedge segments connected by subtle warm gold light-chain links. Sparse silver corner detailing. Whole card including navy interior opaque, outside transparent. Beautiful coherent readable small card back, no front panel."
+    },
+    {
+      "name": "card_cost_badge.png",
+      "width": 80,
+      "height": 80,
+      "prompt": "Use case: stylized-concept. Single production UI sprite for CHAIN KNIGHTS Arthurian card RPG. ONLY one circular blank card cost badge. True transparent alpha background. Square canvas final intended 80x80, centered fills 90 percent canvas. Face-on orthographic. Thick simple silver rim like a knight shield, four tiny chain-link notches spaced around rim, pale white brushed silver interior with unobtrusive shading so a dark cost number added in code is readable. Strict neutral grayscale for runtime tinting. No numbers, lettering, symbols, gems, extra objects, cast shadow or backdrop. Bold clean silhouette, minimal ornament, legible at 80 pixels. Matching silver chain card motif."
+    },
+    {
+      "name": "icon_star.png",
+      "width": 32,
+      "height": 32,
+      "prompt": "Use case: stylized-concept. A single production 2D game UI rarity STAR sprite for CHAIN KNIGHTS. True transparent alpha background, square canvas. Exactly one five-point star with one point up, centered, fills 85 percent of canvas. Final usage 32x32 pixels. Bold simple silhouette, broad facets, white silver metal, strict grayscale for Unity color tint, bright white front and subtle medium gray beveled edges. Clean symmetric stylized fantasy knight aesthetic. No extra stars, no sparkles, no glow, no lettering, no circle, no frame, no backdrop, no cast shadow. Readable at 32px, restrained detail."
+    },
+    {
+      "name": "card_awaken_glow.png",
+      "width": 300,
+      "height": 420,
+      "prompt": "Use case: stylized-concept. Single production 2D game UI VFX overlay for CHAIN KNIGHTS card awakening. True transparent alpha background and completely transparent center. Portrait canvas 5:7 intended 300x420. ONLY a slender luminous rounded rectangle outline at 4 percent inset from canvas edges, bright white core light with subtle warm pale gold halo fading into transparent alpha, tiny luminous chain-link suggestions restricted to four corners, very few soft sparks close to border. Shape matches a vertical rectangular card with slightly rounded corners. This is LIGHT ONLY: no physical metal frame, no opaque interior, no card back, no emblem, no filled rectangle, no background, no labels, no black or colored background baked in. Keep central 80 percent empty transparent so underlying card text and icon stay fully visible. Even restrained glow along all four edges, symmetrical, outer glow must fade before reaching canvas edge. Elegant hopeful fantasy magic, usable as normal alpha-blended overlay."
+    }
+  ]
+}
