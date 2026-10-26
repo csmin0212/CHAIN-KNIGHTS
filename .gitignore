@@ -114,3 +114,6 @@ InitTestScene*.unity*
 # dotnet build output of Tools/ projects
 /Tools/**/bin/
 /Tools/**/obj/
+
+# Unity Test Runner가 실행할 때마다 만드는 파일
+/Assets/Resources/PerformanceTestRun*

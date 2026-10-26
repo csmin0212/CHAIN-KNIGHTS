@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>체인 나이츠 전투 화면 목업</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@500;700&display=swap">
+<style>
+  :root {
+    --ink: #17181f; --panel: #1f2129; --panel-2: #2a2c36; --gold: #c9a96e; --gold-hi: #e6c98a;
+    --paper: #efe3c8; --paper-ink: #3b3226; --text: #ece6da; --dim: #a9a6b3;
+    --fire: #d9583b; --ice: #4c9bd6; --wind: #4fa36b; --light: #e3b53b; --dark: #8a72c4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0d0e13; font-family: 'Noto Sans KR', sans-serif; color: var(--text); display: flex; justify-content: center; }
+  .stage { width: 1920px; height: 1080px; position: relative; overflow: hidden; transform-origin: top left;
+    background: radial-gradient(ellipse at 50% 35%, #3b5a78 0%, #1d2b3d 45%, #10141c 100%); }
+  .vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.65) 100%); }
+  .frame { background: var(--panel); border: 2px solid var(--gold); border-radius: 14px; box-shadow: 0 0 0 4px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04); }
+  .paper { background: var(--paper); color: var(--paper-ink); border-radius: 12px; font-family: 'Noto Serif KR', serif; }
+  .pill { background: linear-gradient(#e2c58c, #b8945a); color: #2b2114; border-radius: 999px; font-weight: 700; text-align: center; }
+  .orn { color: var(--gold); letter-spacing: 6px; }
+  .abs { position: absolute; }
+  .bar { height: 12px; background: #0c0d12; border: 1px solid #000; border-radius: 6px; overflow: hidden; }
+  .bar > i { display: block; height: 100%; }
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="vignette"></div>
+
+  <!-- 왼쪽 위: 퀘스트 이름 -->
+  <div class="abs frame" style="left:40px; top:32px; width:420px; padding:18px 24px;">
+    <div style="font-size:15px; color:var(--dim);">레이드 · 중급</div>
+    <div style="font-size:30px; font-weight:900; margin-top:2px;">✦ 빙결룡 글라키에스 ✦</div>
+  </div>
+
+  <!-- 위 가운데: 턴 배너 + 타이머 -->
+  <div class="abs" style="left:50%; top:30px; transform:translateX(-50%); display:flex; align-items:center; gap:22px;">
+    <div class="pill" style="font-size:30px; padding:10px 46px; letter-spacing:4px;">TURN 3</div>
+    <div style="width:92px; height:92px; border-radius:50%; background:conic-gradient(var(--gold-hi) 0 62%, #2a2c36 62% 100%); display:flex; align-items:center; justify-content:center;">
+      <div style="width:74px; height:74px; border-radius:50%; background:var(--panel); display:flex; align-items:center; justify-content:center; font-size:34px; font-weight:900;">12</div>
+    </div>
+  </div>
+
+  <!-- 보스와 부위 -->
+  <div class="abs" style="left:560px; top:150px; width:800px; height:470px;">
+    <div class="abs" style="left:250px; top:40px; width:300px; height:330px; border-radius:46% 46% 30% 30%; background:#9fc3df; opacity:.85;"></div>
+    <div class="abs" style="left:20px; top:10px; width:240px; height:200px; border-radius:60% 10% 60% 10%; background:#cfe4f2; opacity:.8;"></div>
+    <div class="abs" style="left:560px; top:250px; width:200px; height:150px; border-radius:20% 60% 20% 60%; background:#7fb0d6; opacity:.9; outline:4px solid var(--gold-hi); box-shadow:0 0 40px 10px rgba(230,201,138,.65);"></div>
+
+    <!-- 부위 HP와 예고 -->
+    <div class="abs" style="left:300px; top:0px; width:200px; text-align:center;">
+      <div style="font-weight:700; font-size:18px;">본체</div>
+      <div class="bar" style="margin-top:4px;"><i style="width:78%; background:#5fb37a;"></i></div>
+      <div style="font-size:14px; color:var(--dim); margin-top:2px;">31,200 / 40,000</div>
+    </div>
+    <div class="abs" style="left:40px; top:-30px; width:200px; text-align:center;">
+      <div style="font-weight:700; font-size:18px;">서리 날개</div>
+      <div class="bar" style="margin-top:4px;"><i style="width:55%; background:#5fb37a;"></i></div>
+    </div>
+    <div class="abs" style="left:560px; top:410px; width:200px; text-align:center;">
+      <div style="font-weight:700; font-size:18px; color:var(--gold-hi);">얼음 발톱</div>
+      <div class="bar" style="margin-top:4px;"><i style="width:34%; background:#e0a93b;"></i></div>
+    </div>
+
+    <!-- 예고 토큰 -->
+    <div class="abs frame" style="left:610px; top:190px; padding:6px 14px; font-size:22px; font-weight:900; border-color:var(--gold-hi);">⚔ 700</div>
+    <div class="abs frame" style="left:330px; top:80px; padding:6px 14px; font-size:22px; font-weight:900;">❄ 800</div>
+    <div class="abs" style="left:300px; top:390px; width:220px; text-align:center; font-size:16px; color:var(--gold-hi);">다음 턴: 빙결 브레스 (전체)</div>
+  </div>
+
+  <!-- 오른쪽: 전투 기록 (양피지) -->
+  <div class="abs paper" style="right:40px; top:150px; width:330px; height:420px; padding:22px 24px;">
+    <div style="text-align:center; font-weight:700; font-size:22px;">전투 기록</div>
+    <div class="orn" style="text-align:center; font-size:12px; margin:4px 0 12px;">✦ ─────── ✦</div>
+    <div style="font-size:16px; line-height:1.9;">
+      <div>2턴 · <b>풍 3체인</b> ×1.4</div>
+      <div>얼음 발톱에 1,512 피해</div>
+      <div>마법사: 독 307 (8턴)</div>
+      <div style="color:#8c3b2b;">냉기탄 → 사제 800</div>
+      <div>사제: 아군 전원 회복 476</div>
+    </div>
+  </div>
+
+  <!-- 왼쪽: 파티 (모험가 자격증 카드) -->
+  <div class="abs" style="left:40px; top:150px; display:flex; flex-direction:column; gap:14px;">
+    <div class="frame" style="width:300px; padding:12px 14px; display:flex; gap:12px; align-items:center; border-color:var(--gold-hi);">
+      <div style="width:64px; height:64px; border-radius:10px; background:var(--fire);"></div>
+      <div style="flex:1;">
+        <div style="display:flex; justify-content:space-between;"><b style="font-size:18px;">나 · 전사</b><span style="font-size:13px; color:var(--gold-hi);">선택 중</span></div>
+        <div class="bar" style="margin-top:6px;"><i style="width:82%; background:#5fb37a;"></i></div>
+        <div style="font-size:13px; color:var(--dim); margin-top:3px;">4,920 / 6,000</div>
+      </div>
+    </div>
+    <div class="frame" style="width:300px; padding:12px 14px; display:flex; gap:12px; align-items:center;">
+      <div style="width:64px; height:64px; border-radius:10px; background:var(--ice);"></div>
+      <div style="flex:1;">
+        <div style="display:flex; justify-content:space-between;"><b style="font-size:18px;">수호자</b><span style="font-size:13px; color:#7ccf95;">✔ 선택 완료</span></div>
+        <div class="bar" style="margin-top:6px;"><i style="width:95%; background:#5fb37a;"></i></div>
+      </div>
+    </div>
+    <div style="position:relative;">
+      <div class="paper" style="position:absolute; left:250px; top:-6px; width:170px; padding:8px 12px; font-size:15px; font-family:'Noto Sans KR'; font-weight:700; border:2px solid var(--gold);">풍 체인 가자!</div>
+      <div class="frame" style="width:300px; padding:12px 14px; display:flex; gap:12px; align-items:center;">
+        <div style="width:64px; height:64px; border-radius:10px; background:var(--dark);"></div>
+        <div style="flex:1;">
+          <div style="display:flex; justify-content:space-between;"><b style="font-size:18px;">마법사</b><span style="font-size:13px; color:#7ccf95;">✔ 선택 완료</span></div>
+          <div class="bar" style="margin-top:6px;"><i style="width:60%; background:#e0a93b;"></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="frame" style="width:300px; padding:12px 14px; display:flex; gap:12px; align-items:center;">
+      <div style="width:64px; height:64px; border-radius:10px; background:var(--light);"></div>
+      <div style="flex:1;">
+        <div style="display:flex; justify-content:space-between;"><b style="font-size:18px;">사제</b><span style="font-size:13px; color:var(--dim);">선택 중…</span></div>
+        <div class="bar" style="margin-top:6px;"><i style="width:31%; background:#c8553d;"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 아래 왼쪽: 코스트 보석 -->
+  <div class="abs" style="left:60px; bottom:60px; width:170px; height:170px; border-radius:50%; background:radial-gradient(circle at 40% 35%, #f3d99d, #b8863e 60%, #6b4a1c); display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow:0 0 0 6px var(--panel), 0 0 0 8px var(--gold);">
+    <div style="font-size:58px; font-weight:900; color:#2b2114; line-height:1;">2<span style="font-size:30px;">/5</span></div>
+    <div style="font-size:16px; font-weight:700; color:#2b2114;">남은 코스트</div>
+  </div>
+
+  <!-- 아래 가운데: 손패 -->
+  <div class="abs" id="hand" style="left:300px; bottom:-40px; width:1180px; height:420px;"></div>
+
+  <!-- 아래 오른쪽: 신호와 확정 -->
+  <div class="abs" style="right:40px; bottom:150px; display:grid; grid-template-columns:repeat(3, 96px); gap:10px;">
+    <div class="frame" style="height:64px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700;">⚔ 공격</div>
+    <div class="frame" style="height:64px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700;">🛡 방어</div>
+    <div class="frame" style="height:64px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700;">✚ 회복</div>
+    <div class="frame" style="height:64px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700;">▲ 버프</div>
+    <div class="frame" style="height:64px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700;">◎ 부위</div>
+    <div class="frame" style="height:64px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700;">⛓ 체인</div>
+  </div>
+  <div class="abs pill" style="right:40px; bottom:56px; width:308px; padding:22px 0; font-size:32px; letter-spacing:6px; box-shadow:0 0 0 3px #3b2a12, 0 0 24px rgba(230,201,138,.5);">확 정</div>
+</div>
+
+<script>
+  const cards = [
+    { name: '교련형 케이', cost: 2, el: 'wind', stars: 2, job: '전사', fx: ['적 단일 물리 558'], awake: true },
+    { name: '제2형 아그라베인', cost: 4, el: 'wind', stars: 2, job: '전사', fx: ['적 단일 물리 1116'], awake: true, selected: true },
+    { name: '제2형 마로스', cost: 1, el: 'fire', stars: 1, job: '전사', fx: ['자신 1턴 물리 +317', '드로우 +1'], awake: true, selected: true },
+    { name: '지원형 브리센', cost: 2, el: 'ice', stars: 2, job: '마법사', fx: ['적 단일 마법 341'] },
+    { name: '경비용 구골 (풍)', cost: 2, el: 'wind', stars: 1, job: '공용', fx: ['적 단일 물리 180'] },
+  ];
+  const hand = document.getElementById('hand');
+  cards.forEach((c, i) => {
+    const angle = (i - 2) * 6, lift = c.selected ? 70 : 0, x = 60 + i * 210, y = Math.abs(i - 2) * 14;
+    const color = getComputedStyle(document.documentElement).getPropertyValue('--' + c.el);
+    hand.insertAdjacentHTML('beforeend', `
+      <div class="frame" style="position:absolute; left:${x}px; top:${y - lift}px; width:250px; height:350px; transform:rotate(${angle}deg);
+        ${c.selected ? 'border-color:var(--gold-hi); box-shadow:0 0 0 4px rgba(0,0,0,.4), 0 0 34px rgba(230,201,138,.7);' : ''}">
+        <div style="height:62px; background:${color}; border-radius:12px 12px 0 0; display:flex; align-items:center; padding:0 12px; gap:10px;">
+          <div style="width:44px; height:44px; border-radius:50%; background:var(--panel); border:2px solid var(--gold); display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:900;">${c.cost}</div>
+          <div style="color:#fff8e6; font-size:16px; letter-spacing:2px;">${'★'.repeat(c.stars)}</div>
+        </div>
+        <div class="pill" style="margin:-14px 14px 0; padding:6px 0; font-size:17px; position:relative;">${c.name}</div>
+        <div style="height:92px; margin:10px 14px; border-radius:10px; background:#2f323e; display:flex; align-items:center; justify-content:center; color:var(--dim); font-size:14px;">일러스트 자리</div>
+        <div class="paper" style="margin:0 14px; padding:10px 12px; font-size:15px; line-height:1.6; min-height:74px;">${c.fx.join('<br>')}</div>
+        <div style="display:flex; justify-content:space-between; margin:8px 16px 0; font-size:14px;">
+          <span style="color:var(--dim);">${c.job}</span>
+          ${c.awake ? '<span style="color:var(--gold-hi); font-weight:700;">✦ 각성</span>' : ''}
+        </div>
+      </div>`);
+  });
+  function fit() {
+    const s = Math.min(window.innerWidth / 1920, 1);
+    const st = document.getElementById('stage');
+    st.style.transform = `scale(${s})`;
+    document.body.style.height = (1080 * s) + 'px';
+  }
+  window.addEventListener('resize', fit); fit();
+</script>
+</body>
+</html>
