@@ -76,10 +76,10 @@ namespace ChainKnights.Core.Tests
         [Test]
         public void SkillFor_UsesAwakenedSkill_OnlyForMatchingJob()
         {
-            var card = CardCatalog.Get(37); // 허무형 이터널 플레임: 용병
+            var card = CardCatalog.Get(37); // 허무형 이터널 플레임: 전사
 
-            Assert.AreSame(card.Awakened, card.SkillFor(Job.Mercenary));
-            Assert.AreSame(card.Normal, card.SkillFor(Job.Diva));
+            Assert.AreSame(card.Awakened, card.SkillFor(Job.Warrior));
+            Assert.AreSame(card.Normal, card.SkillFor(Job.Priest));
             Assert.AreEqual(EffectTarget.AllEnemies, card.Awakened.Effects[0].Target);
         }
 
@@ -89,7 +89,7 @@ namespace ChainKnights.Core.Tests
             var golem = CardCatalog.Get(221);
 
             Assert.IsFalse(golem.IsAwakenedFor(Job.None));
-            Assert.AreSame(golem.Normal, golem.SkillFor(Job.Mercenary));
+            Assert.AreSame(golem.Normal, golem.SkillFor(Job.Warrior));
         }
     }
 }

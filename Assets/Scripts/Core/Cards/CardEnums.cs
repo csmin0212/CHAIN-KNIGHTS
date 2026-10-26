@@ -5,14 +5,14 @@ namespace ChainKnights.Core.Cards
     {
         /// <summary>직업 없음 (경비용 구골 같은 공용 카드).</summary>
         None,
-        /// <summary>용병: 물리 딜러.</summary>
-        Mercenary,
-        /// <summary>부호: 서포터 + 물리.</summary>
-        Tycoon,
-        /// <summary>도적: 마법 딜러 + 디버퍼.</summary>
-        Thief,
-        /// <summary>가희: 힐러 + 버퍼.</summary>
-        Diva,
+        /// <summary>전사: 물리 딜러. (원작: 용병)</summary>
+        Warrior,
+        /// <summary>수호자: 방어 버프, 도발, 드로우 + 물리. (원작: 부호)</summary>
+        Guardian,
+        /// <summary>마법사: 마법 딜러 + 디버퍼. (원작: 도적)</summary>
+        Mage,
+        /// <summary>사제: 힐러 + 버퍼. (원작: 가희)</summary>
+        Priest,
     }
 
     /// <summary>속성. 화 → 풍 → 빙 → 화 순환, 광 ⇄ 암은 서로 강하다.</summary>

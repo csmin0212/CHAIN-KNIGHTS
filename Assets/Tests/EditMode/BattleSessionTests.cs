@@ -10,15 +10,15 @@ namespace ChainKnights.Core.Tests
     public class BattleSessionTests
     {
         // 카드 번호 (Docs/카드목록.md)
-        private const int Marose = 1;        // 용병 화 ★1 코스트1: 자신 1턴 물리 피해 +190 (각성 +317, 드로우 +1)
-        private const int Gaheris = 3;       // 용병 화 ★2 코스트3: 단일 물리 507
-        private const int Pellinore = 7;     // 부호 화 ★2 코스트2: 단일 물리 341
-        private const int Bagdemagus = 11;   // 용병 화 ★2 코스트2: 단일 물리 341 (각성 558)
-        private const int Lamorak = 16;      // 도적 화 ★2 코스트2: 단일 마법 341
-        private const int Dietrich = 28;     // 부호 화 ★3 코스트2: 적 3턴 물리 피해 −175 (각성 −278)
-        private const int Ebain = 131;       // 가희 광 ★3 코스트2: 자신 회복 508 (각성: 아군 1명 839)
-        private const int Achilles = 171;    // 용병 암 ★3 코스트4: 단일 물리 746 (각성 1232 + 20% 행동 정지)
-        private const int BlondIseult = 177; // 도적 암 ★4 코스트2: 8턴 독 154 (각성 307)
+        private const int Marose = 1;        // 전사 화 ★1 코스트1: 자신 1턴 물리 피해 +190 (각성 +317, 드로우 +1)
+        private const int Gaheris = 3;       // 전사 화 ★2 코스트3: 단일 물리 507
+        private const int Pellinore = 7;     // 수호자 화 ★2 코스트2: 단일 물리 341
+        private const int Bagdemagus = 11;   // 전사 화 ★2 코스트2: 단일 물리 341 (각성 558)
+        private const int Lamorak = 16;      // 마법사 화 ★2 코스트2: 단일 마법 341
+        private const int Dietrich = 28;     // 수호자 화 ★3 코스트2: 적 3턴 물리 피해 −175 (각성 −278)
+        private const int Ebain = 131;       // 사제 광 ★3 코스트2: 자신 회복 508 (각성: 아군 1명 839)
+        private const int Achilles = 171;    // 전사 암 ★3 코스트4: 단일 물리 746 (각성 1232 + 20% 행동 정지)
+        private const int BlondIseult = 177; // 마법사 암 ★4 코스트2: 8턴 독 154 (각성 307)
 
         /// <summary>덱을 채우는 코스트 2짜리 카드들. 덱 앞쪽 5장이 첫 손패가 되도록 뒤에 붙인다.</summary>
         private static readonly int[] Fillers = { 221, 222, 223, 41, 87, 115, 155, 121, 118, 158 };
@@ -108,7 +108,7 @@ namespace ChainKnights.Core.Tests
         [Test]
         public void Cost_StartsAt3_GrowsByOne_CapsAt10()
         {
-            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Tycoon, Deck()));
+            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Guardian, Deck()));
 
             var costs = new List<int>();
             for (int turn = 1; turn <= 9; turn++)
@@ -124,7 +124,7 @@ namespace ChainKnights.Core.Tests
         [Test]
         public void Hand_StartsWithFive_AndDrawsOnePerTurn()
         {
-            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Tycoon, Deck(Pellinore, Marose)));
+            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Guardian, Deck(Pellinore, Marose)));
             battle.StartTurn();
             Assert.AreEqual(5, battle.Arthurs[0].Hand.Count);
 
@@ -139,7 +139,7 @@ namespace ChainKnights.Core.Tests
         [Test]
         public void Cards_CycleThroughDiscard_WhenDrawPileRunsOut()
         {
-            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Tycoon, Deck()));
+            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Guardian, Deck()));
 
             for (int turn = 1; turn <= 8; turn++)
             {
@@ -156,8 +156,8 @@ namespace ChainKnights.Core.Tests
         [Test]
         public void DrawEffect_AddsCardsNextTurn()
         {
-            // 용병이 마로스를 쓰면 각성해서 다음 턴 드로우 +1.
-            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Mercenary, Deck(Marose, Bagdemagus)));
+            // 전사가 마로스를 쓰면 각성해서 다음 턴 드로우 +1.
+            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Warrior, Deck(Marose, Bagdemagus)));
             battle.StartTurn();
             SubmitOk(battle, 0, Play(battle, 0, Marose, TargetRef.None), Play(battle, 0, Bagdemagus, TargetRef.Enemy(0)));
             battle.ResolveTurn();
@@ -172,7 +172,7 @@ namespace ChainKnights.Core.Tests
         [Test]
         public void Submit_RejectsCardsOverTheTurnCost()
         {
-            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Tycoon, Deck(Pellinore, Bagdemagus)));
+            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Guardian, Deck(Pellinore, Bagdemagus)));
             battle.StartTurn();
 
             var result = battle.Submit(0, new[]
@@ -188,7 +188,7 @@ namespace ChainKnights.Core.Tests
         [Test]
         public void Submit_RejectsCardsNotInHand()
         {
-            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Tycoon, Deck()));
+            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Guardian, Deck()));
             battle.StartTurn();
             int notInHand = battle.Arthurs[0].Hand.Max(c => c.InstanceId) + 1;
 
@@ -198,7 +198,7 @@ namespace ChainKnights.Core.Tests
         [Test]
         public void Submit_RequiresAnEnemyTarget_ForSingleTargetAttacks()
         {
-            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Tycoon, Deck(Pellinore)));
+            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Guardian, Deck(Pellinore)));
             battle.StartTurn();
 
             Assert.IsFalse(battle.Submit(0, new[] { Play(battle, 0, Pellinore, TargetRef.None) }).Success);
@@ -207,7 +207,7 @@ namespace ChainKnights.Core.Tests
         [Test]
         public void Submit_CanBeChangedBeforeResolving()
         {
-            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Tycoon, Deck(Pellinore, Marose)));
+            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Guardian, Deck(Pellinore, Marose)));
             battle.StartTurn();
             SubmitOk(battle, 0, Play(battle, 0, Pellinore, TargetRef.Enemy(0)));
             SubmitOk(battle, 0, Play(battle, 0, Marose, TargetRef.None));
@@ -222,7 +222,7 @@ namespace ChainKnights.Core.Tests
         [Test]
         public void Damage_IsTheCardValue_WithoutAwakening()
         {
-            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Tycoon, Deck(Bagdemagus)));
+            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Guardian, Deck(Bagdemagus)));
             battle.StartTurn();
             SubmitOk(battle, 0, Play(battle, 0, Bagdemagus, TargetRef.Enemy(0)));
 
@@ -232,7 +232,7 @@ namespace ChainKnights.Core.Tests
         [Test]
         public void Damage_UsesAwakenedSkill_WhenJobMatches()
         {
-            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Mercenary, Deck(Bagdemagus)));
+            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Warrior, Deck(Bagdemagus)));
             battle.StartTurn();
             SubmitOk(battle, 0, Play(battle, 0, Bagdemagus, TargetRef.Enemy(0)));
 
@@ -247,7 +247,7 @@ namespace ChainKnights.Core.Tests
         [TestCase(Element.Light, 341)]
         public void Damage_AppliesElementMultiplier(Element enemyElement, int expected)
         {
-            var battle = Battle(NoLuck, Dummy(enemyElement), Arthur("A", Job.Tycoon, Deck(Bagdemagus)));
+            var battle = Battle(NoLuck, Dummy(enemyElement), Arthur("A", Job.Guardian, Deck(Bagdemagus)));
             battle.StartTurn();
             SubmitOk(battle, 0, Play(battle, 0, Bagdemagus, TargetRef.Enemy(0)));
 
@@ -257,7 +257,7 @@ namespace ChainKnights.Core.Tests
         [Test]
         public void Damage_Critical_IsOneAndAHalfTimes()
         {
-            var battle = Battle(new FixedRandom(0.0), Dummy(), Arthur("A", Job.Tycoon, Deck(Bagdemagus)));
+            var battle = Battle(new FixedRandom(0.0), Dummy(), Arthur("A", Job.Guardian, Deck(Bagdemagus)));
             battle.StartTurn();
             SubmitOk(battle, 0, Play(battle, 0, Bagdemagus, TargetRef.Enemy(0)));
 
@@ -271,8 +271,8 @@ namespace ChainKnights.Core.Tests
         public void Chain_TwoArthursSameElement_Multiplies1Point2()
         {
             var battle = Battle(NoLuck, Dummy(),
-                Arthur("A", Job.Tycoon, Deck(Bagdemagus)),
-                Arthur("B", Job.Tycoon, Deck(Lamorak)));
+                Arthur("A", Job.Guardian, Deck(Bagdemagus)),
+                Arthur("B", Job.Guardian, Deck(Lamorak)));
             battle.StartTurn();
             SubmitOk(battle, 0, Play(battle, 0, Bagdemagus, TargetRef.Enemy(0)));
             SubmitOk(battle, 1, Play(battle, 1, Lamorak, TargetRef.Enemy(0)));
@@ -286,7 +286,7 @@ namespace ChainKnights.Core.Tests
         [Test]
         public void Chain_IsNotFormed_ByOneArthursOwnCards()
         {
-            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Tycoon, Deck(Bagdemagus, Lamorak)));
+            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Guardian, Deck(Bagdemagus, Lamorak)));
             battle.StartTurn();
             battle.ResolveTurn();
             battle.StartTurn(); // 코스트 4
@@ -301,8 +301,8 @@ namespace ChainKnights.Core.Tests
         [Test]
         public void SupportCards_ResolveBeforeAttacks_EvenIfChosenLater()
         {
-            // 부호가 쓰면 마로스는 각성하지 않아 자신 물리 피해 +190.
-            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Tycoon, Deck(Bagdemagus, Marose)));
+            // 수호자가 쓰면 마로스는 각성하지 않아 자신 물리 피해 +190.
+            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Guardian, Deck(Bagdemagus, Marose)));
             battle.StartTurn();
             SubmitOk(battle, 0, Play(battle, 0, Bagdemagus, TargetRef.Enemy(0)), Play(battle, 0, Marose, TargetRef.None));
 
@@ -313,7 +313,7 @@ namespace ChainKnights.Core.Tests
         [TestCase(1000, 1)] // 방어가 피해보다 커도 최소 1
         public void Damage_IsReducedByDefense_ToAMinimumOfOne(int defense, int expected)
         {
-            var battle = Battle(NoLuck, Dummy(physicalDefense: defense), Arthur("A", Job.Tycoon, Deck(Bagdemagus)));
+            var battle = Battle(NoLuck, Dummy(physicalDefense: defense), Arthur("A", Job.Guardian, Deck(Bagdemagus)));
             battle.StartTurn();
             SubmitOk(battle, 0, Play(battle, 0, Bagdemagus, TargetRef.Enemy(0)));
 
@@ -323,10 +323,10 @@ namespace ChainKnights.Core.Tests
         [Test]
         public void AllEnemiesAwakening_HitsEveryEnemy()
         {
-            // 이터널 플레임(코스트 5)은 용병이 쓰면 적 전체 4885.
+            // 이터널 플레임(코스트 5)은 전사가 쓰면 적 전체 4885.
             var battle = new BattleSession(new BattleSetup
             {
-                Arthurs = new[] { Arthur("A", Job.Mercenary, Deck(37)) },
+                Arthurs = new[] { Arthur("A", Job.Warrior, Deck(37)) },
                 Enemies = new[] { Dummy(), Dummy() },
                 Random = NoLuck,
                 ShuffleDecks = false,
@@ -350,7 +350,7 @@ namespace ChainKnights.Core.Tests
         public void Enemy_AttacksTheTelegraphedArthur()
         {
             var brain = EveryTurn(EnemyAction.Attack("물기", StatType.Physical, 500));
-            var battle = Battle(NoLuck, Dummy(brain: brain), Arthur("A", Job.Tycoon, Deck()));
+            var battle = Battle(NoLuck, Dummy(brain: brain), Arthur("A", Job.Guardian, Deck()));
             battle.StartTurn();
 
             Assert.AreEqual(0, battle.Enemies[0].Intents.Single().TargetArthurIndex);
@@ -361,9 +361,9 @@ namespace ChainKnights.Core.Tests
         [Test]
         public void DamageDown_ReducesEnemyAttack()
         {
-            // 부호가 쓰면 디트리히가 각성: 적 3턴 물리 피해 −278.
+            // 수호자가 쓰면 디트리히가 각성: 적 3턴 물리 피해 −278.
             var brain = EveryTurn(EnemyAction.Attack("물기", StatType.Physical, 500));
-            var battle = Battle(NoLuck, Dummy(brain: brain), Arthur("A", Job.Tycoon, Deck(Dietrich)));
+            var battle = Battle(NoLuck, Dummy(brain: brain), Arthur("A", Job.Guardian, Deck(Dietrich)));
             battle.StartTurn();
             SubmitOk(battle, 0, Play(battle, 0, Dietrich, TargetRef.Enemy(0)));
             battle.ResolveTurn();
@@ -376,7 +376,7 @@ namespace ChainKnights.Core.Tests
         {
             var arm = new PartSetup { Name = "팔", MaxHp = 300 };
             var brain = EveryTurn(EnemyAction.Attack("팔 휘두르기", StatType.Physical, 500, sourcePart: 0));
-            var battle = Battle(NoLuck, Dummy(maxHp: 10000, brain: brain, parts: arm), Arthur("A", Job.Tycoon, Deck(Bagdemagus)));
+            var battle = Battle(NoLuck, Dummy(maxHp: 10000, brain: brain, parts: arm), Arthur("A", Job.Guardian, Deck(Bagdemagus)));
             battle.StartTurn();
             SubmitOk(battle, 0, Play(battle, 0, Bagdemagus, TargetRef.Enemy(0, part: 0)));
 
@@ -399,7 +399,7 @@ namespace ChainKnights.Core.Tests
                 MaxHp = 10000,
                 ElementMultipliers = new Dictionary<Element, double> { { Element.Fire, 0.25 } },
             };
-            var battle = Battle(NoLuck, Dummy(Element.Ice, parts: arm), Arthur("A", Job.Tycoon, Deck(Bagdemagus)));
+            var battle = Battle(NoLuck, Dummy(Element.Ice, parts: arm), Arthur("A", Job.Guardian, Deck(Bagdemagus)));
             battle.StartTurn();
             SubmitOk(battle, 0, Play(battle, 0, Bagdemagus, TargetRef.Enemy(0, part: 0)));
 
@@ -410,7 +410,7 @@ namespace ChainKnights.Core.Tests
         public void Stun_CancelsTheEnemysActionsThatTurn()
         {
             var brain = EveryTurn(EnemyAction.Attack("물기", StatType.Physical, 500));
-            var battle = Battle(new FixedRandom(0.0), Dummy(brain: brain), Arthur("A", Job.Mercenary, Deck(Achilles)));
+            var battle = Battle(new FixedRandom(0.0), Dummy(brain: brain), Arthur("A", Job.Warrior, Deck(Achilles)));
             battle.StartTurn();
             battle.ResolveTurn();
             Assert.AreEqual(4500, battle.Arthurs[0].Hp);
@@ -429,8 +429,8 @@ namespace ChainKnights.Core.Tests
         [Test]
         public void Poison_TicksAtTurnEnd_IgnoringDefense()
         {
-            // 도적이 쓰면 금발의 이졸데가 각성: 8턴 매 턴 독 307.
-            var battle = Battle(NoLuck, Dummy(maxHp: 10000, physicalDefense: 1000), Arthur("A", Job.Thief, Deck(BlondIseult)));
+            // 마법사가 쓰면 금발의 이졸데가 각성: 8턴 매 턴 독 307.
+            var battle = Battle(NoLuck, Dummy(maxHp: 10000, physicalDefense: 1000), Arthur("A", Job.Mage, Deck(BlondIseult)));
             battle.StartTurn();
             SubmitOk(battle, 0, Play(battle, 0, BlondIseult, TargetRef.Enemy(0)));
             battle.ResolveTurn();
@@ -448,8 +448,8 @@ namespace ChainKnights.Core.Tests
                 ? new[] { EnemyAction.Attack("브레스", StatType.Magic, 1000, targetsAll: true) }
                 : Array.Empty<EnemyAction>());
             var battle = Battle(NoLuck, Dummy(brain: brain),
-                Arthur("힐러", Job.Diva, Deck(Ebain), maxHp: 6000),
-                Arthur("탱커", Job.Tycoon, Deck(), maxHp: 6000));
+                Arthur("힐러", Job.Priest, Deck(Ebain), maxHp: 6000),
+                Arthur("탱커", Job.Guardian, Deck(), maxHp: 6000));
             battle.StartTurn();
             battle.ResolveTurn();
             Assert.AreEqual(5000, battle.Arthurs[1].Hp);
@@ -467,7 +467,7 @@ namespace ChainKnights.Core.Tests
         [Test]
         public void Victory_WhenAllEnemiesFall()
         {
-            var battle = Battle(NoLuck, Dummy(maxHp: 300), Arthur("A", Job.Tycoon, Deck(Bagdemagus)));
+            var battle = Battle(NoLuck, Dummy(maxHp: 300), Arthur("A", Job.Guardian, Deck(Bagdemagus)));
             battle.StartTurn();
             SubmitOk(battle, 0, Play(battle, 0, Bagdemagus, TargetRef.Enemy(0)));
             battle.ResolveTurn();
@@ -481,7 +481,7 @@ namespace ChainKnights.Core.Tests
         public void Defeat_WhenAllArthursFall()
         {
             var brain = EveryTurn(EnemyAction.Attack("물기", StatType.Physical, 500));
-            var battle = Battle(NoLuck, Dummy(brain: brain), Arthur("A", Job.Tycoon, Deck(), maxHp: 400));
+            var battle = Battle(NoLuck, Dummy(brain: brain), Arthur("A", Job.Guardian, Deck(), maxHp: 400));
             battle.StartTurn();
             battle.ResolveTurn();
 
@@ -494,8 +494,8 @@ namespace ChainKnights.Core.Tests
             var nine = Deck().Take(9).ToList();
             var duplicate = Deck(Pellinore).Take(9).Append(new DeckCard(Pellinore)).ToList();
 
-            Assert.Throws<ArgumentException>(() => Battle(NoLuck, Dummy(), Arthur("A", Job.Tycoon, nine)));
-            Assert.Throws<ArgumentException>(() => Battle(NoLuck, Dummy(), Arthur("A", Job.Tycoon, duplicate)));
+            Assert.Throws<ArgumentException>(() => Battle(NoLuck, Dummy(), Arthur("A", Job.Guardian, nine)));
+            Assert.Throws<ArgumentException>(() => Battle(NoLuck, Dummy(), Arthur("A", Job.Guardian, duplicate)));
         }
     }
 }

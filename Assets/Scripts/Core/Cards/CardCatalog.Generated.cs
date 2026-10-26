@@ -10,93 +10,93 @@ namespace ChainKnights.Core.Cards
         {
             return new[]
             {
-                new CardDefinition(1, "제2형 마로스", "【騎士】第二型マロース", Job.Mercenary, Element.Fire, 1, 1, SkillCategory.Support,
+                new CardDefinition(1, "제2형 마로스", "【騎士】第二型マロース", Job.Warrior, Element.Fire, 1, 1, SkillCategory.Support,
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.Self, StatType.Physical, 190, 330, 1, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.Self, StatType.Physical, 317, 555, 1, 0f, false),
                         new SkillEffect(EffectKind.Draw, EffectTarget.Self, StatType.None, 1, 1, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(3, "제2형 가헤리스", "【騎士】第二型ガヘリス", Job.Mercenary, Element.Fire, 2, 3, SkillCategory.Physical,
+                new CardDefinition(3, "제2형 가헤리스", "【騎士】第二型ガヘリス", Job.Warrior, Element.Fire, 2, 3, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 507, 830, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 837, 1350, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(7, "제2형 펠리노어", "【騎士】第二型ペリノア", Job.Tycoon, Element.Fire, 2, 2, SkillCategory.Physical,
+                new CardDefinition(7, "제2형 펠리노어", "【騎士】第二型ペリノア", Job.Guardian, Element.Fire, 2, 2, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 341, 550, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 558, 900, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(11, "제2형 바그데마구스", "【騎士】第二型バグデマグス", Job.Mercenary, Element.Fire, 2, 2, SkillCategory.Physical,
+                new CardDefinition(11, "제2형 바그데마구스", "【騎士】第二型バグデマグス", Job.Warrior, Element.Fire, 2, 2, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 341, 550, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 558, 900, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(14, "제2형 칼로그레넌트", "【騎士】第二型カログレナント", Job.Diva, Element.Fire, 3, 3, SkillCategory.Support,
+                new CardDefinition(14, "제2형 칼로그레넌트", "【騎士】第二型カログレナント", Job.Priest, Element.Fire, 3, 3, SkillCategory.Support,
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.Self, StatType.Physical, 383, 760, 3, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.AllAllies, StatType.Physical, 632, 1270, 3, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(16, "제2형 라모락", "【騎士】第二型ラモラック", Job.Thief, Element.Fire, 2, 2, SkillCategory.Magic,
+                new CardDefinition(16, "제2형 라모락", "【騎士】第二型ラモラック", Job.Mage, Element.Fire, 2, 2, SkillCategory.Magic,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 341, 550, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 558, 900, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(19, "지원형 흰 손의 이졸데", "【騎士】支援型白手のイゾルデ", Job.Thief, Element.Fire, 3, 3, SkillCategory.Magic,
+                new CardDefinition(19, "지원형 흰 손의 이졸데", "【騎士】支援型白手のイゾルデ", Job.Mage, Element.Fire, 3, 3, SkillCategory.Magic,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 756, 1510, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 1515, 3012, 0, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(21, "제2형 비스클라브레", "【騎士】第二型ビスクラヴレット", Job.Mercenary, Element.Fire, 2, 4, SkillCategory.Physical,
+                new CardDefinition(21, "제2형 비스클라브레", "【騎士】第二型ビスクラヴレット", Job.Warrior, Element.Fire, 2, 4, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 672, 1090, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 1116, 1800, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(25, "지원형 이테르", "【騎士】支援型イテール", Job.Mercenary, Element.Fire, 3, 2, SkillCategory.Support,
+                new CardDefinition(25, "지원형 이테르", "【騎士】支援型イテール", Job.Warrior, Element.Fire, 3, 2, SkillCategory.Support,
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.Self, StatType.Physical, 839, 1680, 1, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.Self, StatType.Physical, 1398, 2790, 1, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(28, "특이형 디트리히", "【騎士】特異型ディートリヒ", Job.Tycoon, Element.Fire, 3, 2, SkillCategory.Hinder,
+                new CardDefinition(28, "특이형 디트리히", "【騎士】特異型ディートリヒ", Job.Guardian, Element.Fire, 3, 2, SkillCategory.Hinder,
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageDown, EffectTarget.EnemySingle, StatType.Physical, 175, 320, 3, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageDown, EffectTarget.EnemySingle, StatType.Physical, 278, 510, 3, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(31, "제2형 마르크", "【騎士】第二型マルク", Job.Tycoon, Element.Fire, 4, 4, SkillCategory.Physical,
+                new CardDefinition(31, "제2형 마르크", "【騎士】第二型マルク", Job.Guardian, Element.Fire, 4, 4, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 1843, 3520, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 3685, 7008, 0, 0f, false),
                         new SkillEffect(EffectKind.Draw, EffectTarget.Self, StatType.None, 1, 1, 0, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(33, "제2형 크래키", "【騎士】第二型クラッキー", Job.Mercenary, Element.Fire, 4, 3, SkillCategory.Support,
+                new CardDefinition(33, "제2형 크래키", "【騎士】第二型クラッキー", Job.Warrior, Element.Fire, 4, 3, SkillCategory.Support,
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.Self, StatType.Physical, 2304, 4410, 1, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.Self, StatType.Physical, 4606, 8772, 1, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(35, "지원형 클레어", "【騎士】支援型クレア", Job.Diva, Element.Fire, 5, 5, SkillCategory.Support,
+                new CardDefinition(35, "지원형 클레어", "【騎士】支援型クレア", Job.Priest, Element.Fire, 5, 5, SkillCategory.Support,
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.Self, StatType.Physical, 2003, 3620, 3, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.AllAllies, StatType.Physical, 4002, 7236, 3, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(37, "허무형 이터널 플레임", "【騎士】虚無型エターナル・フレイム", Job.Mercenary, Element.Fire, 5, 5, SkillCategory.Physical,
+                new CardDefinition(37, "허무형 이터널 플레임", "【騎士】虚無型エターナル・フレイム", Job.Warrior, Element.Fire, 5, 5, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 2447, 4260, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.AllEnemies, StatType.Physical, 4885, 8472, 0, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(39, "특이형 오디세우스", "【騎士】特異型オデュッセウス", Job.Tycoon, Element.Ice, 1, 2, SkillCategory.Defense,
+                new CardDefinition(39, "특이형 오디세우스", "【騎士】特異型オデュッセウス", Job.Guardian, Element.Ice, 1, 2, SkillCategory.Defense,
                     new CardSkill(
                         new SkillEffect(EffectKind.DefenseUp, EffectTarget.Self, StatType.Physical, 83, 125, 2, 0f, false),
                         new SkillEffect(EffectKind.Draw, EffectTarget.Self, StatType.None, 1, 1, 0, 0f, false)),
@@ -104,81 +104,81 @@ namespace ChainKnights.Core.Cards
                         new SkillEffect(EffectKind.DefenseUp, EffectTarget.Self, StatType.Physical, 134, 190, 2, 0f, false),
                         new SkillEffect(EffectKind.Draw, EffectTarget.Self, StatType.None, 1, 1, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(41, "제2형 기플레이스", "【騎士】第二型ギフレイス", Job.Tycoon, Element.Ice, 2, 2, SkillCategory.Physical,
+                new CardDefinition(41, "제2형 기플레이스", "【騎士】第二型ギフレイス", Job.Guardian, Element.Ice, 2, 2, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 341, 550, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 558, 900, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(45, "복원형 우서", "【騎士】復元型ウーサー", Job.Thief, Element.Ice, 2, 4, SkillCategory.Magic,
+                new CardDefinition(45, "복원형 우서", "【騎士】復元型ウーサー", Job.Mage, Element.Ice, 2, 4, SkillCategory.Magic,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 672, 1090, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 1116, 1800, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(49, "제2형 아이언사이드", "【騎士】第二型アイアンサイド", Job.Diva, Element.Ice, 3, 3, SkillCategory.Defense,
+                new CardDefinition(49, "제2형 아이언사이드", "【騎士】第二型アイアンサイド", Job.Priest, Element.Ice, 3, 3, SkillCategory.Defense,
                     new CardSkill(
                         new SkillEffect(EffectKind.DefenseUp, EffectTarget.Self, StatType.Physical, 155, 300, 2, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.DefenseUp, EffectTarget.AllAllies, StatType.Physical, 258, 490, 2, 0f, false),
                         new SkillEffect(EffectKind.Draw, EffectTarget.Self, StatType.None, 1, 1, 0, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(51, "지원형 브랑웬", "【騎士】支援型ブランクウェイン", Job.Diva, Element.Ice, 2, 3, SkillCategory.Magic,
+                new CardDefinition(51, "지원형 브랑웬", "【騎士】支援型ブランクウェイン", Job.Priest, Element.Ice, 2, 3, SkillCategory.Magic,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 507, 830, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 837, 1350, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(55, "특이형 나제즈다", "【騎士】特異型ナージェジタ", Job.Mercenary, Element.Ice, 2, 2, SkillCategory.Physical,
+                new CardDefinition(55, "특이형 나제즈다", "【騎士】特異型ナージェジタ", Job.Warrior, Element.Ice, 2, 2, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 341, 550, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 558, 900, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(58, "지원형 브리센", "【騎士】支援型ブリーセン", Job.Thief, Element.Ice, 2, 2, SkillCategory.Magic,
+                new CardDefinition(58, "지원형 브리센", "【騎士】支援型ブリーセン", Job.Mage, Element.Ice, 2, 2, SkillCategory.Magic,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 341, 550, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 558, 900, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(61, "지원형 로디네", "【騎士】支援型ローディーネ", Job.Tycoon, Element.Ice, 3, 4, SkillCategory.Defense,
+                new CardDefinition(61, "지원형 로디네", "【騎士】支援型ローディーネ", Job.Guardian, Element.Ice, 3, 4, SkillCategory.Defense,
                     new CardSkill(
                         new SkillEffect(EffectKind.DefenseUp, EffectTarget.Self, StatType.Physical, 206, 380, 2, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.DefenseUp, EffectTarget.AllAllies, StatType.Physical, 340, 630, 2, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(64, "제2형 타퀸", "【騎士】第二型タークィン", Job.Tycoon, Element.Ice, 3, 4, SkillCategory.Defense,
+                new CardDefinition(64, "제2형 타퀸", "【騎士】第二型タークィン", Job.Guardian, Element.Ice, 3, 4, SkillCategory.Defense,
                     new CardSkill(
                         new SkillEffect(EffectKind.DefenseUp, EffectTarget.Self, StatType.Magic, 206, 380, 2, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.DefenseUp, EffectTarget.AllAllies, StatType.Magic, 340, 630, 2, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(67, "제2형 퍼시벌", "【騎士】第二型パーシヴァル", Job.Thief, Element.Ice, 3, 3, SkillCategory.Magic,
+                new CardDefinition(67, "제2형 퍼시벌", "【騎士】第二型パーシヴァル", Job.Mage, Element.Ice, 3, 3, SkillCategory.Magic,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 756, 1510, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 1515, 3012, 0, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(69, "지원형 올웬", "【騎士】支援型オルウェン", Job.Mercenary, Element.Ice, 4, 4, SkillCategory.Physical,
+                new CardDefinition(69, "지원형 올웬", "【騎士】支援型オルウェン", Job.Warrior, Element.Ice, 4, 4, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 1843, 3520, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 3685, 7008, 0, 0f, false)),
                     CardSource.RaidDrop),
-                new CardDefinition(71, "제2형 토르", "【騎士】第二型トール", Job.Tycoon, Element.Ice, 4, 3, SkillCategory.Support,
+                new CardDefinition(71, "제2형 토르", "【騎士】第二型トール", Job.Guardian, Element.Ice, 4, 3, SkillCategory.Support,
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.Self, StatType.Physical, 2304, 4410, 1, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.Self, StatType.Physical, 4606, 8772, 1, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(73, "제압형 로엔그린", "【騎士】制圧型ローエングリン", Job.Diva, Element.Ice, 5, 5, SkillCategory.Defense,
+                new CardDefinition(73, "제압형 로엔그린", "【騎士】制圧型ローエングリン", Job.Priest, Element.Ice, 5, 5, SkillCategory.Defense,
                     new CardSkill(
                         new SkillEffect(EffectKind.DefenseUp, EffectTarget.Self, StatType.Physical, 701, 1240, 2, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.DefenseUp, EffectTarget.AllAllies, StatType.Physical, 1389, 2448, 2, 0f, false),
                         new SkillEffect(EffectKind.Draw, EffectTarget.Self, StatType.None, 1, 1, 0, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(75, "특이형 시그룬", "【騎士】特異型シグルーン", Job.Tycoon, Element.Ice, 5, 3, SkillCategory.Physical,
+                new CardDefinition(75, "특이형 시그룬", "【騎士】特異型シグルーン", Job.Guardian, Element.Ice, 5, 3, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 1759, 3180, 0, 0f, false)),
                     new CardSkill(
@@ -186,260 +186,260 @@ namespace ChainKnights.Core.Cards
                         new SkillEffect(EffectKind.DefenseUp, EffectTarget.AllAllies, StatType.Physical, 258, 361, 2, 0f, true),
                         new SkillEffect(EffectKind.Draw, EffectTarget.AllAllies, StatType.None, 1, 1, 0, 0f, false)),
                     CardSource.RaidDrop),
-                new CardDefinition(77, "제2형 고르네만트", "【騎士】第二型ゴルネマント", Job.Thief, Element.Wind, 1, 1, SkillCategory.Support,
+                new CardDefinition(77, "제2형 고르네만트", "【騎士】第二型ゴルネマント", Job.Mage, Element.Wind, 1, 1, SkillCategory.Support,
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.Self, StatType.Magic, 190, 330, 1, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.Self, StatType.Magic, 317, 555, 1, 0f, false),
                         new SkillEffect(EffectKind.Draw, EffectTarget.Self, StatType.None, 1, 1, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(79, "제2형 갈론", "【騎士】第二型ガーロン", Job.Diva, Element.Wind, 3, 3, SkillCategory.Support,
+                new CardDefinition(79, "제2형 갈론", "【騎士】第二型ガーロン", Job.Priest, Element.Wind, 3, 3, SkillCategory.Support,
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.Self, StatType.Magic, 383, 760, 3, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.AllAllies, StatType.Magic, 632, 1270, 3, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(81, "교련형 케이", "【騎士】教練型ケイ", Job.Mercenary, Element.Wind, 2, 2, SkillCategory.Physical,
+                new CardDefinition(81, "교련형 케이", "【騎士】教練型ケイ", Job.Warrior, Element.Wind, 2, 2, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 341, 550, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 558, 900, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(84, "외적형 보어스", "【騎士】外敵型ボールス", Job.Thief, Element.Wind, 2, 2, SkillCategory.Magic,
+                new CardDefinition(84, "외적형 보어스", "【騎士】外敵型ボールス", Job.Mage, Element.Wind, 2, 2, SkillCategory.Magic,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 341, 550, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 558, 900, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(87, "제2형 카도르", "【騎士】第二型カドール", Job.Tycoon, Element.Wind, 2, 2, SkillCategory.Physical,
+                new CardDefinition(87, "제2형 카도르", "【騎士】第二型カドール", Job.Guardian, Element.Wind, 2, 2, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 341, 550, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 558, 900, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(91, "제2형 아그라베인", "【騎士】第二型アグラヴェイン", Job.Mercenary, Element.Wind, 2, 4, SkillCategory.Physical,
+                new CardDefinition(91, "제2형 아그라베인", "【騎士】第二型アグラヴェイン", Job.Warrior, Element.Wind, 2, 4, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 672, 1090, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 1116, 1800, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(95, "지원형 리넷", "【騎士】支援型リネット", Job.Thief, Element.Wind, 2, 3, SkillCategory.Magic,
+                new CardDefinition(95, "지원형 리넷", "【騎士】支援型リネット", Job.Mage, Element.Wind, 2, 3, SkillCategory.Magic,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 507, 830, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 837, 1350, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(99, "지원형 에니드", "【騎士】支援型エニード", Job.Tycoon, Element.Wind, 3, 3, SkillCategory.Physical,
+                new CardDefinition(99, "지원형 에니드", "【騎士】支援型エニード", Job.Guardian, Element.Wind, 3, 3, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 756, 1510, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 1515, 3012, 0, 0f, true)),
                     CardSource.Gacha),
-                new CardDefinition(101, "제2형 에렉", "【騎士】第二型エレック", Job.Thief, Element.Wind, 4, 3, SkillCategory.Support,
+                new CardDefinition(101, "제2형 에렉", "【騎士】第二型エレック", Job.Mage, Element.Wind, 4, 3, SkillCategory.Support,
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.Self, StatType.Magic, 2304, 4410, 1, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.Self, StatType.Magic, 4606, 8772, 1, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(103, "지원형 가네이다", "【騎士】支援型ガネイダ", Job.Thief, Element.Wind, 3, 2, SkillCategory.Support,
+                new CardDefinition(103, "지원형 가네이다", "【騎士】支援型ガネイダ", Job.Mage, Element.Wind, 3, 2, SkillCategory.Support,
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.Self, StatType.Magic, 839, 1680, 1, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.Self, StatType.Magic, 1398, 2790, 1, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(106, "제2형 버나드", "【騎士】第二型バーナード", Job.Thief, Element.Wind, 3, 2, SkillCategory.Hinder,
+                new CardDefinition(106, "제2형 버나드", "【騎士】第二型バーナード", Job.Mage, Element.Wind, 3, 2, SkillCategory.Hinder,
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageDown, EffectTarget.EnemySingle, StatType.Magic, 175, 320, 3, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageDown, EffectTarget.EnemySingle, StatType.Magic, 278, 510, 3, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(109, "제2형 디나단", "【騎士】第二型ディナダン", Job.Diva, Element.Wind, 4, 4, SkillCategory.Magic,
+                new CardDefinition(109, "제2형 디나단", "【騎士】第二型ディナダン", Job.Priest, Element.Wind, 4, 4, SkillCategory.Magic,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 1843, 3520, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 3685, 7008, 0, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(111, "제압형 퍼시벌", "【騎士】制圧型パーシヴァル", Job.Mercenary, Element.Wind, 5, 4, SkillCategory.Physical,
+                new CardDefinition(111, "제압형 퍼시벌", "【騎士】制圧型パーシヴァル", Job.Warrior, Element.Wind, 5, 4, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 2349, 4260, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 4698, 8520, 0, 0f, false),
                         new SkillEffect(EffectKind.CritRateUp, EffectTarget.Self, StatType.None, 0, 0, 0, 0.75f, true)),
                     CardSource.Gacha),
-                new CardDefinition(113, "제2형 콜그레반스", "【騎士】第二型コルグリヴァンス", Job.Thief, Element.Wind, 5, 5, SkillCategory.Magic,
+                new CardDefinition(113, "제2형 콜그레반스", "【騎士】第二型コルグリヴァンス", Job.Mage, Element.Wind, 5, 5, SkillCategory.Magic,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 2447, 4260, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.AllEnemies, StatType.Magic, 4885, 8472, 0, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(115, "제2형 그로머 소머 조어", "【騎士】第二型グロマーソマージョア", Job.Mercenary, Element.Light, 2, 2, SkillCategory.Physical,
+                new CardDefinition(115, "제2형 그로머 소머 조어", "【騎士】第二型グロマーソマージョア", Job.Warrior, Element.Light, 2, 2, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 341, 550, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 558, 900, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(118, "제2형 텔라문트", "【騎士】第二型テルラムント", Job.Diva, Element.Light, 2, 2, SkillCategory.Magic,
+                new CardDefinition(118, "제2형 텔라문트", "【騎士】第二型テルラムント", Job.Priest, Element.Light, 2, 2, SkillCategory.Magic,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 341, 550, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 558, 900, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(121, "특이형 나폴레옹", "【騎士】特異型ナポレオン", Job.Tycoon, Element.Light, 2, 2, SkillCategory.Physical,
+                new CardDefinition(121, "특이형 나폴레옹", "【騎士】特異型ナポレオン", Job.Guardian, Element.Light, 2, 2, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 341, 550, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 558, 900, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(125, "지원형 오르트루트", "【騎士】支援型オルトリート", Job.Diva, Element.Light, 2, 4, SkillCategory.Heal,
+                new CardDefinition(125, "지원형 오르트루트", "【騎士】支援型オルトリート", Job.Priest, Element.Light, 2, 4, SkillCategory.Heal,
                     new CardSkill(
                         new SkillEffect(EffectKind.Heal, EffectTarget.Self, StatType.None, 290, 480, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Heal, EffectTarget.AllAllies, StatType.None, 476, 780, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(129, "제2형 베일란", "【騎士】第二型ベイラン", Job.Diva, Element.Light, 3, 3, SkillCategory.Heal,
+                new CardDefinition(129, "제2형 베일란", "【騎士】第二型ベイラン", Job.Priest, Element.Light, 3, 3, SkillCategory.Heal,
                     new CardSkill(
                         new SkillEffect(EffectKind.Heal, EffectTarget.Self, StatType.None, 756, 1510, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.HealOverTime, EffectTarget.AllySingle, StatType.None, 425, 860, 3, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(131, "지원형 에베인", "【騎士】支援型エヴェイン", Job.Diva, Element.Light, 3, 2, SkillCategory.Heal,
+                new CardDefinition(131, "지원형 에베인", "【騎士】支援型エヴェイン", Job.Priest, Element.Light, 3, 2, SkillCategory.Heal,
                     new CardSkill(
                         new SkillEffect(EffectKind.Heal, EffectTarget.Self, StatType.None, 508, 1030, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Heal, EffectTarget.AllySingle, StatType.None, 839, 1680, 0, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(134, "제어형 베디비어", "【騎士】制御型ベディヴィア", Job.Diva, Element.Light, 3, 3, SkillCategory.Heal,
+                new CardDefinition(134, "제어형 베디비어", "【騎士】制御型ベディヴィア", Job.Priest, Element.Light, 3, 3, SkillCategory.Heal,
                     new CardSkill(
                         new SkillEffect(EffectKind.Heal, EffectTarget.Self, StatType.None, 756, 1510, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Heal, EffectTarget.AllySingle, StatType.None, 1263, 2510, 0, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(137, "요정 시아나", "【妖精】シアナ", Job.Diva, Element.Light, 4, 5, SkillCategory.Heal,
+                new CardDefinition(137, "요정 시아나", "【妖精】シアナ", Job.Priest, Element.Light, 4, 5, SkillCategory.Heal,
                     new CardSkill(
                         new SkillEffect(EffectKind.Heal, EffectTarget.Self, StatType.None, 973, 1870, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Heal, EffectTarget.AllAllies, StatType.None, 1941, 3720, 0, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(139, "제2형 로엔그린", "【騎士】第二型ローエングリン", Job.Mercenary, Element.Light, 3, 3, SkillCategory.Physical,
+                new CardDefinition(139, "제2형 로엔그린", "【騎士】第二型ローエングリン", Job.Warrior, Element.Light, 3, 3, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 756, 1505, 0, 0f, true)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 1515, 3012, 0, 0f, true)),
                     CardSource.Gacha),
-                new CardDefinition(141, "제2형 론팔", "【騎士】第二型ローンファル", Job.Thief, Element.Light, 4, 4, SkillCategory.Magic,
+                new CardDefinition(141, "제2형 론팔", "【騎士】第二型ローンファル", Job.Mage, Element.Light, 4, 4, SkillCategory.Magic,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 1843, 3520, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 3685, 7008, 0, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(145, "제압형 에니드", "【騎士】制圧型エニード", Job.Diva, Element.Light, 5, 5, SkillCategory.Heal,
+                new CardDefinition(145, "제압형 에니드", "【騎士】制圧型エニード", Job.Priest, Element.Light, 5, 5, SkillCategory.Heal,
                     new CardSkill(
                         new SkillEffect(EffectKind.Heal, EffectTarget.Self, StatType.None, 1688, 3060, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Heal, EffectTarget.AllAllies, StatType.None, 3367, 6072, 0, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(147, "특이형 잔 다르크", "【騎士】特異型ジャンヌダルク", Job.Tycoon, Element.Light, 5, 5, SkillCategory.Physical,
+                new CardDefinition(147, "특이형 잔 다르크", "【騎士】特異型ジャンヌダルク", Job.Guardian, Element.Light, 5, 5, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 2447, 4260, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.AllEnemies, StatType.Physical, 4885, 8472, 0, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(149, "제2형 고트프리트", "【騎士】第二型ゴットフリート", Job.Diva, Element.Dark, 3, 3, SkillCategory.Magic,
+                new CardDefinition(149, "제2형 고트프리트", "【騎士】第二型ゴットフリート", Job.Priest, Element.Dark, 3, 3, SkillCategory.Magic,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 1382, 2310, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 2764, 4644, 0, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(152, "제2형 트리스트럼", "【騎士】第二型トリストラム", Job.Tycoon, Element.Dark, 3, 3, SkillCategory.Physical,
+                new CardDefinition(152, "제2형 트리스트럼", "【騎士】第二型トリストラム", Job.Guardian, Element.Dark, 3, 3, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 756, 1510, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 1263, 2510, 0, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(155, "지원형 블랑슈플뢰르", "【騎士】支援型ブランシュフルール", Job.Mercenary, Element.Dark, 2, 2, SkillCategory.Physical,
+                new CardDefinition(155, "지원형 블랑슈플뢰르", "【騎士】支援型ブランシュフルール", Job.Warrior, Element.Dark, 2, 2, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 341, 550, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 558, 900, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(158, "제2형 엑터 드 마리스", "【騎士】第二型エクタードマリス", Job.Diva, Element.Dark, 2, 2, SkillCategory.Magic,
+                new CardDefinition(158, "제2형 엑터 드 마리스", "【騎士】第二型エクタードマリス", Job.Priest, Element.Dark, 2, 2, SkillCategory.Magic,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 341, 550, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 558, 900, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(161, "특수형 로웨나", "【騎士】特殊型ロウエナ", Job.Diva, Element.Dark, 2, 5, SkillCategory.Magic,
+                new CardDefinition(161, "특수형 로웨나", "【騎士】特殊型ロウエナ", Job.Priest, Element.Dark, 2, 5, SkillCategory.Magic,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 477, 990, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.AllEnemies, StatType.Magic, 775, 1250, 0, 0f, false)),
                     CardSource.Starter),
-                new CardDefinition(165, "지원형 라그넬", "【騎士】支援型ラグネル", Job.Tycoon, Element.Dark, 3, 2, SkillCategory.Hinder,
+                new CardDefinition(165, "지원형 라그넬", "【騎士】支援型ラグネル", Job.Guardian, Element.Dark, 3, 2, SkillCategory.Hinder,
                     new CardSkill(
                         new SkillEffect(EffectKind.DefenseDown, EffectTarget.EnemySingle, StatType.Physical, 393, 770, 3, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.DefenseDown, EffectTarget.EnemySingle, StatType.Physical, 651, 1260, 3, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(168, "제2형 멜레아간스", "【騎士】第二型メレアガンス", Job.Thief, Element.Dark, 3, 2, SkillCategory.Hinder,
+                new CardDefinition(168, "제2형 멜레아간스", "【騎士】第二型メレアガンス", Job.Mage, Element.Dark, 3, 2, SkillCategory.Hinder,
                     new CardSkill(
                         new SkillEffect(EffectKind.DefenseDown, EffectTarget.EnemySingle, StatType.Magic, 590, 1170, 3, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.DefenseDown, EffectTarget.EnemySingle, StatType.Magic, 984, 1970, 3, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(171, "특이형 아킬레우스", "【騎士】特異型アキレウス", Job.Mercenary, Element.Dark, 3, 4, SkillCategory.Physical,
+                new CardDefinition(171, "특이형 아킬레우스", "【騎士】特異型アキレウス", Job.Warrior, Element.Dark, 3, 4, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 746, 1500, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 1232, 2450, 0, 0f, false),
                         new SkillEffect(EffectKind.Stun, EffectTarget.EnemySingle, StatType.None, 0, 0, 1, 0.2f, true)),
                     CardSource.Gacha),
-                new CardDefinition(173, "요정 언실리 코트", "【妖精】アンシーリーコート", Job.Thief, Element.Dark, 4, 3, SkillCategory.Hinder,
+                new CardDefinition(173, "요정 언실리 코트", "【妖精】アンシーリーコート", Job.Mage, Element.Dark, 4, 3, SkillCategory.Hinder,
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageDown, EffectTarget.EnemySingle, StatType.Physical, 429, 780, 3, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageDown, EffectTarget.EnemySingle, StatType.Physical, 846, 1548, 3, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(175, "복제형 어부왕", "【騎士】複製型漁夫王", Job.Mercenary, Element.Dark, 4, 4, SkillCategory.Physical,
+                new CardDefinition(175, "복제형 어부왕", "【騎士】複製型漁夫王", Job.Warrior, Element.Dark, 4, 4, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 1843, 3520, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 3685, 7008, 0, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(177, "지원형 금발의 이졸데", "【騎士】支援型金髪のイゾルデ", Job.Thief, Element.Dark, 4, 2, SkillCategory.Hinder,
+                new CardDefinition(177, "지원형 금발의 이졸데", "【騎士】支援型金髪のイゾルデ", Job.Mage, Element.Dark, 4, 2, SkillCategory.Hinder,
                     new CardSkill(
                         new SkillEffect(EffectKind.Poison, EffectTarget.EnemySingle, StatType.None, 154, 310, 8, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Poison, EffectTarget.EnemySingle, StatType.None, 307, 588, 8, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(179, "제압형 고트프리트", "【騎士】制圧型ゴットフリート", Job.Tycoon, Element.Dark, 5, 3, SkillCategory.Physical,
+                new CardDefinition(179, "제압형 고트프리트", "【騎士】制圧型ゴットフリート", Job.Guardian, Element.Dark, 5, 3, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 1759, 3180, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 3526, 6408, 0, 0f, false),
                         new SkillEffect(EffectKind.DefenseDown, EffectTarget.EnemySingle, StatType.Physical, 705, 1281, 1, 0f, true)),
                     CardSource.Gacha),
-                new CardDefinition(181, "특이형 히미코", "【騎士】特異型卑弥呼", Job.Thief, Element.Dark, 5, 3, SkillCategory.Magic,
+                new CardDefinition(181, "특이형 히미코", "【騎士】特異型卑弥呼", Job.Mage, Element.Dark, 5, 3, SkillCategory.Magic,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 1759, 3180, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 3526, 6408, 0, 0f, false),
                         new SkillEffect(EffectKind.DefenseDown, EffectTarget.EnemySingle, StatType.Magic, 705, 1281, 1, 0f, true)),
                     CardSource.Gacha),
-                new CardDefinition(185, "쟁배형 퍼시벌", "【騎士】争杯型パーシヴァル", Job.Thief, Element.Ice, 5, 3, SkillCategory.Magic,
+                new CardDefinition(185, "쟁배형 퍼시벌", "【騎士】争杯型パーシヴァル", Job.Mage, Element.Ice, 5, 3, SkillCategory.Magic,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 1759, 3180, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 3526, 6408, 0, 0f, false),
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.Self, StatType.Magic, 705, 1281, 2, 0f, true)),
                     CardSource.Gacha),
-                new CardDefinition(216, "지원형 애스톨랫의 일레인", "【騎士】支援型アストラトエレイン", Job.Mercenary, Element.Wind, 4, 5, SkillCategory.Physical,
+                new CardDefinition(216, "지원형 애스톨랫의 일레인", "【騎士】支援型アストラトエレイン", Job.Warrior, Element.Wind, 4, 5, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 1689, 3210, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 2815, 5350, 0, 0f, false),
                         new SkillEffect(EffectKind.DamageDown, EffectTarget.EnemySingle, StatType.Magic, 563, 1070, 3, 0f, true)),
                     CardSource.Gacha),
-                new CardDefinition(219, "주악형 페어리즈", "【妖精】奏楽型フェアリーズ", Job.Diva, Element.Ice, 4, 2, SkillCategory.Heal,
+                new CardDefinition(219, "주악형 페어리즈", "【妖精】奏楽型フェアリーズ", Job.Priest, Element.Ice, 4, 2, SkillCategory.Heal,
                     new CardSkill(
                         new SkillEffect(EffectKind.Heal, EffectTarget.Self, StatType.None, 389, 740, 0, 0f, false),
                         new SkillEffect(EffectKind.Draw, EffectTarget.Self, StatType.None, 1, 1, 0, 0f, false)),
@@ -462,75 +462,75 @@ namespace ChainKnights.Core.Cards
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 180, 313, 0, 0f, true)),
                     null,
                     CardSource.Starter),
-                new CardDefinition(225, "요정 바게스트", "【妖精】バーゲスト", Job.Thief, Element.Fire, 4, 5, SkillCategory.Magic,
+                new CardDefinition(225, "요정 바게스트", "【妖精】バーゲスト", Job.Mage, Element.Fire, 4, 5, SkillCategory.Magic,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 1689, 3210, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 2815, 5350, 0, 0f, false),
                         new SkillEffect(EffectKind.DamageDown, EffectTarget.EnemySingle, StatType.Physical, 563, 1070, 3, 0f, true)),
                     CardSource.Gacha),
-                new CardDefinition(227, "요정 켈피", "【妖精】ケルピー", Job.Tycoon, Element.Ice, 5, 3, SkillCategory.Physical,
+                new CardDefinition(227, "요정 켈피", "【妖精】ケルピー", Job.Guardian, Element.Ice, 5, 3, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 1472, 2550, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.AllEnemies, StatType.Physical, 2447, 4260, 0, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(229, "요정 루살리", "【妖精】ルサリィ", Job.Diva, Element.Wind, 4, 4, SkillCategory.Support,
+                new CardDefinition(229, "요정 루살리", "【妖精】ルサリィ", Job.Priest, Element.Wind, 4, 4, SkillCategory.Support,
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.Self, StatType.All, 696, 1320, 3, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.AllAllies, StatType.All, 1157, 2210, 3, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(231, "요정 길리 두", "【妖精】ギリードゥ", Job.Mercenary, Element.Light, 4, 4, SkillCategory.Physical,
+                new CardDefinition(231, "요정 길리 두", "【妖精】ギリードゥ", Job.Warrior, Element.Light, 4, 4, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 1352, 2600, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 2252, 4280, 0, 0f, false),
                         new SkillEffect(EffectKind.CritRateUp, EffectTarget.Self, StatType.None, 0, 0, 0, 0.75f, true)),
                     CardSource.Gacha),
-                new CardDefinition(233, "요정 바반 시", "【妖精】バーバンシー", Job.Thief, Element.Dark, 5, 4, SkillCategory.Magic,
+                new CardDefinition(233, "요정 바반 시", "【妖精】バーバンシー", Job.Mage, Element.Dark, 5, 4, SkillCategory.Magic,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 2349, 4260, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 3915, 7100, 0, 0f, false),
                         new SkillEffect(EffectKind.Poison, EffectTarget.EnemySingle, StatType.None, 392, 711, 8, 0f, true)),
                     CardSource.Gacha),
-                new CardDefinition(235, "요정 실키", "【妖精】シルキー", Job.Mercenary, Element.Fire, 5, 4, SkillCategory.Physical,
+                new CardDefinition(235, "요정 실키", "【妖精】シルキー", Job.Warrior, Element.Fire, 5, 4, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 2401, 4361, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 4000, 7234, 0, 0f, false),
                         new SkillEffect(EffectKind.Lifesteal, EffectTarget.Self, StatType.None, 0, 0, 0, 0.3f, true)),
                     CardSource.Gacha),
-                new CardDefinition(237, "요정 페그 파울러", "【妖精】ペッグパウラー", Job.Thief, Element.Ice, 4, 3, SkillCategory.Hinder,
+                new CardDefinition(237, "요정 페그 파울러", "【妖精】ペッグパウラー", Job.Mage, Element.Ice, 4, 3, SkillCategory.Hinder,
                     new CardSkill(
                         new SkillEffect(EffectKind.DefenseDown, EffectTarget.EnemySingle, StatType.Magic, 1048, 2023, 3, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.DefenseDown, EffectTarget.EnemySingle, StatType.Magic, 1746, 3345, 3, 0f, false),
                         new SkillEffect(EffectKind.DefenseUp, EffectTarget.Self, StatType.Magic, 524, 1004, 3, 0f, true)),
                     CardSource.Gacha),
-                new CardDefinition(239, "요정 브라우니", "【妖精】ブラウニー", Job.Mercenary, Element.Wind, 4, 4, SkillCategory.Physical,
+                new CardDefinition(239, "요정 브라우니", "【妖精】ブラウニー", Job.Warrior, Element.Wind, 4, 4, SkillCategory.Physical,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 1381, 2629, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Physical, 2302, 4408, 0, 0f, false),
                         new SkillEffect(EffectKind.DamageUp, EffectTarget.Self, StatType.Physical, 460, 881, 2, 0f, true)),
                     CardSource.Gacha),
-                new CardDefinition(241, "요정 픽시", "【妖精】ピクシー", Job.Diva, Element.Light, 5, 3, SkillCategory.Heal,
+                new CardDefinition(241, "요정 픽시", "【妖精】ピクシー", Job.Priest, Element.Light, 5, 3, SkillCategory.Heal,
                     new CardSkill(
                         new SkillEffect(EffectKind.Heal, EffectTarget.Self, StatType.None, 2401, 4361, 0, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.Heal, EffectTarget.AllySingle, StatType.None, 4000, 7234, 0, 0f, false),
                         new SkillEffect(EffectKind.HealBoost, EffectTarget.Self, StatType.None, 0, 0, 3, 0.3f, true)),
                     CardSource.Gacha),
-                new CardDefinition(243, "요정 페리 댄서", "【妖精】ペリーダンサー", Job.Tycoon, Element.Dark, 4, 3, SkillCategory.Defense,
+                new CardDefinition(243, "요정 페리 댄서", "【妖精】ペリーダンサー", Job.Guardian, Element.Dark, 4, 3, SkillCategory.Defense,
                     new CardSkill(
                         new SkillEffect(EffectKind.DefenseUp, EffectTarget.Self, StatType.Magic, 450, 879, 3, 0f, false)),
                     new CardSkill(
                         new SkillEffect(EffectKind.DefenseUp, EffectTarget.AllySingle, StatType.Magic, 749, 1451, 3, 0f, false),
                         new SkillEffect(EffectKind.Draw, EffectTarget.Self, StatType.None, 1, 1, 0, 0f, false)),
                     CardSource.Gacha),
-                new CardDefinition(245, "요정 무리안", "【妖精】妖精ムリアン", Job.Diva, Element.Fire, 4, 3, SkillCategory.Magic,
+                new CardDefinition(245, "요정 무리안", "【妖精】妖精ムリアン", Job.Priest, Element.Fire, 4, 3, SkillCategory.Magic,
                     new CardSkill(
                         new SkillEffect(EffectKind.Damage, EffectTarget.EnemySingle, StatType.Magic, 1014, 1950, 0, 0f, false)),
                     new CardSkill(

@@ -34,7 +34,7 @@ EXCLUDED_IDS = {151}
 # 레이드(1등급 아이스 드래곤) 드랍 카드. 나머지 ★3 이상은 뽑기로 얻는다.
 RAID_DROP_IDS = {69, 75}
 
-JOBS = {"傭兵": "Mercenary", "富豪": "Tycoon", "盗賊": "Thief", "歌姫": "Diva", "その他": "None"}
+JOBS = {"傭兵": "Warrior", "富豪": "Guardian", "盗賊": "Mage", "歌姫": "Priest", "その他": "None"}
 ELEMENTS = {"火": "Fire", "氷": "Ice", "風": "Wind", "光": "Light", "闇": "Dark"}
 RARITIES = {"N": 1, "HN": 2, "R": 3, "SR": 4, "UR": 5}
 CATEGORIES = {"物": "Physical", "魔": "Magic", "支": "Support", "防": "Defense", "治": "Heal", "妨": "Hinder"}
@@ -320,7 +320,7 @@ def write_cs(cards):
 
 TARGET_KO = {"Self": "자신", "AllySingle": "아군 1명", "AllAllies": "아군 전원", "EnemySingle": "적 단일", "AllEnemies": "적 전체"}
 STAT_KO = {"Physical": "물리", "Magic": "마법", "All": "전체", "None": ""}
-JOB_KO = {"Mercenary": "용병", "Tycoon": "부호", "Thief": "도적", "Diva": "가희", "None": "공용"}
+JOB_KO = {"Warrior": "전사", "Guardian": "수호자", "Mage": "마법사", "Priest": "사제", "None": "공용"}
 ELEMENT_KO = {"Fire": "화", "Ice": "빙", "Wind": "풍", "Light": "광", "Dark": "암"}
 CATEGORY_KO = {"Physical": "물리", "Magic": "마법", "Support": "지원", "Defense": "방어", "Heal": "치유", "Hinder": "방해"}
 SOURCE_KO = {"Starter": "스타터", "Gacha": "뽑기", "RaidDrop": "레이드"}
