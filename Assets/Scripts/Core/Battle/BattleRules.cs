@@ -14,6 +14,9 @@ namespace ChainKnights.Core.Battle
         public const int StartCost = 3;
         public const int MaxCost = 10;
 
+        /// <summary>한 턴에 아서 한 명이 보낼 수 있는 신호 수.</summary>
+        public const int SignalsPerTurn = 3;
+
         public const double BaseCritChance = 0.15;
         public const double CritMultiplier = 1.5;
 

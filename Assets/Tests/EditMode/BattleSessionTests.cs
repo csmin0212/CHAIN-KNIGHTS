@@ -479,6 +479,49 @@ namespace ChainKnights.Core.Tests
             Assert.AreEqual(5000, battle.Arthurs[0].Hp);
         }
 
+        // ───────────── 신호 ─────────────
+
+        [Test]
+        public void Signals_AreSharedDuringPlanning_AndClearedNextTurn()
+        {
+            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Warrior, Deck()), Arthur("B", Job.Priest, Deck()));
+            battle.StartTurn();
+
+            Assert.IsTrue(battle.SendSignal(0, SignalKind.Attack).Success);
+            Assert.IsTrue(battle.SendSignal(1, SignalKind.Chain, Element.Wind).Success);
+            Assert.AreEqual(2, battle.Signals.Count);
+            Assert.AreEqual(Element.Wind, battle.Signals[1].Element);
+
+            battle.ResolveTurn();
+            Assert.IsFalse(battle.SendSignal(0, SignalKind.Attack).Success);
+
+            battle.StartTurn();
+            Assert.That(battle.Signals, Is.Empty);
+        }
+
+        [Test]
+        public void Signals_AreLimitedPerTurn()
+        {
+            var battle = Battle(NoLuck, Dummy(), Arthur("A", Job.Warrior, Deck()));
+            battle.StartTurn();
+
+            for (int i = 0; i < BattleRules.SignalsPerTurn; i++)
+                Assert.IsTrue(battle.SendSignal(0, SignalKind.NeedHeal).Success);
+            Assert.IsFalse(battle.SendSignal(0, SignalKind.NeedHeal).Success);
+        }
+
+        [Test]
+        public void Signals_NeedAnElementForChain_AndALivePartForFocus()
+        {
+            var claw = new PartSetup { Name = "얼음 발톱", MaxHp = 100 };
+            var battle = Battle(NoLuck, Dummy(parts: claw), Arthur("A", Job.Warrior, Deck()));
+            battle.StartTurn();
+
+            Assert.IsFalse(battle.SendSignal(0, SignalKind.Chain).Success);
+            Assert.IsFalse(battle.SendSignal(0, SignalKind.FocusPart, partIndex: 3).Success);
+            Assert.IsTrue(battle.SendSignal(0, SignalKind.FocusPart, partIndex: 0).Success);
+        }
+
         // ───────────── 승패와 덱 규칙 ─────────────
 
         [Test]

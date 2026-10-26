@@ -27,6 +27,7 @@ namespace ChainKnights.Core.Battle
         private readonly List<Arthur> arthurs = new List<Arthur>();
         private readonly List<Enemy> enemies = new List<Enemy>();
         private readonly Dictionary<int, IReadOnlyList<CardPlay>> submissions = new Dictionary<int, IReadOnlyList<CardPlay>>();
+        private readonly List<BattleSignal> signals = new List<BattleSignal>();
 
         public int Turn { get; private set; }
         public int Cost => BattleRules.CostForTurn(Turn);
@@ -43,6 +44,9 @@ namespace ChainKnights.Core.Battle
 
         /// <summary>이 아서가 이번 턴 선택을 마쳤는지. 다른 플레이어 화면에는 이것만 보여준다.</summary>
         public bool HasSubmitted(int arthurIndex) => submissions.ContainsKey(arthurIndex);
+
+        /// <summary>이번 턴에 오간 신호. 모든 플레이어에게 보여준다.</summary>
+        public IReadOnlyList<BattleSignal> Signals => signals;
 
         public BattleSession(BattleSetup setup)
         {
@@ -98,6 +102,7 @@ namespace ChainKnights.Core.Battle
 
             Turn++;
             submissions.Clear();
+            signals.Clear();
             var events = new List<BattleEvent>
             {
                 new BattleEvent { Type = BattleEventType.TurnStarted, Value = Cost, Message = $"{Turn}턴 시작 (코스트 {Cost})" },
@@ -167,6 +172,31 @@ namespace ChainKnights.Core.Battle
                 return SubmitResult.Fail($"코스트가 부족합니다 ({totalCost}/{Cost}).");
 
             submissions[arthurIndex] = plays.ToList();
+            return SubmitResult.Ok;
+        }
+
+        /// <summary>
+        /// 카드를 고르는 동안 아군에게 정해진 신호를 보낸다. 자유 채팅은 없고, 한 턴에 아서마다 최대 SignalsPerTurn개.
+        /// </summary>
+        public SubmitResult SendSignal(int arthurIndex, SignalKind kind, Element? element = null, int partIndex = -1)
+        {
+            if (Phase != BattlePhase.Planning)
+                return SubmitResult.Fail("지금은 신호를 보낼 수 없습니다.");
+            var arthur = ArthurAt(arthurIndex);
+            if (arthur == null || !arthur.IsAlive)
+                return SubmitResult.Fail("쓰러진 아서는 신호를 보낼 수 없습니다.");
+            if (signals.Count(s => s.ArthurIndex == arthurIndex) >= BattleRules.SignalsPerTurn)
+                return SubmitResult.Fail($"신호는 한 턴에 {BattleRules.SignalsPerTurn}번까지 보낼 수 있습니다.");
+            if (kind == SignalKind.Chain && element == null)
+                return SubmitResult.Fail("체인 신호에는 속성이 필요합니다.");
+            if (kind == SignalKind.FocusPart && !enemies.Any(e => e.IsAlive && e.Part(partIndex) != null && !e.Part(partIndex).IsDestroyed))
+                return SubmitResult.Fail("노릴 부위가 없습니다.");
+
+            signals.Add(new BattleSignal(
+                arthurIndex,
+                kind,
+                kind == SignalKind.Chain ? element : null,
+                kind == SignalKind.FocusPart ? partIndex : -1));
             return SubmitResult.Ok;
         }
 
