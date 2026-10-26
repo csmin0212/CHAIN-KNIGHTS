@@ -44,6 +44,41 @@ namespace ChainKnights.Client.UI
             return sprite;
         }
 
+        private static readonly Dictionary<int, Sprite> rings = new Dictionary<int, Sprite>();
+
+        /// <summary>
+        /// 고리 (가운데가 빈 원). 도장 테두리 그림이 오기 전에 쓴다.
+        /// thickness는 128px 원 기준 두께. 가장자리를 조금 들쭉날쭉하게 해서 찍힌 잉크처럼 보이게 한다.
+        /// </summary>
+        public static Sprite Ring(int thickness)
+        {
+            if (rings.TryGetValue(thickness, out var sprite))
+                return sprite;
+            const int size = 128;
+            var texture = new Texture2D(size, size, TextureFormat.RGBA32, false) { wrapMode = TextureWrapMode.Clamp };
+            var pixels = new Color32[size * size];
+            float half = size / 2f;
+            for (int y = 0; y < size; y++)
+            {
+                for (int x = 0; x < size; x++)
+                {
+                    float dx = x + 0.5f - half, dy = y + 0.5f - half;
+                    float r = Mathf.Sqrt(dx * dx + dy * dy);
+                    float outer = half - 2, inner = outer - thickness;
+                    float coverage = Mathf.Clamp01(outer - r + 0.5f) * Mathf.Clamp01(r - inner + 0.5f);
+                    // 잉크가 덜 묻은 듯한 얼룩
+                    float noise = Mathf.PerlinNoise(x * 0.11f, y * 0.11f);
+                    float alpha = coverage * (noise < 0.28f ? 0.55f : 1f);
+                    pixels[y * size + x] = new Color32(255, 255, 255, (byte)(alpha * 255));
+                }
+            }
+            texture.SetPixels32(pixels);
+            texture.Apply();
+            sprite = Sprite.Create(texture, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), 100);
+            rings[thickness] = sprite;
+            return sprite;
+        }
+
         /// <summary>원. 코스트 보석, 원형 타이머(Filled)에 쓴다.</summary>
         public static Sprite Circle
         {

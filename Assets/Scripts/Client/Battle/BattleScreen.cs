@@ -12,7 +12,8 @@ using UnityEngine.UI;
 namespace ChainKnights.Client.Battle
 {
     /// <summary>
-    /// 혼자 해 보는 전투 화면. 내 아서 1명 + AI 동료 3명. 화면 구성은 Docs/UI_목업_전투.html.
+    /// 혼자 해 보는 전투 화면. 내 아서 1명 + AI 동료 3명.
+    /// 그림 방향은 Docs/아트_컨셉.md "모험가 길드의 서류" (화면 요소별 대응표 참고).
     /// 판정은 모두 BattleSession이 하고, 이 클래스는 보여주기와 입력만 맡는다.
     /// </summary>
     public sealed partial class BattleScreen : MonoBehaviour
@@ -24,6 +25,7 @@ namespace ChainKnights.Client.Battle
         private const float RevealWidth = 150, RevealHeight = 210;
         private static readonly Job[] Jobs = { Job.Warrior, Job.Guardian, Job.Mage, Job.Priest };
         private static readonly Key[] CardKeys = { Key.Digit1, Key.Digit2, Key.Digit3, Key.Digit4, Key.Digit5 };
+        private static readonly Color Bronze = Ui.Hex("#8A5A1A");
 
         private enum Quest
         {
@@ -42,7 +44,7 @@ namespace ChainKnights.Client.Battle
         // 전투 화면 조각
         private Text turnLabel, timerLabel, costLabel, deckLabel, logLabel, signalHeader, confirmLabel, toastLabel;
         private Image timerFill;
-        private RectTransform handArea, enemyArea;
+        private RectTransform handArea, enemyArea, coinRow;
         private CanvasGroup handGroup, controlsGroup;
         private Button confirmButton, passButton;
         private readonly List<Button> signalButtons = new List<Button>();
@@ -50,6 +52,7 @@ namespace ChainKnights.Client.Battle
         private readonly List<RectTransform> partyFloatAt = new List<RectTransform>();
         private readonly List<RectTransform> bubbles = new List<RectTransform>();
         private readonly List<Text> bubbleLabels = new List<Text>();
+        private readonly List<Image> bubbleIcons = new List<Image>();
         private readonly Dictionary<(int enemy, int part), PieceWidget> pieces = new Dictionary<(int, int), PieceWidget>();
         private readonly HashSet<(int enemy, int part)> telegraphed = new HashSet<(int, int)>();
         private readonly List<string> log = new List<string>();
@@ -65,6 +68,7 @@ namespace ChainKnights.Client.Battle
         private readonly float[] aiSignalAt = new float[BattleRules.MaxArthurs];
         private Coroutine toastRoutine;
         private bool shaking;
+        private int damageDealt;
 
         // 연출 중에 화면에 보이는 HP. 이벤트를 하나씩 보여주면서 실제 값까지 따라간다.
         private int[] shownArthurHp, shownEnemyHp;
@@ -97,7 +101,7 @@ namespace ChainKnights.Client.Battle
             StartAutoShotIfRequested();
         }
 
-        // ───────────────────────── 출격 준비 ─────────────────────────
+        // ───────────────────────── 출격 준비 (의뢰 게시판) ─────────────────────────
 
         private void ShowSetup()
         {
@@ -106,83 +110,133 @@ namespace ChainKnights.Client.Battle
             Ui.Clear(battleLayer);
             Ui.Clear(fxLayer);
             Ui.Clear(overlayLayer);
-            ApplyBackground();
+            ApplyBackground(Art.Get("Backgrounds/bg_title") != null ? "Backgrounds/bg_title" : null);
+            Sound.Music("bgm_lobby");
 
-            var dim = Ui.Box(overlayLayer, "Dim", Ui.Ink.WithAlpha(0.6f), 1);
+            var dim = Ui.Box(overlayLayer, "Dim", Ui.Ink.WithAlpha(0.45f), 1);
             dim.rectTransform.Fill();
 
-            var panel = Ui.Frame(overlayLayer, "Setup", radius: 18);
-            ((RectTransform)panel.transform.parent).At(0.5f, 0.5f, 0, 0, 1000, 640);
+            var panel = Ui.Frame(overlayLayer, "Board");
+            ((RectTransform)panel.transform.parent).At(0.5f, 0.5f, 0, 0, 1120, 720);
 
-            var title = Ui.Label(panel.transform, "출격 준비", 40, Ui.GoldHi, TextAnchor.MiddleCenter, bold: true, serifFont: true);
-            title.rectTransform.At(0.5f, 1, 0, -56, 600, 60);
+            var title = Ui.Label(panel.transform, "출격 준비", 42, Ui.GoldHi, TextAnchor.MiddleCenter, bold: true, serifFont: true);
+            title.rectTransform.At(0.5f, 1, 0, -54, 600, 60);
 
-            SectionLabel(panel.transform, "내 직업", -128);
+            SectionLabel(panel.transform, "내 등록증", -118);
             for (int i = 0; i < Jobs.Length; i++)
             {
                 var job = Jobs[i];
-                var choice = ChoiceButton(panel.transform, CardText.JobName(job), job == myJob ? "내가 맡음" : "AI 동료", job == myJob, Ui.JobColor(job), () =>
+                var card = RegistrationChoice(panel.transform, job, job == myJob, () =>
                 {
                     myJob = job;
                     ShowSetup();
                 });
-                choice.At(0.5f, 1, (i - 1.5f) * 220, -210, 200, 110);
+                card.At(0.5f, 1, (i - 1.5f) * 240, -224, 220, 164);
             }
 
-            SectionLabel(panel.transform, "의뢰", -300);
-            var golems = ChoiceButton(panel.transform, "노멀 퀘스트", "시작의 대지 · 구골 무리", quest == Quest.Golems, Ui.ElementColor(Element.Fire), () =>
+            SectionLabel(panel.transform, "의뢰", -330);
+            var golems = QuestChoice(panel.transform, "노멀 퀘스트", "시작의 대지 · 구골 무리", "동", Bronze, quest == Quest.Golems, () =>
             {
                 quest = Quest.Golems;
                 ShowSetup();
             });
-            golems.At(0.5f, 1, -225, -380, 430, 100);
-            var raid = ChoiceButton(panel.transform, "레이드 · 중급", "빙결룡 글라키에스", quest == Quest.Glacies, Ui.ElementColor(Element.Ice), () =>
+            golems.At(0.5f, 1, -240, -420, 440, 120).Rotate(1.2f);
+            var raid = QuestChoice(panel.transform, "레이드 · 중급", "빙결룡 글라키에스", "금", Ui.Wax, quest == Quest.Glacies, () =>
             {
                 quest = Quest.Glacies;
                 ShowSetup();
             });
-            raid.At(0.5f, 1, 225, -380, 430, 100);
+            raid.At(0.5f, 1, 240, -420, 440, 120).Rotate(-1.2f);
 
             var note = Ui.Label(panel.transform, "남은 세 직업은 AI 동료 · 동료가 낸 카드는 공개 전까지 보이지 않음", 18, Ui.Dim, TextAnchor.MiddleCenter);
-            note.rectTransform.At(0.5f, 0, 0, 150, 900, 30);
+            note.rectTransform.At(0.5f, 0, 0, 170, 900, 30);
 
-            var go = Ui.GoldButton(panel.transform, "출  격", 30, StartBattle, out _);
-            ((RectTransform)go.transform).At(0.5f, 0, 0, 72, 280, 72);
+            var go = Ui.SealButton(panel.transform, "출격", 34, StartBattle, out _);
+            ((RectTransform)go.transform).At(0.5f, 0, 0, 82, 136, 136);
         }
 
         private static void SectionLabel(Transform parent, string text, float y)
         {
-            var label = Ui.Label(parent, text, 20, Ui.Gold, TextAnchor.MiddleCenter, bold: true);
+            var label = Ui.Label(parent, text, 20, Ui.Gold, TextAnchor.MiddleCenter, bold: true, serifFont: true);
             label.rectTransform.At(0.5f, 1, 0, y, 400, 30);
         }
 
-        /// <summary>출격 준비의 선택 칸. 고른 칸은 밝은 금 테두리와 색 띠가 붙는다.</summary>
-        private static RectTransform ChoiceButton(Transform parent, string title, string sub, bool selected, Color accent, Action onClick)
+        /// <summary>직업 고르기: 모험가 등록증. 고른 것은 밝은 황동 빛과 초록 봉랍.</summary>
+        private static RectTransform RegistrationChoice(Transform parent, Job job, bool selected, Action onClick)
         {
-            var outer = Ui.Box(parent, title, selected ? Ui.GoldHi : Ui.GoldDark.WithAlpha(0.6f), 14);
-            var inner = Ui.Box(outer.transform, "Inner", selected ? Ui.Panel2 : Ui.PanelColor, 12);
-            inner.rectTransform.Fill(inset: selected ? 3 : 2);
-            inner.raycastTarget = false;
+            var rootRect = Ui.Rect(parent, CardText.JobName(job));
+            if (selected)
+            {
+                var glow = Ui.Box(rootRect, "Glow", Ui.GoldHi.WithAlpha(0.6f), 18);
+                glow.rectTransform.Fill(inset: -6);
+                glow.raycastTarget = false;
+            }
+            var card = Ui.Box(rootRect, "Card", Ui.PanelColor, 12);
+            card.rectTransform.Fill();
+            if (!Art.TryApply(card, "UI/ui_panel", selected ? Color.white : new Color(0.75f, 0.75f, 0.75f), 2f))
+                card.color = selected ? Ui.Panel2 : Ui.PanelColor;
 
-            var stripe = Ui.Box(inner.transform, "Accent", selected ? accent : accent.WithAlpha(0.35f), 4);
-            stripe.rectTransform.Fill(0, 0, 0, 1);
-            stripe.rectTransform.offsetMin = new Vector2(10, 14);
-            stripe.rectTransform.offsetMax = new Vector2(16, -14);
-            stripe.raycastTarget = false;
+            var edge = Ui.Box(card.transform, "PortraitEdge", Ui.GoldDark, 8);
+            edge.rectTransform.At(0.5f, 1, 0, -52, 80, 80);
+            edge.raycastTarget = false;
+            var portrait = Ui.Box(edge.transform, "Portrait", Ui.JobColor(job), 6);
+            portrait.rectTransform.Fill(inset: 2);
+            portrait.raycastTarget = false;
+            if (Art.TryApply(portrait, $"Arthurs/arthur_portrait_{Ui.JobKey(job)}", Color.white))
+                portrait.preserveAspect = false;
 
-            var titleLabel = Ui.Label(inner.transform, title, 24, selected ? Ui.GoldHi : Ui.Text, TextAnchor.MiddleCenter, bold: true);
-            titleLabel.rectTransform.Fill(0, 0.45f, 1, 1);
-            var subLabel = Ui.Label(inner.transform, sub, 16, selected ? Ui.Text : Ui.Dim, TextAnchor.MiddleCenter);
-            subLabel.rectTransform.Fill(0, 0.08f, 1, 0.5f);
+            var name = Ui.Label(card.transform, CardText.JobName(job), 22, selected ? Ui.GoldHi : Ui.Text, TextAnchor.MiddleCenter, bold: true, serifFont: true);
+            name.rectTransform.At(0.5f, 0, 0, 46, 200, 28);
+            var sub = Ui.Label(card.transform, selected ? "내가 맡음" : "AI 동료", 14, selected ? Ui.Text : Ui.Dim, TextAnchor.MiddleCenter);
+            sub.rectTransform.At(0.5f, 0, 0, 20, 200, 20);
 
-            Ui.MakeButton(outer, onClick);
-            return outer.rectTransform;
+            if (selected)
+            {
+                var seal = Ui.Icon(rootRect, "UI/ui_ready_check", 48);
+                if (seal != null)
+                    seal.rectTransform.At(1, 1, -6, -4, 48, 48);
+            }
+            Ui.MakeButton(card, onClick);
+            return rootRect;
         }
 
-        private void ApplyBackground()
+        /// <summary>의뢰 고르기: 압정에 꽂힌 의뢰서와 랭크 도장.</summary>
+        private static RectTransform QuestChoice(Transform parent, string kind, string name, string rank, Color rankColor, bool selected, Action onClick)
         {
-            string path = quest == Quest.Glacies ? "Backgrounds/bg_raid_ice_cave" : "Backgrounds/bg_field_start";
-            if (!Art.TryApply(background, path, Color.white))
+            var rootRect = Ui.Rect(parent, name);
+            if (selected)
+            {
+                var glow = Ui.Box(rootRect, "Glow", Ui.GoldHi.WithAlpha(0.6f), 10);
+                glow.rectTransform.Fill(inset: -7);
+                glow.raycastTarget = false;
+            }
+            var paper = Ui.GuildPaper(rootRect, "Paper", "ui_quest_paper", Ui.Paper);
+            paper.rectTransform.Fill();
+            if (!selected)
+                paper.color = new Color(0.82f, 0.8f, 0.76f);
+
+            var kindLabel = Ui.Label(paper.transform, kind, 16, rankColor, TextAnchor.UpperLeft, bold: true);
+            kindLabel.rectTransform.offsetMin = new Vector2(28, 0);
+            kindLabel.rectTransform.offsetMax = new Vector2(-110, -24);
+            var nameLabel = Ui.Label(paper.transform, name, 26, Ui.PaperInk, TextAnchor.LowerLeft, bold: true, serifFont: true);
+            nameLabel.rectTransform.offsetMin = new Vector2(28, 26);
+            nameLabel.rectTransform.offsetMax = new Vector2(-110, 0);
+
+            var stamp = Ui.Stamp(paper.transform, rank, rankColor, 76, 30);
+            stamp.At(1, 0.5f, -56, 0, 76, 76).Rotate(12);
+            Ui.Pin(rootRect, 0, -2, 22);
+            Ui.MakeButton(paper, onClick);
+            return rootRect;
+        }
+
+        private void ApplyBackground(string path = null)
+        {
+            path = path ?? (quest == Quest.Glacies ? "Backgrounds/bg_raid_ice_cave" : "Backgrounds/bg_field_start");
+            if (Art.TryApply(background, path, Color.white))
+            {
+                background.preserveAspect = false;
+            }
+            else
             {
                 background.sprite = null;
                 background.color = Ui.Ink;
@@ -198,9 +252,11 @@ namespace ChainKnights.Client.Battle
             Ui.Clear(fxLayer);
             Ui.Clear(overlayLayer);
             ApplyBackground();
+            Sound.Music(quest == Quest.Glacies ? "bgm_boss" : "bgm_battle");
             battleLayer.anchoredPosition = Vector2.zero;
             shaking = false;
             resolving = false;
+            damageDealt = 0;
             log.Clear();
             picked.Clear();
             enemyTarget = TargetRef.None;
@@ -230,7 +286,7 @@ namespace ChainKnights.Client.Battle
             });
 
             BuildBattleView();
-            Log(quest == Quest.Glacies ? "<b>레이드: 빙결룡 글라키에스</b>" : "<b>노멀 퀘스트: 구골 무리</b>");
+            Log(quest == Quest.Glacies ? "<b>레이드 의뢰: 빙결룡 글라키에스</b>" : "<b>노멀 퀘스트: 구골 무리</b>");
             BeginTurn();
         }
 
@@ -240,23 +296,21 @@ namespace ChainKnights.Client.Battle
             partyFloatAt.Clear();
             bubbles.Clear();
             bubbleLabels.Clear();
+            bubbleIcons.Clear();
             pieces.Clear();
             signalButtons.Clear();
 
-            // 무대 조명: 적 뒤쪽은 밝게, 바닥은 어둡게
-            if (background.sprite == null)
-            {
-                var light = Ui.Circle(battleLayer, "StageLight", Ui.Panel2.WithAlpha(0.55f));
-                light.rectTransform.At(0.5f, 1, 0, -380, 1500, 820);
-                light.raycastTarget = false;
-                var floor = Ui.Box(battleLayer, "Floor", Hex("#101116", 0.75f), 1);
-                floor.rectTransform.Fill(0, 0, 1, 0.34f);
-                floor.raycastTarget = false;
-                var floorLine = Ui.Box(battleLayer, "FloorLine", Ui.Gold.WithAlpha(0.18f), 1);
-                floorLine.rectTransform.Fill(0, 0.34f, 1, 0.34f);
-                floorLine.rectTransform.offsetMax = new Vector2(0, 2);
-                floorLine.raycastTarget = false;
-            }
+            // 배경은 살짝 어둡게, 아래쪽 손패 자리는 더 어둡게 깔아서 글씨가 잘 보이게 한다.
+            var shade = Ui.Box(battleLayer, "Shade", Ui.Ink.WithAlpha(background.sprite != null ? 0.38f : 0f), 1);
+            shade.rectTransform.Fill();
+            shade.raycastTarget = false;
+            var floor = Ui.Box(battleLayer, "Floor", Ui.Hex("#101116").WithAlpha(0.9f), 1);
+            floor.rectTransform.Fill(0, 0, 1, 0.33f);
+            floor.raycastTarget = false;
+            var floorLine = Ui.Box(battleLayer, "FloorLine", Ui.GoldDark, 1);
+            floorLine.rectTransform.Fill(0, 0.33f, 1, 0.33f);
+            floorLine.rectTransform.offsetMax = new Vector2(0, 2);
+            floorLine.raycastTarget = false;
 
             BuildTopBar();
             BuildEnemies();
@@ -265,59 +319,74 @@ namespace ChainKnights.Client.Battle
             BuildControls();
 
             toastLabel = Ui.Label(battleLayer, "", 22, Ui.Danger, TextAnchor.MiddleCenter, bold: true);
-            toastLabel.rectTransform.At(0.5f, 0, 0, 420, 1000, 40);
-            toastLabel.gameObject.AddComponent<Outline>().effectColor = new Color(0, 0, 0, 0.8f);
+            toastLabel.rectTransform.At(0.5f, 0, 0, 440, 1000, 40);
+            toastLabel.AddOutline(0.8f);
         }
 
         private void BuildTopBar()
         {
-            var plate = Ui.Frame(battleLayer, "Quest", radius: 12);
-            ((RectTransform)plate.transform.parent).At(0, 1, 200, -52, 360, 76);
-            var kind = Ui.Label(plate.transform, quest == Quest.Glacies ? "레이드 · 중급" : "노멀 퀘스트", 15, Ui.Gold, TextAnchor.UpperLeft, bold: true);
-            kind.rectTransform.Fill();
-            kind.rectTransform.offsetMin = new Vector2(18, 0);
-            kind.rectTransform.offsetMax = new Vector2(-12, -10);
-            var name = Ui.Label(plate.transform, quest == Quest.Glacies ? "빙결룡 글라키에스" : "시작의 대지 · 구골 무리", 22, Ui.Text, TextAnchor.LowerLeft, bold: true, serifFont: true);
-            name.rectTransform.Fill();
-            name.rectTransform.offsetMin = new Vector2(18, 10);
+            // 의뢰서: 압정에 꽂힌 양피지 + 랭크 도장
+            var plate = Ui.Rect(battleLayer, "Quest");
+            plate.At(0, 1, 205, -62, 350, 88).Rotate(-1.5f);
+            var paper = Ui.GuildPaper(plate, "Paper", "ui_quest_paper", Ui.Paper);
+            paper.rectTransform.Fill();
+            paper.raycastTarget = false;
+            bool raid = quest == Quest.Glacies;
+            var kind = Ui.Label(paper.transform, raid ? "레이드 의뢰 · 중급" : "노멀 퀘스트", 15, raid ? Ui.Wax : Bronze, TextAnchor.UpperLeft, bold: true);
+            kind.rectTransform.offsetMin = new Vector2(22, 0);
+            kind.rectTransform.offsetMax = new Vector2(-80, -16);
+            var name = Ui.Label(paper.transform, raid ? "빙결룡 글라키에스" : "시작의 대지 · 구골 무리", 22, Ui.PaperInk, TextAnchor.LowerLeft, bold: true, serifFont: true);
+            name.rectTransform.offsetMin = new Vector2(22, 14);
+            name.rectTransform.offsetMax = new Vector2(-80, 0);
+            var stamp = Ui.Stamp(paper.transform, raid ? "금" : "동", raid ? Ui.Wax : Bronze, 56, 22);
+            stamp.At(1, 0.5f, -42, 0, 56, 56).Rotate(12);
+            Ui.Pin(plate, 0, -2, 20);
 
-            turnLabel = Ui.Pill(battleLayer, "TURN 1", 26, out var turnPill);
-            turnPill.rectTransform.At(0.5f, 1, -50, -50, 210, 52);
+            // 턴 명판
+            var turnPlate = Ui.Frame(battleLayer, "Turn");
+            ((RectTransform)turnPlate.transform.parent).At(0.5f, 1, -56, -54, 220, 62);
+            turnLabel = Ui.Label(turnPlate.transform, "TURN 1", 30, Ui.GoldHi, TextAnchor.MiddleCenter, bold: true, serifFont: true);
 
-            var ring = Ui.Circle(battleLayer, "Timer", Ui.Panel2);
-            ring.rectTransform.At(0.5f, 1, 100, -50, 76, 76);
-            ring.raycastTarget = false;
-            timerFill = Ui.Circle(ring.transform, "Fill", Ui.Gold);
-            timerFill.rectTransform.Fill();
+            // 황동 회중시계
+            var clock = Ui.Rect(battleLayer, "Timer");
+            clock.At(0.5f, 1, 96, -54, 88, 88);
+            var back = Ui.Circle(clock, "Back", Ui.Panel2);
+            back.rectTransform.Fill(inset: 8);
+            back.raycastTarget = false;
+            timerFill = Ui.Circle(clock, "Fill", Ui.Gold);
+            timerFill.rectTransform.Fill(inset: 10);
             timerFill.type = Image.Type.Filled;
             timerFill.fillMethod = Image.FillMethod.Radial360;
             timerFill.fillOrigin = (int)Image.Origin360.Top;
             timerFill.fillClockwise = false;
             timerFill.raycastTarget = false;
-            var hole = Ui.Circle(ring.transform, "Hole", Ui.PanelColor);
-            hole.rectTransform.Fill(inset: 7);
+            var hole = Ui.Circle(clock, "Hole", Ui.PanelColor);
+            hole.rectTransform.Fill(inset: 19);
             hole.raycastTarget = false;
-            timerLabel = Ui.Label(hole.transform, "20", 26, Ui.Text, TextAnchor.MiddleCenter, bold: true);
+            var ring = Ui.Icon(clock, "UI/ui_timer_ring", 88);
+            if (ring != null)
+                ring.rectTransform.Fill();
+            timerLabel = Ui.Label(clock, "20", 26, Ui.Memo, TextAnchor.MiddleCenter, bold: true, serifFont: true);
         }
 
         private void BuildEnemies()
         {
             enemyArea = Ui.Rect(battleLayer, "Enemies");
-            enemyArea.At(0.5f, 1, 0, -370, 1100, 520);
+            enemyArea.At(0.5f, 1, 0, -380, 1100, 520);
 
             var enemies = session.Enemies;
             if (enemies.Count == 1 && enemies[0].Parts.Count > 0)
             {
                 // 부위가 있는 보스: 본체 가운데, 발톱은 오른쪽 아래, 날개는 왼쪽 위
                 var boss = enemies[0];
-                AddPiece(0, -1, boss.Name, Hex("#3E6F98"), "Enemies/boss_glacies_body", Color.white, 0, 0, 400, 300);
-                var spots = new[] { new Vector2(340, -120), new Vector2(-340, 50) };
-                var sizes = new[] { new Vector2(200, 150), new Vector2(220, 160) };
+                AddPiece(0, -1, boss.Name, Ui.Hex("#3E6F98"), "Enemies/boss_glacies_body", Color.white, -30, 10, 480, 360);
+                var spots = new[] { new Vector2(370, -110), new Vector2(-380, 70) };
+                var sizes = new[] { new Vector2(230, 172), new Vector2(250, 180) };
                 var arts = new[] { "Enemies/boss_glacies_claw", "Enemies/boss_glacies_wing" };
                 foreach (var part in boss.Parts)
                 {
                     int i = Mathf.Min(part.Index, spots.Length - 1);
-                    AddPiece(0, part.Index, part.Name, Hex("#6FA8D6"), arts[i], Color.white, spots[i].x, spots[i].y, sizes[i].x, sizes[i].y);
+                    AddPiece(0, part.Index, part.Name, Ui.Hex("#6FA8D6"), arts[i], Color.white, spots[i].x, spots[i].y, sizes[i].x, sizes[i].y);
                 }
                 return;
             }
@@ -330,7 +399,8 @@ namespace ChainKnights.Client.Battle
                 if (enemies.Count(e => e.Name == enemy.Name) > 1)
                     name += " " + (char)('A' + enemies.Take(i).Count(e => e.Name == enemy.Name));
                 var color = Color.Lerp(Ui.ElementColor(enemy.Element), Ui.Ink, 0.3f);
-                AddPiece(i, -1, name, color, "Enemies/enemy_golem", Ui.ElementColor(enemy.Element), (i - (enemies.Count - 1) / 2f) * 320, -20, 230, 210);
+                var tint = Color.Lerp(Color.white, Ui.ElementColor(enemy.Element), 0.45f);
+                AddPiece(i, -1, name, color, "Enemies/enemy_golem", tint, (i - (enemies.Count - 1) / 2f) * 320, -20, 240, 240);
             }
         }
 
@@ -350,45 +420,53 @@ namespace ChainKnights.Client.Battle
                 int index = i;
                 var arthur = session.Arthurs[i];
                 var widget = PartyWidget.Build(battleLayer, arthur, i == Me, () => OnPartyClicked(index));
-                float y = -170 - i * 124;
-                widget.Root.At(0, 1, 185, y, 330, 110);
+                float y = -180 - i * 126;
+                widget.Root.At(0, 1, 185, y, 330, 108);
                 party.Add(widget);
                 // 아군 위의 숫자는 카드 글자를 가리지 않게 카드 오른쪽 바깥에서 떠오른다.
                 var floatAt = Ui.Rect(widget.Root, "FloatAt");
                 floatAt.At(1, 0.5f, 70, -10, 10, 10);
                 partyFloatAt.Add(floatAt);
 
-                // 신호 말풍선 (양피지). 카드 오른쪽에 붙는다.
-                var bubble = Ui.PaperBox(battleLayer, "Bubble", 14);
-                bubble.rectTransform.At(0, 1, 448, y + 10, 172, 44);
-                bubble.raycastTarget = false;
-                var tail = Ui.Label(bubble.transform, "◀", 16, Ui.Paper, TextAnchor.MiddleLeft);
-                tail.rectTransform.Fill();
-                tail.rectTransform.offsetMin = new Vector2(-13, 0);
-                var text = Ui.Label(bubble.transform, "", 17, Ui.PaperInk, TextAnchor.MiddleCenter, bold: true, serifFont: true);
-                text.rectTransform.Fill(inset: 4);
-                bubble.gameObject.SetActive(false);
-                bubbles.Add(bubble.rectTransform);
+                // 수신호 쪽지: 등록증 오른쪽에 붙는다.
+                var note = Ui.GuildPaper(battleLayer, "Memo", "ui_memo_note", Ui.Memo, 3);
+                note.rectTransform.At(0, 1, 452, y + 8, 196, 48).Rotate(i % 2 == 0 ? 2f : -2f);
+                note.raycastTarget = false;
+                var icon = Ui.Rect(note.transform, "Icon").gameObject.AddComponent<Image>();
+                icon.rectTransform.At(0, 0.5f, 26, 0, 32, 32);
+                icon.preserveAspect = true;
+                icon.raycastTarget = false;
+                var text = Ui.Label(note.transform, "", 17, Ui.PaperInk, TextAnchor.MiddleLeft, bold: true, serifFont: true);
+                text.rectTransform.offsetMin = new Vector2(48, 0);
+                text.rectTransform.offsetMax = new Vector2(-8, 0);
+                note.gameObject.SetActive(false);
+                bubbles.Add(note.rectTransform);
                 bubbleLabels.Add(text);
+                bubbleIcons.Add(icon);
             }
         }
 
         private void BuildLog()
         {
-            var frame = Ui.Frame(battleLayer, "Log", radius: 14);
-            ((RectTransform)frame.transform.parent).At(1, 1, -180, -330, 320, 420);
-            var title = Ui.Label(frame.transform, "전투 기록", 17, Ui.Gold, TextAnchor.MiddleCenter, bold: true);
-            title.rectTransform.Fill(0, 1, 1, 1);
-            title.rectTransform.offsetMin = new Vector2(0, -36);
-
-            var paper = Ui.PaperBox(frame.transform, "Paper", 10);
-            paper.rectTransform.Fill();
-            paper.rectTransform.offsetMin = new Vector2(10, 10);
-            paper.rectTransform.offsetMax = new Vector2(-10, -38);
+            // 모험 일지: 양피지에 잉크로 한 줄씩
+            var paper = Ui.PaperBox(battleLayer, "Journal", 8);
+            paper.rectTransform.At(1, 1, -184, -336, 326, 432);
             paper.raycastTarget = false;
-            paper.gameObject.AddComponent<RectMask2D>();
-            logLabel = Ui.Label(paper.transform, "", 15, Ui.PaperInk, TextAnchor.LowerLeft, serifFont: true);
-            logLabel.rectTransform.Fill(inset: 10);
+            var title = Ui.Label(paper.transform, "모험 일지", 21, Ui.PaperInk, TextAnchor.UpperLeft, bold: true, serifFont: true);
+            title.rectTransform.offsetMin = new Vector2(22, 0);
+            title.rectTransform.offsetMax = new Vector2(-16, -16);
+            var rule = Ui.Box(paper.transform, "Rule", Ui.Hex("#C9B48A"), 1);
+            rule.rectTransform.Fill(0, 1, 1, 1);
+            rule.rectTransform.offsetMin = new Vector2(20, -50);
+            rule.rectTransform.offsetMax = new Vector2(-20, -48);
+            rule.raycastTarget = false;
+
+            var page = Ui.Rect(paper.transform, "Page");
+            page.Fill();
+            page.offsetMin = new Vector2(20, 18);
+            page.offsetMax = new Vector2(-16, -56);
+            page.gameObject.AddComponent<RectMask2D>();
+            logLabel = Ui.Label(page, "", 15, Ui.PaperInk, TextAnchor.LowerLeft, serifFont: true);
             logLabel.lineSpacing = 1.1f;
         }
 
@@ -402,23 +480,25 @@ namespace ChainKnights.Client.Battle
             var controls = Ui.Rect(battleLayer, "Controls").Fill();
             controlsGroup = controls.gameObject.AddComponent<CanvasGroup>();
 
-            // 코스트 보석 (왼쪽 아래)
-            var gemRing = Ui.Circle(controls, "CostRing", Ui.Gold);
-            gemRing.rectTransform.At(0, 0, 130, 160, 156, 156);
-            gemRing.raycastTarget = false;
-            var gem = Ui.Circle(gemRing.transform, "Cost", Hex("#243A55"));
-            gem.rectTransform.Fill(inset: 4);
-            gem.raycastTarget = false;
-            costLabel = Ui.Label(gem.transform, "", 44, Ui.Text, TextAnchor.MiddleCenter, bold: true);
-            costLabel.rectTransform.offsetMin = new Vector2(0, 10);
-            var costCaption = Ui.Label(gem.transform, "COST", 15, Ui.GoldHi, TextAnchor.LowerCenter, bold: true);
-            costCaption.rectTransform.offsetMin = new Vector2(0, 22);
-            deckLabel = Ui.Label(controls, "", 15, Ui.Dim, TextAnchor.MiddleCenter);
-            deckLabel.rectTransform.At(0, 0, 130, 56, 260, 26);
+            // 코스트: 황동 주화 (왼쪽 아래)
+            costLabel = Ui.Label(controls, "", 24, Ui.GoldHi, TextAnchor.MiddleLeft, bold: true, serifFont: true);
+            costLabel.rectTransform.At(0, 0, 200, 250, 320, 34);
+            coinRow = Ui.Rect(controls, "Coins");
+            coinRow.anchorMin = coinRow.anchorMax = new Vector2(0, 0);
+            coinRow.pivot = new Vector2(0, 0.5f);
+            coinRow.anchoredPosition = new Vector2(40, 200);
+            coinRow.sizeDelta = new Vector2(380, 44);
+            var row = coinRow.gameObject.AddComponent<HorizontalLayoutGroup>();
+            row.spacing = 2;
+            row.childAlignment = TextAnchor.MiddleLeft;
+            row.childControlWidth = row.childControlHeight = false;
+            row.childForceExpandWidth = row.childForceExpandHeight = false;
+            deckLabel = Ui.Label(controls, "", 15, Ui.Dim, TextAnchor.MiddleLeft);
+            deckLabel.rectTransform.At(0, 0, 200, 150, 320, 26);
 
-            // 신호 (오른쪽 아래)
+            // 신호: 수신호 쪽지 (오른쪽 아래)
             signalHeader = Ui.Label(controls, "", 16, Ui.Gold, TextAnchor.MiddleCenter, bold: true);
-            signalHeader.rectTransform.At(1, 0, -250, 340, 460, 26);
+            signalHeader.rectTransform.At(1, 0, -250, 348, 460, 26);
             var signals = new[]
             {
                 (SignalKind.Attack, "공격 갈게"), (SignalKind.NeedDefense, "방어 부탁"), (SignalKind.NeedHeal, "회복 부탁"),
@@ -427,15 +507,33 @@ namespace ChainKnights.Client.Battle
             for (int i = 0; i < signals.Length; i++)
             {
                 var kind = signals[i].Item1;
-                var button = Ui.FrameButton(controls, signals[i].Item2, 17, () => SendMySignal(kind), out _);
-                ((RectTransform)button.transform).At(1, 0, -400 + (i % 3) * 150, 296 - (i / 3) * 58, 140, 50);
-                signalButtons.Add(button);
+                var memo = Ui.GuildPaper(controls, signals[i].Item2, "ui_memo_note", Ui.Memo, 3);
+                memo.rectTransform.At(1, 0, -400 + (i % 3) * 150, 302 - (i / 3) * 58, 142, 50);
+                var icon = Ui.Icon(memo.transform, SignalIcon(kind), 30);
+                if (icon != null)
+                    icon.rectTransform.At(0, 0.5f, 22, 0, 30, 30);
+                var label = Ui.Label(memo.transform, signals[i].Item2, 15, Ui.PaperInk, TextAnchor.MiddleLeft, bold: true, serifFont: true);
+                label.rectTransform.offsetMin = new Vector2(icon != null ? 40 : 10, 0);
+                signalButtons.Add(Ui.MakeButton(memo, () => SendMySignal(kind)));
             }
 
-            confirmButton = Ui.GoldButton(controls, "확  정", 30, Confirm, out confirmLabel);
-            ((RectTransform)confirmButton.transform).At(1, 0, -250, 156, 300, 72);
+            confirmButton = Ui.SealButton(controls, "확정", 32, Confirm, out confirmLabel);
+            ((RectTransform)confirmButton.transform).At(1, 0, -140, 118, 150, 150);
             passButton = Ui.FrameButton(controls, "패스", 16, Pass, out _);
-            ((RectTransform)passButton.transform).At(1, 0, -250, 84, 150, 40);
+            ((RectTransform)passButton.transform).At(1, 0, -350, 110, 150, 46);
+        }
+
+        private static string SignalIcon(SignalKind kind)
+        {
+            switch (kind)
+            {
+                case SignalKind.Attack: return "Icons/icon_signal_attack";
+                case SignalKind.NeedDefense: return "Icons/icon_signal_defense";
+                case SignalKind.NeedHeal: return "Icons/icon_signal_heal";
+                case SignalKind.Buff: return "Icons/icon_signal_buff";
+                case SignalKind.FocusPart: return "Icons/icon_signal_part";
+                default: return "Icons/icon_signal_chain";
+            }
         }
 
         // ───────────────────────── 턴 진행 ─────────────────────────
@@ -498,7 +596,7 @@ namespace ChainKnights.Client.Battle
             }
 
             timerFill.fillAmount = Mathf.Clamp01(timeLeft / PlanSeconds);
-            timerFill.color = timeLeft < 5 ? Ui.Danger : Ui.Gold;
+            timerFill.color = timeLeft < 5 ? Ui.Wax : Ui.Gold;
             timerLabel.text = Mathf.CeilToInt(Mathf.Max(timeLeft, 0)).ToString();
 
             HandleKeys();
@@ -530,7 +628,7 @@ namespace ChainKnights.Client.Battle
         {
             if (timeLeft <= 0)
             {
-                Log("<color=#9B3A2A>시간 초과</color>");
+                Log("<color=#9B2F25>시간 초과</color>");
                 // 시간이 끝나면 고르던 카드를 그대로 내고, 낼 수 없으면 넘긴다.
                 if (session.Arthurs[Me].IsAlive && !session.HasSubmitted(Me) && !session.Submit(Me, BuildPlays()).Success)
                     session.Submit(Me, Array.Empty<CardPlay>());
@@ -611,6 +709,8 @@ namespace ChainKnights.Client.Battle
                 Toast(result.Error);
                 return;
             }
+            Sound.Play("sfx_stamp", "sfx_card_play");
+            StartCoroutine(Punch(confirmButton.transform, -0.12f, 0.2f));
             RebuildHand();
             RefreshView();
         }
@@ -736,7 +836,12 @@ namespace ChainKnights.Client.Battle
 
             var bubble = bubbles[index];
             bubbleLabels[index].text = text;
+            var icon = Art.Get(SignalIcon(kind));
+            bubbleIcons[index].sprite = icon;
+            bubbleIcons[index].enabled = icon != null;
+            bubbleLabels[index].rectTransform.offsetMin = new Vector2(icon != null ? 48 : 12, 0);
             bubble.gameObject.SetActive(true);
+            Sound.Play("sfx_memo", "sfx_button", 0.6f);
             StartCoroutine(Pop(bubble));
             RefreshView();
         }
@@ -803,7 +908,8 @@ namespace ChainKnights.Client.Battle
 
             turnLabel.text = $"TURN {session.Turn}";
             int remaining = session.Cost - PickedCost;
-            costLabel.text = $"{remaining}<size=24>/{session.Cost}</size>";
+            costLabel.text = $"코스트 {remaining} / {session.Cost}";
+            RebuildCoins(remaining, session.Cost);
             var me = session.Arthurs[Me];
             deckLabel.text = $"덱 {me.DrawPileCount} · 버림 {me.DiscardCount}";
             int signalsLeft = BattleRules.SignalsPerTurn - session.Signals.Count(s => s.ArthurIndex == Me);
@@ -815,11 +921,24 @@ namespace ChainKnights.Client.Battle
             foreach (var button in signalButtons)
                 button.interactable = planning && me.IsAlive && signalsLeft > 0;
             confirmLabel.text = !me.IsAlive ? "쓰러짐"
-                : session.HasSubmitted(Me) && planning ? "대기 중…"
-                : "확  정";
+                : session.HasSubmitted(Me) && planning ? "대기"
+                : "확정";
         }
 
-        /// <summary>적이 이번 턴에 할 행동을 부위 위에 토큰으로 띄운다. 전체 공격과 강화는 강조하고 부위가 빛난다.</summary>
+        /// <summary>남은 코스트만큼 밝은 주화, 고른 카드에 쓴 만큼은 흐린 주화.</summary>
+        private void RebuildCoins(int remaining, int cost)
+        {
+            Ui.Clear(coinRow);
+            float size = cost > 8 ? 34 : 42;
+            for (int i = 0; i < cost; i++)
+            {
+                var coin = Ui.Coin(coinRow, size);
+                if (i >= remaining)
+                    coin.color = new Color(1, 1, 1, 0.22f);
+            }
+        }
+
+        /// <summary>적이 이번 턴에 할 행동을 부위 위에 꼬리표로 꽂는다. 전체 공격과 강화는 봉랍 테두리에 부위 발밑이 빛난다.</summary>
         private void RebuildIntents()
         {
             telegraphed.Clear();
@@ -859,15 +978,21 @@ namespace ChainKnights.Client.Battle
 
         private void PulseTelegraphs()
         {
-            float wave = 0.22f + 0.18f * Mathf.Sin(Time.time * 4.5f);
+            float wave = 0.5f + 0.5f * Mathf.Sin(Time.time * 4.5f);
             foreach (var pair in pieces)
             {
                 bool on = telegraphed.Contains(pair.Key);
-                pair.Value.Glow.color = on ? Ui.Danger.WithAlpha(wave) : Color.clear;
+                var glow = pair.Value.Glow;
+                if (!on)
+                    glow.color = Color.clear;
+                else if (pair.Value.GlowIsArt)
+                    glow.color = new Color(1f, 0.5f, 0.4f, 0.45f + 0.55f * wave);
+                else
+                    glow.color = Ui.Danger.WithAlpha(0.22f + 0.18f * wave);
             }
         }
 
-        /// <summary>손패를 부채꼴로 다시 깐다. 고른 카드는 위로 올라가고 고른 순서 번호가 붙는다.</summary>
+        /// <summary>손패를 부채꼴로 다시 깐다. 고른 카드는 위로 올라가고 고른 순서 번호(봉랍)가 붙는다.</summary>
         private void RebuildHand()
         {
             Ui.Clear(handArea);
@@ -893,10 +1018,14 @@ namespace ChainKnights.Client.Battle
 
                 if (selected)
                 {
-                    var badge = Ui.Circle(rect, "Order", Ui.GoldHi);
-                    badge.rectTransform.At(1, 1, -6, -6, 40, 40);
+                    var badge = Ui.Circle(rect, "Order", Ui.Wax);
+                    badge.rectTransform.At(1, 1, -4, -4, 42, 42);
                     badge.raycastTarget = false;
-                    Ui.Label(badge.transform, (order + 1).ToString(), 22, Hex("#2B2114"), TextAnchor.MiddleCenter, bold: true);
+                    var rim = Ui.Circle(badge.transform, "Rim", Ui.WaxDark);
+                    rim.rectTransform.Fill(inset: -3);
+                    rim.transform.SetAsFirstSibling();
+                    rim.raycastTarget = false;
+                    Ui.Label(badge.transform, (order + 1).ToString(), 22, Ui.Memo, TextAnchor.MiddleCenter, bold: true, serifFont: true);
                 }
                 var key = Ui.Label(rect, (i + 1).ToString(), 13, Ui.Dim.WithAlpha(0.7f), TextAnchor.LowerCenter);
                 key.rectTransform.Fill();
@@ -944,8 +1073,8 @@ namespace ChainKnights.Client.Battle
         // ───────────────────────── 턴 처리 연출 ─────────────────────────
 
         /// <summary>
-        /// 1) 모두의 카드를 뒷면으로 깔고 한 장씩 뒤집는다 (아군이 뭘 냈는지 여기서 처음 안다).
-        /// 2) 체인이 터지면 띠 배너. 3) 카드 순서대로 효과. 4) 적 행동. 5) 독·재생.
+        /// 1) 모두의 카드를 길드 봉투(뒷면)로 깔고 한 장씩 뒤집는다 (아군이 뭘 냈는지 여기서 처음 안다).
+        /// 2) 체인이 터지면 같은 속성 카드에 "연계" 도장. 3) 카드 순서대로 효과. 4) 적 행동. 5) 독·재생.
         /// </summary>
         private IEnumerator PlayResolution(IReadOnlyList<BattleEvent> events)
         {
@@ -971,14 +1100,16 @@ namespace ChainKnights.Client.Battle
                     slot.At(0.5f, 0.5f, (i - mid) * spacing, 0, RevealWidth, RevealHeight);
                     var back = CardWidget.BuildBack(slot, RevealWidth, RevealHeight);
                     back.At(0.5f, 0.5f, 0, 0, RevealWidth, RevealHeight);
-                    var face = BuildRevealCard(slot, CardCatalog.Get(e.CardId), session.Arthurs[e.ActorIndex], e.IsAwakened);
+                    var face = CardWidget.BuildReveal(slot, CardCatalog.Get(e.CardId), session.Arthurs[e.ActorIndex].Name, e.IsAwakened, RevealWidth / CardWidget.Width);
+                    face.anchorMin = face.anchorMax = new Vector2(0.5f, 0.5f);
+                    face.anchoredPosition = Vector2.zero;
                     face.gameObject.SetActive(false);
                     slot.gameObject.AddComponent<CanvasGroup>().alpha = 0;
                     slots.Add(slot);
                     faces.Add((back.gameObject, face.gameObject));
                 }
 
-                // 뒷면이 차례로 내려앉는다
+                // 봉투가 차례로 내려앉는다
                 foreach (var slot in slots)
                 {
                     StartCoroutine(DropIn(slot));
@@ -988,20 +1119,26 @@ namespace ChainKnights.Client.Battle
 
                 // 한 장씩 뒤집기
                 for (int i = 0; i < slots.Count; i++)
+                {
+                    Sound.Play("sfx_card_flip", "sfx_card_play", 0.7f);
                     yield return Flip(slots[i], faces[i].back, faces[i].face);
+                }
                 yield return new WaitForSeconds(0.25f);
 
-                // 체인
+                // 체인: 같은 속성 카드마다 "연계" 도장이 쾅
                 foreach (var chain in events.Where(e => e.Type == BattleEventType.Chain))
                 {
+                    Sound.Play("sfx_chain");
                     for (int i = 0; i < played.Count; i++)
                     {
-                        if (played[i].Element == chain.Element)
-                            StartCoroutine(Punch(slots[i], 0.15f, 0.3f));
+                        if (played[i].Element != chain.Element)
+                            continue;
+                        StartCoroutine(SlamStamp(slots[i], "연계", Ui.Wax, 104, 28, UnityEngine.Random.Range(-14f, 14f)));
+                        yield return new WaitForSeconds(0.12f);
                     }
                     Log($"<color=#8A5A1A><b>{CardText.ElementName(chain.Element)} {chain.Chain}체인 ×{BattleRules.ChainMultiplier(chain.Chain):0.0}</b></color>");
                     yield return Banner($"{CardText.ElementName(chain.Element)}속성  {chain.Chain} CHAIN", Ui.ElementColor(chain.Element), 0.75f,
-                        $"피해·회복 ×{BattleRules.ChainMultiplier(chain.Chain):0.0}");
+                        $"피해·회복 ×{BattleRules.ChainMultiplier(chain.Chain):0.0}", fx: "Effects/fx_chain");
                 }
             }
 
@@ -1056,14 +1193,24 @@ namespace ChainKnights.Client.Battle
                     if (e.TargetSide == BattleSide.Enemy)
                     {
                         shownEnemyHp[e.TargetIndex] = Mathf.Max(0, shownEnemyHp[e.TargetIndex] - e.Value);
+                        damageDealt += e.Value;
                         var piece = PieceFor(e.TargetIndex, e.PartIndex);
                         if (e.PartIndex >= 0)
                             shownPartHp[e.TargetIndex][e.PartIndex] = Mathf.Max(0, shownPartHp[e.TargetIndex][e.PartIndex] - e.Value);
                         StartCoroutine(Punch(piece.Shape, 0.07f, 0.18f));
+                        Burst(piece.Shape, "Effects/fx_hit", Color.Lerp(Color.white, Ui.ElementColor(e.Element), 0.5f), 230);
+                        bool magic = e.CardId > 0 && CardCatalog.Get(e.CardId).Category == SkillCategory.Magic;
+                        Sound.Play(magic ? "sfx_magic" : "sfx_hit");
                         if (e.IsCritical)
+                        {
+                            Burst(piece.Shape, "Effects/fx_critical", Color.white, 300);
+                            Sound.Play("sfx_critical");
                             Float(piece.Shape, $"치명 {e.Value:N0}!", Ui.GoldHi, 46);
+                        }
                         else
+                        {
                             Float(piece.Shape, e.Value.ToString("N0"), Color.white, 38);
+                        }
                         Log(e.Message);
                         yield return new WaitForSeconds(e.IsCritical ? 0.32f : 0.2f);
                     }
@@ -1071,8 +1218,10 @@ namespace ChainKnights.Client.Battle
                     {
                         shownArthurHp[e.TargetIndex] = Mathf.Max(0, shownArthurHp[e.TargetIndex] - e.Value);
                         StartCoroutine(Punch(party[e.TargetIndex].Root, 0.05f, 0.2f));
+                        Burst(party[e.TargetIndex].Root, "Effects/fx_hit", Ui.Danger, 150);
+                        Sound.Play("sfx_hit", volume: 0.7f);
                         Float(partyFloatAt[e.TargetIndex], $"-{e.Value:N0}", Ui.Danger, 34);
-                        Log($"<color=#9B3A2A>{e.Message}</color>");
+                        Log($"<color=#9B2F25>{e.Message}</color>");
                         yield return new WaitForSeconds(0.16f);
                     }
                     break;
@@ -1080,6 +1229,8 @@ namespace ChainKnights.Client.Battle
                 case BattleEventType.Heal:
                 case BattleEventType.HealTick:
                     shownArthurHp[e.TargetIndex] = Mathf.Min(session.Arthurs[e.TargetIndex].MaxHp, shownArthurHp[e.TargetIndex] + e.Value);
+                    Burst(party[e.TargetIndex].Root, "Effects/fx_heal", Color.white, 150);
+                    Sound.Play("sfx_heal", volume: 0.7f);
                     Float(partyFloatAt[e.TargetIndex], $"+{e.Value:N0}", Ui.Good, 32);
                     Log($"<color=#3E7A50>{e.Message}</color>");
                     yield return new WaitForSeconds(0.14f);
@@ -1089,6 +1240,7 @@ namespace ChainKnights.Client.Battle
                     if (e.TargetSide == BattleSide.Enemy)
                     {
                         shownEnemyHp[e.TargetIndex] = Mathf.Max(0, shownEnemyHp[e.TargetIndex] - e.Value);
+                        damageDealt += e.Value;
                         Float(PieceFor(e.TargetIndex, -1).Shape, $"독 {e.Value:N0}", Hex("#B48CE0"), 30);
                     }
                     else
@@ -1103,9 +1255,11 @@ namespace ChainKnights.Client.Battle
                 case BattleEventType.StatusApplied:
                 {
                     var at = e.TargetSide == BattleSide.Enemy ? PieceFor(e.TargetIndex, -1).Shape : partyFloatAt[e.TargetIndex];
-                    string name = StatusName(e.EffectKind);
+                    string name = PartyWidget.StatusName(e.EffectKind);
                     string text = e.EffectKind == EffectKind.HealBoost ? name : $"{name} {e.Value}";
                     Float(at, text, e.TargetSide == BattleSide.Ally ? Ui.GoldHi : Hex("#B48CE0"), 24, 40);
+                    if (e.TargetSide == BattleSide.Ally)
+                        Sound.Play("sfx_buff", volume: 0.5f);
                     var target = e.TargetSide == BattleSide.Enemy ? (BattleUnit)session.Enemies[e.TargetIndex] : session.Arthurs[e.TargetIndex];
                     Log($"{target.Name}: {text}");
                     yield return new WaitForSeconds(0.1f);
@@ -1126,19 +1280,22 @@ namespace ChainKnights.Client.Battle
 
                 case BattleEventType.PartDestroyed:
                 {
-                    // 옥토패스의 브레이크처럼: 번쩍 + 흔들림 + 큰 글자
+                    // "격파" 도장 + BREAK + 번쩍 + 흔들림
                     shownPartHp[e.TargetIndex][e.PartIndex] = 0;
                     var piece = PieceFor(e.TargetIndex, e.PartIndex);
                     RefreshView();
                     StartCoroutine(Flash(piece.Shape));
                     StartCoroutine(Shake(14, 0.35f));
-                    Float(piece.Shape, "BREAK!", Ui.GoldHi, 60, 30);
+                    Sound.Play("sfx_part_break");
+                    StartCoroutine(SlamStamp(StampAnchor(piece.Shape), "격파", Ui.Wax, 150, 40, -12));
+                    Float(piece.Shape, "BREAK!", Ui.GoldHi, 60, 110);
                     Log($"<color=#8A5A1A><b>{e.Message}</b></color>");
-                    yield return new WaitForSeconds(0.7f);
+                    yield return new WaitForSeconds(0.8f);
                     break;
                 }
 
                 case BattleEventType.EnemyDefeated:
+                {
                     shownEnemyHp[e.TargetIndex] = 0;
                     foreach (var pair in pieces.Where(p => p.Key.enemy == e.TargetIndex))
                     {
@@ -1146,15 +1303,17 @@ namespace ChainKnights.Client.Battle
                         telegraphed.Remove(pair.Key);
                     }
                     RefreshView();
-                    Float(PieceFor(e.TargetIndex, -1).Shape, "격파", Ui.GoldHi, 52, 110);
+                    var piece = PieceFor(e.TargetIndex, -1);
+                    StartCoroutine(SlamStamp(StampAnchor(piece.Shape), "토벌", Ui.Wax, 140, 38, 10));
                     Log($"<b>{e.Message}</b>");
-                    yield return new WaitForSeconds(0.45f);
+                    yield return new WaitForSeconds(0.5f);
                     break;
+                }
 
                 case BattleEventType.ArthurDown:
                     shownArthurHp[e.TargetIndex] = 0;
                     Float(partyFloatAt[e.TargetIndex], "쓰러짐", Ui.Danger, 30, 30);
-                    Log($"<color=#9B3A2A><b>{e.Message}</b></color>");
+                    Log($"<color=#9B2F25><b>{e.Message}</b></color>");
                     yield return new WaitForSeconds(0.35f);
                     break;
 
@@ -1162,9 +1321,9 @@ namespace ChainKnights.Client.Battle
                 {
                     var piece = PieceFor(e.ActorIndex, e.PartIndex);
                     StartCoroutine(Punch(piece.Shape, 0.12f, 0.3f));
-                    Log($"<color=#9B3A2A>{e.Message}</color>");
+                    Log($"<color=#9B2F25>{e.Message}</color>");
                     string name = e.Message.Contains("「") ? e.Message.Substring(e.Message.IndexOf('「')) : e.Message;
-                    yield return Banner(name, Ui.Danger, 0.45f, session.Enemies[e.ActorIndex].Name, small: true);
+                    yield return Banner(name, Ui.Wax, 0.45f, session.Enemies[e.ActorIndex].Name, small: true);
                     break;
                 }
 
@@ -1184,89 +1343,66 @@ namespace ChainKnights.Client.Battle
             return pieces.TryGetValue((enemyIndex, partIndex), out var piece) ? piece : pieces[(enemyIndex, -1)];
         }
 
-        private static string StatusName(EffectKind kind)
+        /// <summary>도장을 찍을 자리: 대상 위치에 둔 연출층의 빈 칸 (대상이 흐려져도 도장은 선명하게).</summary>
+        private RectTransform StampAnchor(RectTransform target)
         {
-            switch (kind)
-            {
-                case EffectKind.DamageUp: return "공격↑";
-                case EffectKind.DefenseUp: return "방어↑";
-                case EffectKind.DamageDown: return "공격↓";
-                case EffectKind.DefenseDown: return "방어↓";
-                case EffectKind.Poison: return "독";
-                case EffectKind.HealOverTime: return "재생";
-                case EffectKind.HealBoost: return "회복↑";
-                default: return kind.ToString();
-            }
+            var anchor = Ui.Rect(fxLayer, "StampAt");
+            anchor.sizeDelta = new Vector2(10, 10);
+            anchor.position = target.position;
+            return anchor;
         }
 
-        /// <summary>공개 줄에 놓이는 작은 카드 앞면. 누가 냈는지 양피지 이름표로 붙는다.</summary>
-        private static RectTransform BuildRevealCard(Transform parent, CardDefinition def, Arthur owner, bool awakened)
-        {
-            const float w = RevealWidth, h = RevealHeight;
-            var outer = Ui.Box(parent, def.NameKo, awakened ? Ui.GoldHi : Ui.Gold, 12);
-            outer.raycastTarget = false;
-            var rect = outer.rectTransform;
-            rect.At(0.5f, 0.5f, 0, 0, w, h);
-            var body = Ui.Box(outer.transform, "Body", Ui.PanelColor, 10);
-            body.rectTransform.Fill(inset: awakened ? 3 : 2);
-            body.raycastTarget = false;
-
-            var band = Ui.Box(body.transform, "Band", Ui.ElementColor(def.Element), 10);
-            band.rectTransform.Fill(0, 1, 1, 1);
-            band.rectTransform.offsetMin = new Vector2(0, -40);
-            band.raycastTarget = false;
-            var cost = Ui.Label(band.transform, def.Cost.ToString(), 22, Ui.Text, TextAnchor.MiddleLeft, bold: true);
-            cost.rectTransform.offsetMin = new Vector2(12, 0);
-            var stars = Ui.Label(band.transform, CardText.Stars(def.Rarity), 12, Hex("#FFF8E6"), TextAnchor.MiddleRight);
-            stars.rectTransform.offsetMax = new Vector2(-10, 0);
-
-            Ui.Pill(body.transform, def.NameKo, def.NameKo.Length > 7 ? 12 : 14, out var pill);
-            pill.rectTransform.At(0.5f, 1, 0, -60, w - 18, 26);
-            pill.raycastTarget = false;
-
-            var art = Ui.Box(body.transform, "Art", Ui.Panel2, 8);
-            art.rectTransform.At(0.5f, 1, 0, -108, w - 18, 58);
-            art.raycastTarget = false;
-            if (!Art.TryApply(art, $"Cards/card_{def.Id}", Color.white))
-                Ui.Label(art.transform, CardText.JobName(def.Job), 16, Ui.JobColor(def.Job).WithAlpha(0.8f), TextAnchor.MiddleCenter, bold: true);
-
-            if (awakened)
-            {
-                var awake = Ui.Label(body.transform, "◆ 각성", 13, Ui.GoldHi, TextAnchor.MiddleCenter, bold: true);
-                awake.rectTransform.At(0.5f, 0, 0, 58, w, 20);
-            }
-            var plate = Ui.PaperBox(body.transform, "Owner", 8);
-            plate.rectTransform.At(0.5f, 0, 0, 26, w - 18, 34);
-            plate.raycastTarget = false;
-            Ui.Label(plate.transform, owner.Name, 15, Ui.PaperInk, TextAnchor.MiddleCenter, bold: true, serifFont: true);
-            return rect;
-        }
-
-        // ───────────────────────── 결과 ─────────────────────────
+        // ───────────────────────── 결과: 보수 정산서 ─────────────────────────
 
         private void ShowResult()
         {
             bool victory = session.Outcome == BattleOutcome.Victory;
             resolving = false;
+            Sound.Play(victory ? "sfx_victory" : "sfx_defeat");
             var dim = Ui.Box(overlayLayer, "Dim", Ui.Ink.WithAlpha(0.7f), 1);
             dim.rectTransform.Fill();
 
-            var panel = Ui.Frame(overlayLayer, "Result", border: victory ? Ui.GoldHi : Ui.GoldDark, radius: 18, borderWidth: 3);
-            var outer = (RectTransform)panel.transform.parent;
-            outer.At(0.5f, 0.5f, 0, 0, 680, 400);
+            var sheet = Ui.Rect(overlayLayer, "Settlement");
+            sheet.At(0.5f, 0.5f, 0, 40, 620, 470).Rotate(-1f);
+            var paper = Ui.GuildPaper(sheet, "Paper", "ui_quest_paper", Ui.Paper);
+            paper.rectTransform.Fill();
+            paper.raycastTarget = false;
+            Ui.Pin(sheet, 0, -4, 26);
 
-            var title = Ui.Label(panel.transform, victory ? "승  리" : "패  배", 72, victory ? Ui.GoldHi : Ui.Danger, TextAnchor.MiddleCenter, bold: true, serifFont: true);
-            title.rectTransform.At(0.5f, 1, 0, -100, 600, 100);
+            var title = Ui.Label(paper.transform, "보수 정산서", 36, Ui.PaperInk, TextAnchor.UpperCenter, bold: true, serifFont: true);
+            title.rectTransform.offsetMax = new Vector2(0, -40);
+            var rule = Ui.Box(paper.transform, "Rule", Ui.Hex("#C9B48A"), 1);
+            rule.rectTransform.Fill(0, 1, 1, 1);
+            rule.rectTransform.offsetMin = new Vector2(48, -98);
+            rule.rectTransform.offsetMax = new Vector2(-48, -96);
+
             int alive = session.Arthurs.Count(a => a.IsAlive);
-            var sub = Ui.Label(panel.transform, $"{session.Turn}턴 · 생존 {alive}/{session.Arthurs.Count}", 22, Ui.Text, TextAnchor.MiddleCenter);
-            sub.rectTransform.At(0.5f, 1, 0, -180, 600, 40);
+            var lines = new[]
+            {
+                ("의뢰", quest == Quest.Glacies ? "빙결룡 글라키에스 (중급)" : "시작의 대지 · 구골 무리"),
+                ("결과", victory ? "토벌 완료" : "토벌 실패"),
+                ("걸린 턴", $"{session.Turn}턴"),
+                ("생존", $"{alive} / {session.Arthurs.Count}"),
+                ("준 피해", damageDealt.ToString("N0")),
+            };
+            for (int i = 0; i < lines.Length; i++)
+            {
+                var key = Ui.Label(paper.transform, lines[i].Item1, 19, Ui.PaperFaint, TextAnchor.MiddleLeft, serifFont: true);
+                key.rectTransform.At(0, 1, 150, -136 - i * 44, 200, 34);
+                var value = Ui.Label(paper.transform, lines[i].Item2, 21, Ui.PaperInk, TextAnchor.MiddleLeft, bold: true, serifFont: true);
+                value.rectTransform.At(0, 1, 360, -136 - i * 44, 320, 34);
+            }
 
-            var again = Ui.GoldButton(panel.transform, "다시 하기", 24, StartBattle, out _);
-            ((RectTransform)again.transform).At(0.5f, 0, -140, 70, 240, 64);
-            var back = Ui.FrameButton(panel.transform, "출격 준비", 22, ShowSetup, out _);
-            ((RectTransform)back.transform).At(0.5f, 0, 140, 70, 240, 64);
+            var stampAt = Ui.Rect(paper.transform, "StampAt");
+            stampAt.At(1, 0, -120, 110, 10, 10);
+            StartCoroutine(SlamStamp(stampAt, victory ? "완료" : "재도전", victory ? Ui.Wax : Bronze, 170, victory ? 46 : 34, -14, 0.45f));
 
-            StartCoroutine(Pop(outer));
+            var again = Ui.FrameButton(overlayLayer, "다시 하기", 22, StartBattle, out _);
+            ((RectTransform)again.transform).At(0.5f, 0.5f, -140, -250, 240, 60);
+            var back = Ui.FrameButton(overlayLayer, "출격 준비", 22, ShowSetup, out _);
+            ((RectTransform)back.transform).At(0.5f, 0.5f, 140, -250, 240, 60);
+
+            StartCoroutine(Pop(sheet));
         }
 
         // ───────────────────────── 연출 도구 ─────────────────────────
@@ -1293,7 +1429,9 @@ namespace ChainKnights.Client.Battle
 
         private static IEnumerator Pop(RectTransform rect)
         {
+            var angles = rect.localEulerAngles;
             yield return Tween(0.22f, t => rect.localScale = Vector3.one * (0.6f + 0.4f * t + 0.12f * Mathf.Sin(t * Mathf.PI)));
+            rect.localEulerAngles = angles;
         }
 
         private static IEnumerator Punch(Transform target, float amount, float duration)
@@ -1312,13 +1450,59 @@ namespace ChainKnights.Client.Battle
             });
         }
 
-        /// <summary>마블 스냅처럼 가로로 접었다가 앞면으로 편다.</summary>
+        /// <summary>가로로 접었다가 앞면으로 편다.</summary>
         private static IEnumerator Flip(RectTransform slot, GameObject back, GameObject face)
         {
             yield return Tween(0.1f, t => slot.localScale = new Vector3(1 - t, 1 + 0.08f * t, 1));
             back.SetActive(false);
             face.SetActive(true);
             yield return Tween(0.14f, t => slot.localScale = new Vector3(t, 1.08f - 0.08f * t, 1));
+        }
+
+        /// <summary>고무 도장이 위에서 쾅 찍힌다: 크게 → 제자리, 살짝 기울어진 채로 남는다.</summary>
+        private IEnumerator SlamStamp(Transform parent, string text, Color color, float size, int fontSize, float angle, float delay = 0)
+        {
+            if (delay > 0)
+                yield return new WaitForSeconds(delay);
+            var stamp = Ui.Stamp(parent, text, color, size, fontSize);
+            stamp.anchorMin = stamp.anchorMax = new Vector2(0.5f, 0.5f);
+            stamp.anchoredPosition = Vector2.zero;
+            stamp.Rotate(angle);
+            var group = stamp.gameObject.AddComponent<CanvasGroup>();
+            Sound.Play("sfx_stamp", "sfx_card_play", 0.8f);
+            yield return Tween(0.14f, t =>
+            {
+                stamp.localScale = Vector3.one * Mathf.Lerp(2.2f, 1f, t);
+                group.alpha = t;
+            });
+            yield return Punch(stamp, 0.06f, 0.12f);
+        }
+
+        /// <summary>이펙트 그림(fx_*)을 대상 위에서 잠깐 터뜨린다. 그림이 없으면 아무것도 안 한다.</summary>
+        private void Burst(RectTransform at, string path, Color tint, float size)
+        {
+            if (Art.Get(path) == null)
+                return;
+            var image = Ui.Rect(fxLayer, "Fx").gameObject.AddComponent<Image>();
+            Art.TryApply(image, path, tint);
+            image.raycastTarget = false;
+            var rect = image.rectTransform;
+            rect.sizeDelta = new Vector2(size, size);
+            rect.position = at.position;
+            StartCoroutine(BurstRoutine(image, tint));
+        }
+
+        private static IEnumerator BurstRoutine(Image image, Color tint)
+        {
+            var rect = image.rectTransform;
+            float spin = UnityEngine.Random.Range(-30f, 30f);
+            yield return Tween(0.38f, t =>
+            {
+                rect.localScale = Vector3.one * Mathf.Lerp(0.5f, 1.2f, t);
+                rect.localEulerAngles = new Vector3(0, 0, spin * t);
+                image.color = tint.WithAlpha(1 - t * t);
+            });
+            Destroy(image.gameObject);
         }
 
         private IEnumerator FadeOutAndDestroy(RectTransform rect)
@@ -1362,9 +1546,7 @@ namespace ChainKnights.Client.Battle
             rect.sizeDelta = new Vector2(420, size + 24);
             rect.position = at.position;
             rect.anchoredPosition += new Vector2(UnityEngine.Random.Range(-36f, 36f), rise + UnityEngine.Random.Range(-10f, 10f));
-            var outline = label.gameObject.AddComponent<Outline>();
-            outline.effectColor = new Color(0, 0, 0, 0.85f);
-            outline.effectDistance = new Vector2(2, -2);
+            label.AddOutline();
             StartCoroutine(FloatUp(label));
         }
 
@@ -1382,8 +1564,8 @@ namespace ChainKnights.Client.Battle
             Destroy(label.gameObject);
         }
 
-        /// <summary>화면을 가로지르는 띠 배너 (턴 시작, 체인, 적의 큰 기술).</summary>
-        private IEnumerator Banner(string text, Color stripe, float hold, string sub = null, bool small = false)
+        /// <summary>화면을 가로지르는 띠 배너 (턴 시작, 체인, 적의 큰 기술). fx는 글자 뒤에 깔 이펙트 그림.</summary>
+        private IEnumerator Banner(string text, Color stripe, float hold, string sub = null, bool small = false, string fx = null)
         {
             float height = small ? 96 : 136;
             var band = Ui.Box(fxLayer, "Banner", Ui.Ink.WithAlpha(0.88f), 1);
@@ -1397,9 +1579,19 @@ namespace ChainKnights.Client.Battle
             bottom.rectTransform.offsetMax = new Vector2(0, 4);
             top.raycastTarget = bottom.raycastTarget = false;
 
+            if (fx != null)
+            {
+                var glow = Ui.Icon(band.transform, fx, height * 2.2f);
+                if (glow != null)
+                {
+                    glow.rectTransform.At(0.5f, 0.5f, 0, 0, height * 2.2f, height * 2.2f);
+                    glow.color = Color.white.WithAlpha(0.8f);
+                }
+            }
+
             var label = Ui.Label(band.transform, text, small ? 40 : 58, Ui.GoldHi, TextAnchor.MiddleCenter, bold: true, serifFont: true);
             label.rectTransform.Fill(0, sub != null ? 0.32f : 0, 1, 1);
-            label.gameObject.AddComponent<Outline>().effectColor = new Color(0, 0, 0, 0.7f);
+            label.AddOutline(0.7f);
             if (sub != null)
             {
                 var subLabel = Ui.Label(band.transform, sub, small ? 17 : 22, Ui.Text, TextAnchor.MiddleCenter);
