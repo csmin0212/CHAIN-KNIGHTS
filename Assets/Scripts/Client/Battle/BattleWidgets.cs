@@ -52,8 +52,9 @@ namespace ChainKnights.Client.Battle
             if (selected)
             {
                 var glow = Ui.Box(root, "Selected", Ui.GoldHi.WithAlpha(0.6f), 20);
-                glow.rectTransform.Fill(inset: -8);
+                glow.rectTransform.Fill(inset: -9);
                 glow.raycastTarget = false;
+                glow.gameObject.AddComponent<CardPulse>();
             }
 
             // 황동 테두리 그림이 없으면 금색 판을 깔고 그 위에 몸통을 얹는다.
@@ -65,64 +66,80 @@ namespace ChainKnights.Client.Battle
             var body = Ui.Box(root, "Body", Ui.PanelColor, 12);
             body.rectTransform.Fill(inset: 3);
 
-            var band = Ui.Box(body.transform, "Band", Ui.ElementColor(def.Element), 10);
-            band.rectTransform.Fill(0, 1, 1, 1);
-            band.rectTransform.offsetMin = new Vector2(0, -52);
-            band.raycastTarget = false;
-            var stars = Ui.Label(band.transform, CardText.Stars(def.Rarity), 16, Ui.Hex("#FFF8E6"), TextAnchor.MiddleRight);
-            stars.rectTransform.offsetMax = new Vector2(-16, 0);
-            stars.AddOutline(0.35f, 1);
-            var elementIcon = Ui.Icon(band.transform, $"Icons/icon_element_{Ui.ElementKey(def.Element)}", 34);
+            // 일러스트 창: 카드 위쪽 절반. 높은 성 카드는 빛이 한 번씩 훑고 지나간다.
+            var window = Ui.Rect(body.transform, "Art");
+            window.Fill(0, 1, 1, 1);
+            window.offsetMin = new Vector2(12, -170);
+            window.offsetMax = new Vector2(-12, -12);
+            window.gameObject.AddComponent<RectMask2D>();
+            BuildArt(window, def);
+            if (def.Rarity >= 4)
+                window.gameObject.AddComponent<CardSheen>();
+
+            var strip = Ui.Box(body.transform, "Element", Ui.ElementColor(def.Element), 2);
+            strip.rectTransform.Fill(0, 1, 1, 1);
+            strip.rectTransform.offsetMin = new Vector2(12, -176);
+            strip.rectTransform.offsetMax = new Vector2(-12, -170);
+            strip.raycastTarget = false;
+
+            // 별 (오른쪽 위 리본)
+            var ribbon = Ui.Box(body.transform, "Stars", Ui.Ink.WithAlpha(0.65f), 6);
+            ribbon.rectTransform.At(1, 1, -50, -27, 76, 24);
+            ribbon.raycastTarget = false;
+            Ui.Label(ribbon.transform, CardText.Stars(def.Rarity), 14, def.Rarity >= 4 ? Ui.GoldHi : Ui.Hex("#FFF8E6"), TextAnchor.MiddleCenter);
+
+            // 속성 메달 (일러스트 오른쪽 아래)
+            var medal = Ui.Circle(body.transform, "Medal", Ui.Ink.WithAlpha(0.75f));
+            medal.rectTransform.At(1, 1, -34, -146, 40, 40);
+            medal.raycastTarget = false;
+            var ring = Ui.Rect(medal.transform, "Ring").gameObject.AddComponent<Image>();
+            ring.sprite = UiSprites.Ring(6);
+            ring.color = Ui.ElementColor(def.Element);
+            ring.rectTransform.Fill(inset: -2);
+            ring.raycastTarget = false;
+            var elementIcon = Ui.Icon(medal.transform, $"Icons/icon_element_{Ui.ElementKey(def.Element)}", 28);
             if (elementIcon != null)
-                elementIcon.rectTransform.At(0.5f, 0.5f, 0, 0, 34, 34);
+                elementIcon.rectTransform.At(0.5f, 0.5f, 0, 0, 28, 28);
+            else
+                Ui.Label(medal.transform, CardText.ElementName(def.Element), 16, Ui.Text, TextAnchor.MiddleCenter, bold: true);
 
             Ui.Pill(body.transform, def.NameKo, def.NameKo.Length > 9 ? 14 : 16, out var plate);
-            plate.rectTransform.At(0.5f, 1, 0, -68, Width - 40, 30);
+            plate.rectTransform.At(0.5f, 1, 0, -176, Width - 34, 30);
             plate.raycastTarget = false;
-
-            var art = Ui.Box(body.transform, "Art", Ui.Panel2, 8);
-            art.rectTransform.At(0.5f, 1, 0, -130, Width - 40, 80);
-            art.raycastTarget = false;
-            if (!Art.TryApply(art, $"Cards/card_{def.Id}", Color.white))
-            {
-                var jobIcon = def.Job != Job.None ? Ui.Icon(art.transform, $"Icons/icon_job_{Ui.JobKey(def.Job)}", 62) : null;
-                if (jobIcon != null)
-                    jobIcon.rectTransform.At(0.5f, 0.5f, 0, 0, 62, 62);
-                else
-                    Ui.Label(art.transform, CardText.JobName(def.Job), 20, Ui.JobColor(def.Job).WithAlpha(0.8f), TextAnchor.MiddleCenter, bold: true);
-            }
 
             var paper = Ui.PaperBox(body.transform, "Effect", 6);
             paper.rectTransform.Fill();
-            paper.rectTransform.offsetMin = new Vector2(16, 50);
-            paper.rectTransform.offsetMax = new Vector2(-14, -178);
+            paper.rectTransform.offsetMin = new Vector2(16, 46);
+            paper.rectTransform.offsetMax = new Vector2(-16, -196);
             paper.raycastTarget = false;
             var effectLabel = Ui.Label(paper.transform, effect, effectSize, Ui.PaperInk, TextAnchor.MiddleCenter, bold: effectSize > 18, serifFont: true);
-            effectLabel.rectTransform.Fill(inset: 8);
+            effectLabel.rectTransform.Fill(inset: 6);
 
             // 바닥 줄은 황동 테두리 장식에 가리지 않게 안쪽으로 들인다.
             var foot = Ui.Label(body.transform, footer, 14, Ui.Dim, TextAnchor.MiddleLeft);
             foot.rectTransform.Fill(0, 0, 1, 0);
-            foot.rectTransform.offsetMin = new Vector2(24, 18);
-            foot.rectTransform.offsetMax = new Vector2(-20, 44);
+            foot.rectTransform.offsetMin = new Vector2(24, 16);
+            foot.rectTransform.offsetMax = new Vector2(-20, 42);
             if (awakened)
             {
                 var awake = Ui.Label(body.transform, "◆ 각성", 15, Ui.GoldHi, TextAnchor.MiddleRight, bold: true);
                 awake.rectTransform.Fill(0, 0, 1, 0);
-                awake.rectTransform.offsetMin = new Vector2(24, 18);
-                awake.rectTransform.offsetMax = new Vector2(-24, 44);
+                awake.rectTransform.offsetMin = new Vector2(24, 16);
+                awake.rectTransform.offsetMax = new Vector2(-24, 42);
             }
 
             if (frameArt != null)
             {
-                // 테두리 그림은 카드와 비율이 같아서 통째로 늘려 쓴다.
+                // 테두리 그림은 카드와 비율이 같아서 통째로 늘려 쓴다. 성이 높을수록 밝은 황동.
                 var frame = Ui.Rect(root, "Frame").gameObject.AddComponent<Image>();
                 frame.sprite = frameArt;
                 frame.type = Image.Type.Simple;
                 frame.rectTransform.Fill();
                 frame.raycastTarget = false;
-                if (selected)
-                    frame.color = new Color(1f, 0.95f, 0.8f);
+                frame.color = selected ? new Color(1f, 0.95f, 0.8f)
+                    : def.Rarity >= 4 ? Color.white
+                    : def.Rarity >= 3 ? new Color(0.9f, 0.88f, 0.84f)
+                    : new Color(0.78f, 0.76f, 0.72f);
             }
             if (awakened)
             {
@@ -147,6 +164,57 @@ namespace ChainKnights.Client.Battle
             var cost = Ui.Label(coin.transform, def.Cost.ToString(), 26, Ui.PaperInk, TextAnchor.MiddleCenter, bold: true, serifFont: true);
             cost.rectTransform.offsetMin = new Vector2(0, 2);
             return root;
+        }
+
+        /// <summary>
+        /// 카드 일러스트. 찾는 순서: card_{번호} → card_art_{직업}_{속성} → card_art_{직업}.
+        /// 아무것도 없으면 속성 색 배경 + 큰 직업 문장으로 그린다. 공용(구골) 카드는 구골 그림을 쓴다.
+        /// </summary>
+        private static void BuildArt(RectTransform window, CardDefinition def)
+        {
+            string job = def.Job == Job.None ? "none" : Ui.JobKey(def.Job);
+            string element = Ui.ElementKey(def.Element);
+            foreach (var path in new[] { $"Cards/card_{def.Id}", $"Cards/card_art_{job}_{element}", $"Cards/card_art_{job}" })
+            {
+                var sprite = Art.Get(path);
+                if (sprite == null)
+                    continue;
+                var art = Ui.Rect(window, "Illustration").gameObject.AddComponent<Image>();
+                art.sprite = sprite;
+                art.rectTransform.Fill();
+                art.raycastTarget = false;
+                return;
+            }
+
+            var color = Ui.ElementColor(def.Element);
+            var back = Ui.Box(window, "Back", Color.Lerp(color, Ui.Ink, 0.55f), 2);
+            back.rectTransform.Fill();
+            back.raycastTarget = false;
+            var light = Ui.Circle(window, "Light", Color.Lerp(color, Color.white, 0.15f).WithAlpha(0.55f));
+            light.rectTransform.At(0.5f, 0.45f, 0, 0, 230, 230);
+            light.raycastTarget = false;
+            var watermark = Ui.Icon(window, $"Icons/icon_element_{element}", 150);
+            if (watermark != null)
+            {
+                watermark.rectTransform.At(1, 0, -30, 40, 150, 150).Rotate(-18);
+                watermark.color = Color.white.WithAlpha(0.16f);
+            }
+
+            Image figure = def.Job == Job.None
+                ? Ui.Icon(window, "Enemies/enemy_golem", 128)
+                : Ui.Icon(window, $"Icons/icon_job_{job}", 104);
+            if (figure != null)
+            {
+                float size = def.Job == Job.None ? 128 : 104;
+                figure.rectTransform.At(0.5f, 0.5f, 0, -4, size, size);
+                if (def.Job == Job.None)
+                    figure.color = Color.Lerp(Color.white, color, 0.45f);
+                figure.AddShadow();
+            }
+            else
+            {
+                Ui.Label(window, CardText.JobName(def.Job), 26, Ui.Text, TextAnchor.MiddleCenter, bold: true, serifFont: true);
+            }
         }
 
         /// <summary>뒷면 (길드 문장이 찍힌 봉투). 공개 연출에서 뒤집기 전.</summary>
@@ -326,16 +394,28 @@ namespace ChainKnights.Client.Battle
         }
     }
 
+    /// <summary>적 이름과 HP를 그림의 어느 쪽에 둘지. 본체에 붙은 부위는 옆으로 빼서 본체와 겹치지 않게 한다.</summary>
+    public enum LabelSide
+    {
+        Above,
+        Left,
+        Right,
+    }
+
     /// <summary>적의 본체 또는 부위 하나. 누르면 대상으로 고른다. 행동 예고는 압정에 꽂힌 꼬리표.</summary>
     public sealed class PieceWidget
     {
         public RectTransform Root;
+        /// <summary>누르는 영역이자 흔들기·튕기기 연출의 대상.</summary>
         public RectTransform Shape;
+        /// <summary>그림 (맞으면 붉게 물든다). 그림이 없으면 Shape의 도형.</summary>
+        public Image ArtImage;
+        public Color ArtTint;
         public Image Glow;
         public Transform Tokens;
-        private Image shapeImage;
         private Image hpFill;
         private Text hpLabel, nameLabel, targetMark;
+        private RectTransform bar;
 
         /// <summary>HP가 0일 때 보여줄 말. 부위는 "파괴됨", 본체는 "쓰러짐".</summary>
         public string DestroyedText = "파괴됨";
@@ -343,7 +423,11 @@ namespace ChainKnights.Client.Battle
         /// <summary>예고 빛 그림(fx_part_warning)을 쓰는지. 그림이면 발밑 고리, 아니면 뒤쪽 빛 상자.</summary>
         public bool GlowIsArt { get; private set; }
 
-        public static PieceWidget Build(Transform parent, string name, Color color, string artPath, Color artTint, float w, float h, Action onClick)
+        /// <param name="flipArt">그림을 좌우로 뒤집는다 (부위를 본체 방향에 맞출 때).</param>
+        /// <param name="side">이름과 HP를 둘 자리.</param>
+        /// <param name="tokensAt">예고 꼬리표 높이 (그림 높이 대비 0~1).</param>
+        public static PieceWidget Build(Transform parent, string name, Color color, string artPath, Color artTint, float w, float h, Action onClick,
+            bool flipArt = false, LabelSide side = LabelSide.Above, float tokensAt = 0.5f)
         {
             var piece = new PieceWidget();
             piece.Root = Ui.Rect(parent, name);
@@ -355,7 +439,11 @@ namespace ChainKnights.Client.Battle
             {
                 piece.GlowIsArt = true;
                 piece.Glow.preserveAspect = false;
-                piece.Glow.rectTransform.At(0.5f, 0, 0, h * 0.12f, w + 90, (w + 90) * 0.34f);
+                // 땅에 선 본체는 발밑 고리, 몸에 붙은 부위는 부위 한가운데를 두르는 고리
+                if (side == LabelSide.Above)
+                    piece.Glow.rectTransform.At(0.5f, 0, 0, h * 0.12f, w + 90, (w + 90) * 0.34f);
+                else
+                    piece.Glow.rectTransform.At(0.5f, 0, 0, h / 2, w + 40, (w + 40) * 0.5f);
             }
             else
             {
@@ -365,28 +453,52 @@ namespace ChainKnights.Client.Battle
                 piece.Glow.rectTransform.At(0.5f, 0, 0, h / 2, w + 36, h + 36);
             }
 
-            piece.shapeImage = Ui.Box(piece.Root, "Shape", color, Mathf.RoundToInt(Mathf.Min(w, h) * 0.35f));
-            piece.Shape = piece.shapeImage.rectTransform;
+            var shape = Ui.Box(piece.Root, "Shape", color, Mathf.RoundToInt(Mathf.Min(w, h) * 0.35f));
+            piece.Shape = shape.rectTransform;
             piece.Shape.At(0.5f, 0, 0, h / 2, w, h);
-            Art.TryApply(piece.shapeImage, artPath, artTint);
-            Ui.MakeButton(piece.shapeImage, onClick);
+            var sprite = Art.Get(artPath);
+            if (sprite != null)
+            {
+                // 그림은 자식에 따로 둔다: 뒤집기와 붉게 물들기가 누르는 영역(Shape)과 섞이지 않게.
+                shape.color = Color.clear;
+                piece.ArtImage = Ui.Rect(shape.transform, "Art").gameObject.AddComponent<Image>();
+                piece.ArtImage.sprite = sprite;
+                piece.ArtImage.preserveAspect = true;
+                piece.ArtImage.raycastTarget = false;
+                piece.ArtImage.rectTransform.Fill();
+                if (flipArt)
+                    piece.ArtImage.rectTransform.localScale = new Vector3(-1, 1, 1);
+                piece.ArtTint = artTint;
+            }
+            else
+            {
+                piece.ArtImage = shape;
+                piece.ArtTint = color;
+            }
+            piece.ArtImage.color = piece.ArtTint;
+            Ui.MakeButton(shape, onClick);
 
-            piece.nameLabel = Ui.Label(piece.Root, name, 20, Ui.Text, TextAnchor.MiddleCenter, bold: true, serifFont: true);
-            piece.nameLabel.rectTransform.At(0.5f, 0, 0, h + 52, Mathf.Max(w, 240), 28);
+            // 위: 그림 위 가운데. 옆: 그림 가운데 높이에서 왼쪽이나 오른쪽 바깥.
+            bool beside = side != LabelSide.Above;
+            float x = side == LabelSide.Left ? -(w / 2 + 100) : side == LabelSide.Right ? w / 2 + 100 : 0;
+            float top = beside ? h / 2 + 30 : h + 52;
+            float labelWidth = beside ? 190 : Mathf.Max(w, 240);
+            piece.nameLabel = Ui.Label(piece.Root, name, beside ? 18 : 20, Ui.Text, TextAnchor.MiddleCenter, bold: true, serifFont: true);
+            piece.nameLabel.rectTransform.At(0.5f, 0, x, top, labelWidth, 28);
             piece.nameLabel.AddOutline(0.8f);
-            var bar = Ui.Rect(piece.Root, "Bar");
-            bar.At(0.5f, 0, 0, h + 30, Mathf.Clamp(w, 180, 260), 14);
-            piece.hpFill = Ui.Bar(bar, Ui.HpGreen);
+            piece.bar = Ui.Rect(piece.Root, "Bar");
+            piece.bar.At(0.5f, 0, x, top - 22, beside ? 170 : Mathf.Clamp(w, 160, 260), beside ? 12 : 14);
+            piece.hpFill = Ui.Bar(piece.bar, Ui.HpGreen);
             piece.hpLabel = Ui.Label(piece.Root, "", 14, Ui.Text, TextAnchor.MiddleCenter);
-            piece.hpLabel.rectTransform.At(0.5f, 0, 0, h + 12, 260, 20);
+            piece.hpLabel.rectTransform.At(0.5f, 0, x, top - 40, 260, 20);
             piece.hpLabel.AddOutline(0.8f, 1);
 
             piece.targetMark = Ui.Label(piece.Root, "▼ 대상", 18, Ui.GoldHi, TextAnchor.MiddleCenter, bold: true);
-            piece.targetMark.rectTransform.At(0.5f, 0, 0, h + 82, 200, 26);
+            piece.targetMark.rectTransform.At(0.5f, 0, x, top + 30, 200, 26);
             piece.targetMark.AddOutline(0.8f);
 
             var tokens = Ui.Rect(piece.Root, "Tokens");
-            tokens.At(0.5f, 0, 0, h * 0.5f, 270, 10);
+            tokens.At(0.5f, 0, 0, h * tokensAt, 270, 10);
             var layout = tokens.gameObject.AddComponent<VerticalLayoutGroup>();
             layout.childAlignment = TextAnchor.MiddleCenter;
             layout.spacing = 10;
@@ -426,6 +538,62 @@ namespace ChainKnights.Client.Battle
         }
 
         public void ClearTokens() => Ui.Clear(Tokens);
+
+        /// <summary>
+        /// 이름, HP, 대상 표시, 예고 꼬리표를 위쪽 층으로 옮긴다.
+        /// 부위 그림이 본체 뒤에 깔려도(날개) 글씨는 본체에 가리지 않는다.
+        /// </summary>
+        public void LiftLabels(Transform layer)
+        {
+            foreach (var rect in new[] { nameLabel.rectTransform, bar, hpLabel.rectTransform, targetMark.rectTransform, (RectTransform)Tokens })
+                rect.SetParent(layer, true);
+        }
+    }
+
+    /// <summary>높은 성 카드의 일러스트 위를 비스듬한 빛줄기가 몇 초마다 훑고 지나간다.</summary>
+    public sealed class CardSheen : MonoBehaviour
+    {
+        private const float Period = 3.2f;
+        private RectTransform beam;
+        private float offset;
+
+        private void Start()
+        {
+            var image = Ui.Rect(transform, "Sheen").gameObject.AddComponent<Image>();
+            image.color = new Color(1f, 0.97f, 0.88f, 0.28f);
+            image.raycastTarget = false;
+            beam = image.rectTransform;
+            beam.anchorMin = beam.anchorMax = new Vector2(0.5f, 0.5f);
+            beam.sizeDelta = new Vector2(36, 420);
+            beam.localEulerAngles = new Vector3(0, 0, -24);
+            offset = UnityEngine.Random.value * Period;
+        }
+
+        private void Update()
+        {
+            float t = (Time.time + offset) % Period / 0.9f;
+            beam.gameObject.SetActive(t <= 1f);
+            if (t <= 1f)
+                beam.anchoredPosition = new Vector2(Mathf.Lerp(-200f, 200f, t), 0);
+        }
+    }
+
+    /// <summary>고른 카드 뒤의 빛이 천천히 숨 쉬듯 밝아졌다 어두워진다.</summary>
+    public sealed class CardPulse : MonoBehaviour
+    {
+        private Image image;
+        private Color baseColor;
+
+        private void Start()
+        {
+            image = GetComponent<Image>();
+            baseColor = image.color;
+        }
+
+        private void Update()
+        {
+            image.color = baseColor.WithAlpha(0.35f + 0.3f * (0.5f + 0.5f * Mathf.Sin(Time.time * 4f)));
+        }
     }
 
     /// <summary>손패 카드에 마우스를 올리면 살짝 들려서 똑바로 선다 (슬레이 더 스파이어 손패처럼).</summary>

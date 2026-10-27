@@ -36,6 +36,9 @@ namespace ChainKnights.Client.Battle
         // 출격 준비에서 고른 것
         private Job myJob = Job.Warrior;
         private Quest quest = Quest.Golems;
+        private RaidDifficulty raidLevel = RaidDifficulty.Medium;
+
+        private string RaidLevelName => raidLevel == RaidDifficulty.Extreme ? "최상급" : raidLevel == RaidDifficulty.Hard ? "상급" : "중급";
 
         // 층: 배경 → 전투 → 연출 → 덮개(준비, 결과)
         private RectTransform root, battleLayer, fxLayer, overlayLayer;
@@ -69,6 +72,7 @@ namespace ChainKnights.Client.Battle
         private Coroutine toastRoutine;
         private bool shaking;
         private int damageDealt;
+        private RectTransform currentSlot; // 지금 효과를 처리 중인 공개 카드 (투사체 출발점)
 
         // 연출 중에 화면에 보이는 HP. 이벤트를 하나씩 보여주면서 실제 값까지 따라간다.
         private int[] shownArthurHp, shownEnemyHp;
@@ -106,6 +110,7 @@ namespace ChainKnights.Client.Battle
         private void ShowSetup()
         {
             StopAllCoroutines();
+            Time.timeScale = 1f;
             session = null;
             Ui.Clear(battleLayer);
             Ui.Clear(fxLayer);
@@ -141,7 +146,7 @@ namespace ChainKnights.Client.Battle
                 ShowSetup();
             });
             golems.At(0.5f, 1, -240, -420, 440, 120).Rotate(1.2f);
-            var raid = QuestChoice(panel.transform, "레이드 · 중급", "빙결룡 글라키에스", "금", Ui.Wax, quest == Quest.Glacies, () =>
+            var raid = QuestChoice(panel.transform, $"레이드 · {RaidLevelName}", "빙결룡 글라키에스", "금", Ui.Wax, quest == Quest.Glacies, () =>
             {
                 quest = Quest.Glacies;
                 ShowSetup();
@@ -248,6 +253,7 @@ namespace ChainKnights.Client.Battle
         private void StartBattle()
         {
             StopAllCoroutines();
+            Time.timeScale = 1f;
             Ui.Clear(battleLayer);
             Ui.Clear(fxLayer);
             Ui.Clear(overlayLayer);
@@ -275,7 +281,7 @@ namespace ChainKnights.Client.Battle
             }).ToList();
 
             var enemies = quest == Quest.Glacies
-                ? new List<EnemySetup> { Encounters.Glacies(RaidDifficulty.Medium) }
+                ? new List<EnemySetup> { Encounters.Glacies(raidLevel) }
                 : Encounters.GolemPack().ToList();
 
             session = new BattleSession(new BattleSetup
@@ -332,7 +338,7 @@ namespace ChainKnights.Client.Battle
             paper.rectTransform.Fill();
             paper.raycastTarget = false;
             bool raid = quest == Quest.Glacies;
-            var kind = Ui.Label(paper.transform, raid ? "레이드 의뢰 · 중급" : "노멀 퀘스트", 15, raid ? Ui.Wax : Bronze, TextAnchor.UpperLeft, bold: true);
+            var kind = Ui.Label(paper.transform, raid ? $"레이드 의뢰 · {RaidLevelName}" : "노멀 퀘스트", 15, raid ? Ui.Wax : Bronze, TextAnchor.UpperLeft, bold: true);
             kind.rectTransform.offsetMin = new Vector2(22, 0);
             kind.rectTransform.offsetMax = new Vector2(-80, -16);
             var name = Ui.Label(paper.transform, raid ? "빙결룡 글라키에스" : "시작의 대지 · 구골 무리", 22, Ui.PaperInk, TextAnchor.LowerLeft, bold: true, serifFont: true);
@@ -377,17 +383,24 @@ namespace ChainKnights.Client.Battle
             var enemies = session.Enemies;
             if (enemies.Count == 1 && enemies[0].Parts.Count > 0)
             {
-                // 부위가 있는 보스: 본체 가운데, 발톱은 오른쪽 아래, 날개는 왼쪽 위
+                // 부위가 있는 보스: 따로 그린 부위를 본체에 붙여 한 몸으로 보이게 한다.
+                // 본체는 왼쪽(파티 쪽)을 본다. 날개는 등 뒤에서 위로 펼치고, 발톱은 가슴에서 앞으로 뻗는다.
+                // 두 그림 다 원본이 반대 방향이라 좌우로 뒤집는다. 좌표는 본체 그림(480×360) 중심 기준.
                 var boss = enemies[0];
-                AddPiece(0, -1, boss.Name, Ui.Hex("#3E6F98"), "Enemies/boss_glacies_body", Color.white, -30, 10, 480, 360);
-                var spots = new[] { new Vector2(370, -110), new Vector2(-380, 70) };
-                var sizes = new[] { new Vector2(230, 172), new Vector2(250, 180) };
-                var arts = new[] { "Enemies/boss_glacies_claw", "Enemies/boss_glacies_wing" };
-                foreach (var part in boss.Parts)
-                {
-                    int i = Mathf.Min(part.Index, spots.Length - 1);
-                    AddPiece(0, part.Index, part.Name, Ui.Hex("#6FA8D6"), arts[i], Color.white, spots[i].x, spots[i].y, sizes[i].x, sizes[i].y);
-                }
+                var body = new Vector2(30, -15);
+                var wing = boss.Part(1);
+                if (wing != null)
+                    AddPiece(0, 1, wing.Name, Ui.Hex("#6FA8D6"), "Enemies/boss_glacies_wing", Color.white,
+                        body + new Vector2(126, 133), 300, 225, flip: true, side: LabelSide.Right, tokensAt: 0.55f);
+                AddPiece(0, -1, boss.Name, Ui.Hex("#3E6F98"), "Enemies/boss_glacies_body", Color.white, body, 480, 360, tokensAt: 0.72f);
+                var claw = boss.Part(0);
+                if (claw != null)
+                    AddPiece(0, 0, claw.Name, Ui.Hex("#6FA8D6"), "Enemies/boss_glacies_claw", Color.white,
+                        body + new Vector2(-132, -101), 240, 180, flip: true, side: LabelSide.Left, tokensAt: 0.2f);
+                // 글씨는 모든 그림 위에
+                var labels = Ui.Rect(enemyArea, "Labels").Fill();
+                foreach (var piece in pieces.Values)
+                    piece.LiftLabels(labels);
                 return;
             }
 
@@ -400,16 +413,19 @@ namespace ChainKnights.Client.Battle
                     name += " " + (char)('A' + enemies.Take(i).Count(e => e.Name == enemy.Name));
                 var color = Color.Lerp(Ui.ElementColor(enemy.Element), Ui.Ink, 0.3f);
                 var tint = Color.Lerp(Color.white, Ui.ElementColor(enemy.Element), 0.45f);
-                AddPiece(i, -1, name, color, "Enemies/enemy_golem", tint, (i - (enemies.Count - 1) / 2f) * 320, -20, 240, 240);
+                AddPiece(i, -1, name, color, "Enemies/enemy_golem", tint, new Vector2((i - (enemies.Count - 1) / 2f) * 320, -55), 240, 240);
             }
         }
 
-        private void AddPiece(int enemyIndex, int partIndex, string name, Color color, string art, Color artTint, float x, float y, float w, float h)
+        /// <summary>적 그림 하나를 놓는다. center는 그림(Shape)의 중심 위치 (적 구역 중심 기준).</summary>
+        private void AddPiece(int enemyIndex, int partIndex, string name, Color color, string art, Color artTint, Vector2 center, float w, float h,
+            bool flip = false, LabelSide side = LabelSide.Above, float tokensAt = 0.5f)
         {
-            var piece = PieceWidget.Build(enemyArea, name, color, art, artTint, w, h, () => OnPieceClicked(enemyIndex, partIndex));
+            var piece = PieceWidget.Build(enemyArea, name, color, art, artTint, w, h, () => OnPieceClicked(enemyIndex, partIndex), flip, side, tokensAt);
             if (partIndex < 0)
                 piece.DestroyedText = "쓰러짐";
-            piece.Root.At(0.5f, 0.5f, x, y, w, h + 70);
+            // 위젯 바닥에서 그림 중심까지 h/2, 위젯 높이는 h+70이라 그림 중심은 위젯 중심보다 35 아래에 있다.
+            piece.Root.At(0.5f, 0.5f, center.x, center.y + 35, w, h + 70);
             pieces[(enemyIndex, partIndex)] = piece;
         }
 
@@ -711,8 +727,31 @@ namespace ChainKnights.Client.Battle
             }
             Sound.Play("sfx_stamp", "sfx_card_play");
             StartCoroutine(Punch(confirmButton.transform, -0.12f, 0.2f));
-            RebuildHand();
             RefreshView();
+            StartCoroutine(SendCardsAway());
+        }
+
+        /// <summary>확정한 카드가 위로 날아가며 작아지고, 나머지 손패는 어둡게 다시 깔린다.</summary>
+        private IEnumerator SendCardsAway()
+        {
+            var flying = handArea.GetComponentsInChildren<HoverLift>().Where(l => l.KeepOnTop).ToList();
+            foreach (var lift in flying)
+            {
+                lift.enabled = false;
+                var rect = (RectTransform)lift.transform;
+                var start = rect.anchoredPosition;
+                var group = lift.gameObject.AddComponent<CanvasGroup>();
+                StartCoroutine(Tween(0.32f, t =>
+                {
+                    rect.anchoredPosition = start + new Vector2(0, 260 * t);
+                    rect.localScale = Vector3.one * Mathf.Lerp(1f, 0.55f, t);
+                    group.alpha = 1 - t * t;
+                }));
+                yield return new WaitForSeconds(0.05f);
+            }
+            yield return new WaitForSeconds(0.3f);
+            if (!resolving)
+                RebuildHand();
         }
 
         private void Pass()
@@ -1122,6 +1161,14 @@ namespace ChainKnights.Client.Battle
                 {
                     Sound.Play("sfx_card_flip", "sfx_card_play", 0.7f);
                     yield return Flip(slots[i], faces[i].back, faces[i].face);
+                    // 높은 성 카드는 뒤집을 때 빛이 터진다
+                    int rarity = CardCatalog.Get(played[i].CardId).Rarity;
+                    if (rarity >= 4)
+                    {
+                        Burst(slots[i], "Effects/fx_critical", Ui.GoldHi, rarity >= 5 ? 340 : 260);
+                        Particles(slots[i], Ui.GoldHi, rarity >= 5 ? 18 : 10, 260);
+                        Sound.Play("sfx_critical", volume: 0.5f);
+                    }
                 }
                 yield return new WaitForSeconds(0.25f);
 
@@ -1129,10 +1176,11 @@ namespace ChainKnights.Client.Battle
                 foreach (var chain in events.Where(e => e.Type == BattleEventType.Chain))
                 {
                     Sound.Play("sfx_chain");
-                    for (int i = 0; i < played.Count; i++)
+                    var linked = Enumerable.Range(0, played.Count).Where(i => played[i].Element == chain.Element).ToList();
+                    for (int k = 0; k + 1 < linked.Count; k++)
+                        StartCoroutine(ChainLinks(row, slots[linked[k]], slots[linked[k + 1]], Ui.ElementColor(chain.Element)));
+                    foreach (int i in linked)
                     {
-                        if (played[i].Element != chain.Element)
-                            continue;
                         StartCoroutine(SlamStamp(slots[i], "연계", Ui.Wax, 104, 28, UnityEngine.Random.Range(-14f, 14f)));
                         yield return new WaitForSeconds(0.12f);
                     }
@@ -1147,6 +1195,7 @@ namespace ChainKnights.Client.Battle
             {
                 if (row != null && IsAfterPlayerPhase(e.Type))
                 {
+                    currentSlot = null;
                     yield return FadeOutAndDestroy(row);
                     row = null;
                 }
@@ -1157,8 +1206,14 @@ namespace ChainKnights.Client.Battle
                         slots[current].GetComponent<CanvasGroup>().alpha = 0.4f;
                     current++;
                     var slot = slots[current];
+                    currentSlot = slot;
                     slot.SetAsLastSibling();
-                    StartCoroutine(Tween(0.15f, t => slot.localScale = Vector3.one * (1 + 0.14f * t)));
+                    var home = slot.anchoredPosition;
+                    StartCoroutine(Tween(0.15f, t =>
+                    {
+                        slot.localScale = Vector3.one * (1 + 0.18f * t);
+                        slot.anchoredPosition = home + new Vector2(0, 34 * t);
+                    }));
                     Log($"<b>{e.Message}</b>");
                     yield return new WaitForSeconds(0.22f);
                     continue;
@@ -1197,19 +1252,27 @@ namespace ChainKnights.Client.Battle
                         var piece = PieceFor(e.TargetIndex, e.PartIndex);
                         if (e.PartIndex >= 0)
                             shownPartHp[e.TargetIndex][e.PartIndex] = Mathf.Max(0, shownPartHp[e.TargetIndex][e.PartIndex] - e.Value);
+                        // 투사체 → 터짐, 파편, 붉게 물들며 밀려남. 치명타는 잠깐 멈춘다.
+                        var elementColor = Ui.ElementColor(e.Element);
+                        if (currentSlot != null)
+                            yield return Projectile(currentSlot, piece.Shape, elementColor, e.IsCritical);
                         StartCoroutine(Punch(piece.Shape, 0.07f, 0.18f));
-                        Burst(piece.Shape, "Effects/fx_hit", Color.Lerp(Color.white, Ui.ElementColor(e.Element), 0.5f), 230);
+                        StartCoroutine(HitReaction(piece, 18));
+                        Burst(piece.Shape, "Effects/fx_hit", Color.Lerp(Color.white, elementColor, 0.5f), e.IsCritical ? 300 : 230);
+                        Particles(piece.Shape, Color.Lerp(elementColor, Color.white, 0.3f), e.IsCritical ? 22 : 12, e.IsCritical ? 420 : 300);
                         bool magic = e.CardId > 0 && CardCatalog.Get(e.CardId).Category == SkillCategory.Magic;
                         Sound.Play(magic ? "sfx_magic" : "sfx_hit");
                         if (e.IsCritical)
                         {
-                            Burst(piece.Shape, "Effects/fx_critical", Color.white, 300);
+                            Burst(piece.Shape, "Effects/fx_critical", Color.white, 360);
                             Sound.Play("sfx_critical");
+                            StartCoroutine(Shake(10, 0.25f));
+                            yield return HitStop(0.09f);
                             Float(piece.Shape, $"치명 {e.Value:N0}!", Ui.GoldHi, 46);
                         }
                         else
                         {
-                            Float(piece.Shape, e.Value.ToString("N0"), Color.white, 38);
+                            Float(piece.Shape, e.Value.ToString("N0"), Color.white, 38, outline: Color.Lerp(elementColor, Color.black, 0.45f));
                         }
                         Log(e.Message);
                         yield return new WaitForSeconds(e.IsCritical ? 0.32f : 0.2f);
@@ -1218,6 +1281,7 @@ namespace ChainKnights.Client.Battle
                     {
                         shownArthurHp[e.TargetIndex] = Mathf.Max(0, shownArthurHp[e.TargetIndex] - e.Value);
                         StartCoroutine(Punch(party[e.TargetIndex].Root, 0.05f, 0.2f));
+                        StartCoroutine(Nudge(party[e.TargetIndex].Root, new Vector2(-14, 0), 0.22f));
                         Burst(party[e.TargetIndex].Root, "Effects/fx_hit", Ui.Danger, 150);
                         Sound.Play("sfx_hit", volume: 0.7f);
                         Float(partyFloatAt[e.TargetIndex], $"-{e.Value:N0}", Ui.Danger, 34);
@@ -1230,6 +1294,7 @@ namespace ChainKnights.Client.Battle
                 case BattleEventType.HealTick:
                     shownArthurHp[e.TargetIndex] = Mathf.Min(session.Arthurs[e.TargetIndex].MaxHp, shownArthurHp[e.TargetIndex] + e.Value);
                     Burst(party[e.TargetIndex].Root, "Effects/fx_heal", Color.white, 150);
+                    Particles(party[e.TargetIndex].Root, Ui.Good, 8, 140, rise: true);
                     Sound.Play("sfx_heal", volume: 0.7f);
                     Float(partyFloatAt[e.TargetIndex], $"+{e.Value:N0}", Ui.Good, 32);
                     Log($"<color=#3E7A50>{e.Message}</color>");
@@ -1284,8 +1349,11 @@ namespace ChainKnights.Client.Battle
                     shownPartHp[e.TargetIndex][e.PartIndex] = 0;
                     var piece = PieceFor(e.TargetIndex, e.PartIndex);
                     RefreshView();
-                    StartCoroutine(Flash(piece.Shape));
-                    StartCoroutine(Shake(14, 0.35f));
+                    Burst(piece.Shape, "Effects/fx_critical", Color.white, 420);
+                    Particles(piece.Shape, Ui.Hex("#BFE3FF"), 26, 460);
+                    StartCoroutine(HitReaction(piece, 30));
+                    StartCoroutine(Shake(16, 0.4f));
+                    yield return HitStop(0.12f);
                     Sound.Play("sfx_part_break");
                     StartCoroutine(SlamStamp(StampAnchor(piece.Shape), "격파", Ui.Wax, 150, 40, -12));
                     Float(piece.Shape, "BREAK!", Ui.GoldHi, 60, 110);
@@ -1319,8 +1387,12 @@ namespace ChainKnights.Client.Battle
 
                 case BattleEventType.EnemyAction:
                 {
+                    // 적이 파티 쪽으로 덤벼든다. 전체 공격은 화면이 붉게 물든다.
                     var piece = PieceFor(e.ActorIndex, e.PartIndex);
                     StartCoroutine(Punch(piece.Shape, 0.12f, 0.3f));
+                    StartCoroutine(Nudge(piece.Shape, new Vector2(-60, -10), 0.32f));
+                    if (session.Enemies[e.ActorIndex].Intents.Any(i => i.Action.TargetsAll && e.Message.Contains(i.Action.Name)))
+                        StartCoroutine(Vignette(Ui.Wax, 0.6f));
                     Log($"<color=#9B2F25>{e.Message}</color>");
                     string name = e.Message.Contains("「") ? e.Message.Substring(e.Message.IndexOf('「')) : e.Message;
                     yield return Banner(name, Ui.Wax, 0.45f, session.Enemies[e.ActorIndex].Name, small: true);
@@ -1379,7 +1451,7 @@ namespace ChainKnights.Client.Battle
             int alive = session.Arthurs.Count(a => a.IsAlive);
             var lines = new[]
             {
-                ("의뢰", quest == Quest.Glacies ? "빙결룡 글라키에스 (중급)" : "시작의 대지 · 구골 무리"),
+                ("의뢰", quest == Quest.Glacies ? $"빙결룡 글라키에스 ({RaidLevelName})" : "시작의 대지 · 구골 무리"),
                 ("결과", victory ? "토벌 완료" : "토벌 실패"),
                 ("걸린 턴", $"{session.Turn}턴"),
                 ("생존", $"{alive} / {session.Arthurs.Count}"),
@@ -1514,6 +1586,149 @@ namespace ChainKnights.Client.Battle
             Destroy(rect.gameObject);
         }
 
+        /// <summary>속성 색 빛구슬이 카드에서 대상까지 포물선으로 날아간다. 꼬리를 남긴다.</summary>
+        private IEnumerator Projectile(RectTransform from, RectTransform to, Color color, bool big)
+        {
+            var orb = Ui.Circle(fxLayer, "Orb", Color.Lerp(color, Color.white, 0.25f));
+            float size = big ? 46 : 34;
+            orb.rectTransform.sizeDelta = new Vector2(size, size);
+            orb.raycastTarget = false;
+            var core = Ui.Circle(orb.transform, "Core", Color.white);
+            core.rectTransform.Fill(inset: size * 0.28f);
+            core.raycastTarget = false;
+            Vector3 start = from.position, end = to.position;
+            // 화면 배율이 달라도 같은 모양으로 휘도록, 높이는 두 점 거리에 비례
+            float lift = Vector3.Distance(start, end) * 0.25f;
+            float trailTimer = 0;
+            yield return Tween(big ? 0.26f : 0.2f, t =>
+            {
+                var p = Vector3.Lerp(start, end, t) + Vector3.up * lift * Mathf.Sin(t * Mathf.PI);
+                orb.rectTransform.position = p;
+                trailTimer += Time.deltaTime;
+                if (trailTimer > 0.012f)
+                {
+                    trailTimer = 0;
+                    StartCoroutine(TrailDot(p, color, size * 0.7f));
+                }
+            });
+            Destroy(orb.gameObject);
+        }
+
+        private IEnumerator TrailDot(Vector3 position, Color color, float size)
+        {
+            var dot = Ui.Circle(fxLayer, "Trail", color.WithAlpha(0.7f));
+            dot.raycastTarget = false;
+            dot.rectTransform.sizeDelta = new Vector2(size, size);
+            dot.rectTransform.position = position;
+            yield return Tween(0.22f, t =>
+            {
+                dot.rectTransform.localScale = Vector3.one * (1 - t);
+                dot.color = color.WithAlpha(0.7f * (1 - t));
+            });
+            Destroy(dot.gameObject);
+        }
+
+        /// <summary>작은 파편이 사방으로 튀었다가 떨어진다. rise면 위로 천천히 피어오른다 (회복).</summary>
+        private void Particles(RectTransform at, Color color, int count, float speed, bool rise = false)
+        {
+            for (int i = 0; i < count; i++)
+                StartCoroutine(Particle(at.position, color, speed, rise));
+        }
+
+        private IEnumerator Particle(Vector3 origin, Color color, float speed, bool rise)
+        {
+            var bit = Ui.Rect(fxLayer, "Bit").gameObject.AddComponent<Image>();
+            bit.sprite = rise ? UiSprites.Circle : UiSprites.Rounded(2);
+            bit.color = color;
+            bit.raycastTarget = false;
+            float size = UnityEngine.Random.Range(6f, 13f);
+            var rect = bit.rectTransform;
+            rect.sizeDelta = new Vector2(size, rise ? size : size * 0.6f);
+            rect.position = origin;
+            var start = rect.anchoredPosition;
+            Vector2 velocity = rise
+                ? new Vector2(UnityEngine.Random.Range(-40f, 40f), UnityEngine.Random.Range(60f, 140f))
+                : UnityEngine.Random.insideUnitCircle.normalized * UnityEngine.Random.Range(0.4f, 1f) * speed;
+            float gravity = rise ? 0 : -600;
+            float life = rise ? 0.8f : UnityEngine.Random.Range(0.35f, 0.6f);
+            float spin = UnityEngine.Random.Range(-720f, 720f);
+            for (float t = 0; t < life; t += Time.deltaTime)
+            {
+                rect.anchoredPosition = start + velocity * t + new Vector2(0, 0.5f * gravity * t * t);
+                rect.localEulerAngles = new Vector3(0, 0, spin * t);
+                bit.color = color.WithAlpha(1 - t / life);
+                yield return null;
+            }
+            Destroy(bit.gameObject);
+        }
+
+        /// <summary>맞은 적: 그림이 붉게 물들었다가 돌아오고, 맞은 방향으로 살짝 밀려난다.</summary>
+        private IEnumerator HitReaction(PieceWidget piece, float push)
+        {
+            var image = piece.ArtImage;
+            var tint = piece.ArtTint;
+            var hurt = new Color(1f, 0.45f, 0.4f, tint.a);
+            StartCoroutine(Nudge(piece.Shape, new Vector2(push, 4), 0.24f));
+            yield return Tween(0.24f, t => image.color = Color.Lerp(hurt, tint, t));
+        }
+
+        /// <summary>잠깐 그쪽으로 움직였다가 제자리로 돌아온다 (밀려남, 덤벼듦).</summary>
+        private static IEnumerator Nudge(RectTransform target, Vector2 offset, float duration)
+        {
+            var home = target.anchoredPosition;
+            yield return Tween(duration, t => target.anchoredPosition = home + offset * Mathf.Sin(t * Mathf.PI));
+            target.anchoredPosition = home;
+        }
+
+        /// <summary>히트스톱: 강한 타격 순간에 시간을 거의 멈춘다.</summary>
+        private static IEnumerator HitStop(float seconds)
+        {
+            Time.timeScale = 0.05f;
+            yield return new WaitForSecondsRealtime(seconds);
+            Time.timeScale = 1f;
+        }
+
+        /// <summary>화면 전체가 한 번 물든다 (전체 공격).</summary>
+        private IEnumerator Vignette(Color color, float strength)
+        {
+            var veil = Ui.Box(fxLayer, "Vignette", color.WithAlpha(0), 1);
+            veil.rectTransform.Fill();
+            veil.raycastTarget = false;
+            yield return Tween(0.12f, t => veil.color = color.WithAlpha(strength * 0.5f * t));
+            yield return Tween(0.4f, t => veil.color = color.WithAlpha(strength * 0.5f * (1 - t)));
+            Destroy(veil.gameObject);
+        }
+
+        /// <summary>체인으로 묶인 두 카드 사이에 사슬 고리가 하나씩 걸린다.</summary>
+        private IEnumerator ChainLinks(RectTransform parent, RectTransform a, RectTransform b, Color color)
+        {
+            var sprite = Art.Get("Icons/icon_signal_chain");
+            Vector2 from = a.anchoredPosition, to = b.anchoredPosition;
+            int count = Mathf.Max(2, Mathf.RoundToInt(Vector2.Distance(from, to) / 34f));
+            for (int i = 1; i < count; i++)
+            {
+                var link = Ui.Rect(parent, "Link").gameObject.AddComponent<Image>();
+                link.raycastTarget = false;
+                if (sprite != null)
+                {
+                    link.sprite = sprite;
+                    link.preserveAspect = true;
+                    link.color = Color.Lerp(Color.white, color, 0.35f);
+                }
+                else
+                {
+                    link.sprite = UiSprites.Ring(16);
+                    link.color = Ui.GoldHi;
+                }
+                var rect = link.rectTransform;
+                rect.anchorMin = rect.anchorMax = new Vector2(0.5f, 0.5f);
+                rect.sizeDelta = new Vector2(34, 34);
+                rect.anchoredPosition = Vector2.Lerp(from, to, i / (float)count) + new Vector2(0, -RevealHeight * 0.5f + 8);
+                StartCoroutine(Pop(rect));
+                yield return new WaitForSeconds(0.03f);
+            }
+        }
+
         private IEnumerator Flash(RectTransform shape)
         {
             var flash = Ui.Box(shape, "Flash", Color.white, 30);
@@ -1538,7 +1753,7 @@ namespace ChainKnights.Client.Battle
         }
 
         /// <summary>피해·회복 숫자가 대상 위에서 떠오르며 사라진다.</summary>
-        private void Float(RectTransform at, string text, Color color, int size, float rise = 0)
+        private void Float(RectTransform at, string text, Color color, int size, float rise = 0, Color? outline = null)
         {
             var label = Ui.Label(fxLayer, text, size, color, TextAnchor.MiddleCenter, bold: true);
             var rect = label.rectTransform;
@@ -1546,7 +1761,9 @@ namespace ChainKnights.Client.Battle
             rect.sizeDelta = new Vector2(420, size + 24);
             rect.position = at.position;
             rect.anchoredPosition += new Vector2(UnityEngine.Random.Range(-36f, 36f), rise + UnityEngine.Random.Range(-10f, 10f));
-            label.AddOutline();
+            var edge = label.AddOutline();
+            if (outline != null)
+                edge.effectColor = outline.Value;
             StartCoroutine(FloatUp(label));
         }
 

@@ -9,7 +9,7 @@ namespace ChainKnights.Client.Battle
 {
     /// <summary>
     /// 화면 확인용. 명령줄에 -autoshot &lt;폴더&gt; 를 주면 준비 화면 → 몇 턴의 선택과 공개 연출을 찍고 끝낸다.
-    /// -raid를 같이 주면 글라키에스전을 찍는다. 발표 자료용 스크린샷을 뽑을 때도 쓴다.
+    /// -raid를 같이 주면 글라키에스전 (-hard면 날개가 있는 상급)을 찍는다. 발표 자료용 스크린샷을 뽑을 때도 쓴다.
     /// </summary>
     public sealed partial class BattleScreen
     {
@@ -22,6 +22,8 @@ namespace ChainKnights.Client.Battle
             // 창이 뒤로 가도 멈추지 않게 한다 (기본값이면 포커스를 잃는 순간 멈춘다).
             Application.runInBackground = true;
             var runner = new GameObject("AutoShot").AddComponent<AutoShotRunner>();
+            if (args.Contains("-hard"))
+                raidLevel = RaidDifficulty.Hard;
             runner.Begin(this, args[index + 1], args.Contains("-raid"));
         }
 
@@ -66,9 +68,9 @@ namespace ChainKnights.Client.Battle
 
                     while (!screen.resolving)
                         yield return null;
-                    for (int i = 0; screen.resolving && i < 14; i++)
+                    for (int i = 0; screen.resolving && i < 30; i++)
                     {
-                        yield return new WaitForSeconds(0.45f);
+                        yield return new WaitForSeconds(0.25f);
                         Shot($"t{turn}_b_resolve_{i:00}");
                     }
                     while (screen.resolving)

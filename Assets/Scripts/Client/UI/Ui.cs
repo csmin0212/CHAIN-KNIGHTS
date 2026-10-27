@@ -299,6 +299,14 @@ namespace ChainKnights.Client.UI
             return outline;
         }
 
+        public static Shadow AddShadow(this Graphic graphic, float alpha = 0.55f, float distance = 4)
+        {
+            var shadow = graphic.gameObject.AddComponent<Shadow>();
+            shadow.effectColor = new Color(0, 0, 0, alpha);
+            shadow.effectDistance = new Vector2(distance, -distance);
+            return shadow;
+        }
+
         // ───────────── 버튼 ─────────────
 
         public static Button MakeButton(Image target, Action onClick)
